@@ -380,3 +380,3440 @@ MENU MOBILE
     cursor:pointer;
 
 }
+
+ 
+/* =====================================
+FOOTER
+===================================== */
+
+.main-footer{
+
+    padding:60px 20px 35px;
+
+    margin-top:80px;
+
+}
+
+
+.footer-content{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+
+.footer-content h2{
+
+    font-size:34px;
+
+    font-weight:600;
+
+    color:#111;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:35px;
+
+    margin-bottom:35px;
+
+}
+
+
+
+.footer-links a{
+
+    color:#666;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+
+
+.footer-links a:hover{
+
+    color:#111;
+
+}
+
+
+
+.copyright{
+
+    color:#999;
+
+    font-size:14px;
+
+}
+
+
+/* =====================================
+HERO
+===================================== */
+
+
+.hero{
+
+    position:relative;
+
+    width:100%;
+
+    height:450px;
+
+    border-radius:0 0 40px 40px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.25);
+
+    margin-bottom:100px;
+
+}
+
+
+
+.hero-slider{
+
+    position:absolute;
+
+    inset:0;
+
+}
+
+
+
+.hero-slide{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    object-position:center;
+
+    opacity:0;
+
+    transition:opacity 1.2s ease;
+
+}
+
+
+
+.hero-slide.active{
+
+    opacity:1;
+
+}
+
+
+
+/* Ombre sur image */
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.65) 0%,
+        rgba(0,0,0,.25) 35%,
+        rgba(0,0,0,0) 70%
+    );
+
+    border-radius:0 0 40px 40px;
+
+}
+
+
+
+/* Contenu */
+
+.hero-content{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    text-align:center;
+
+    padding:70px;
+
+}
+
+
+
+.hero-text{
+
+    color:white;
+
+    max-width:900px;
+
+}
+
+
+
+.hero-text h1{
+
+    font-size:130px;
+
+    line-height:1;
+
+    font-weight:500;
+
+    margin:0;
+
+    opacity:0;
+
+}
+
+
+
+/* Bouton hero */
+
+.hero-btn{
+
+    background:white;
+
+    color:black;
+
+    padding:18px 20px;
+
+    border-radius:50px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:30px;
+
+    transform:translateX(-50%);
+
+    opacity:0;
+
+}
+
+
+
+.hero-btn:hover{
+
+    transform:
+    translateX(-50%)
+    scale(1.05);
+
+}
+
+
+
+/* Animations texte */
+
+.hero-text h1.hero-change{
+
+    animation:
+    fadeUp .8s ease forwards;
+
+}
+
+
+
+.hero-btn.hero-change{
+
+    animation:
+    buttonFadeUp .8s ease forwards;
+
+}
+
+
+/* =====================================
+FLECHES HERO
+===================================== */
+
+
+.hero-prev,
+.hero-next{
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:50px;
+
+    height:50px;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    background:
+    rgba(255,255,255,.15);
+
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+
+    border-radius:50%;
+
+
+    border:
+    1px solid rgba(255,255,255,.4);
+
+
+    backdrop-filter:blur(10px);
+
+    -webkit-backdrop-filter:blur(10px);
+
+
+    z-index:5;
+
+
+    cursor:pointer;
+
+
+    transition:
+    background .3s ease,
+    transform .3s ease,
+    box-shadow .3s ease;
+
+
+    opacity:0;
+
+    animation:
+    heroFadeIn .8s ease-out forwards;
+
+    animation-delay:.4s;
+
+}
+
+
+
+.hero-prev{
+
+    left:20px;
+
+}
+
+
+
+.hero-next{
+
+    right:20px;
+
+}
+
+
+
+.hero-prev:hover,
+.hero-next:hover{
+
+    background:
+    rgba(255,255,255,.3);
+
+
+    transform:
+    translateY(-50%)
+    scale(1.1);
+
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.25);
+
+}
+
+
+
+.hero-prev:active,
+.hero-next:active{
+
+    transform:
+    translateY(-50%)
+    scale(.95);
+
+}
+
+
+/* =====================================
+POINTS DU SLIDER
+===================================== */
+
+
+.hero-indicators{
+
+    position:absolute;
+
+    bottom:40px;
+
+    right:35px;
+
+    display:flex;
+
+    gap:8px;
+
+    z-index:5;
+
+
+    opacity:0;
+
+
+    animation:
+    heroFadeUp .8s ease-out forwards;
+
+    animation-delay:.3s;
+
+}
+
+
+
+.hero-dot{
+
+    width:8px;
+
+    height:8px;
+
+    background:white;
+
+    opacity:.5;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.hero-dot.active{
+
+    opacity:1;
+
+    transform:scale(1.3);
+
+}
+
+
+
+/* =====================================
+RESEAUX SOCIAUX HERO
+===================================== */
+
+
+.hero-socials{
+
+    position:absolute;
+
+    bottom:30px;
+
+    left:35px;
+
+
+    display:flex;
+
+    gap:18px;
+
+
+    z-index:5;
+
+
+    opacity:0;
+
+
+    animation:
+    heroFadeUp .8s ease-out forwards;
+
+    animation-delay:.3s;
+
+}
+
+
+
+.hero-socials a{
+
+    color:rgb(197,194,194);
+
+    font-size:20px;
+
+    transition:.3s;
+
+}
+
+
+
+.hero-socials a:hover{
+
+    color:white;
+
+    transform:
+    translateY(-3px);
+
+}
+
+
+
+/* =====================================
+ANIMATIONS GENERALES HERO
+===================================== */
+
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+
+@keyframes buttonFadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateX(-50%)
+        translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateX(-50%)
+        translateY(0);
+
+    }
+
+}
+
+
+
+@keyframes headerDrop{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateX(-50%)
+        translateY(-60px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateX(-50%)
+        translateY(0);
+
+    }
+
+}
+
+
+
+@keyframes heroFadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+
+@keyframes heroFadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+/* =====================================
+HALL OF FAME
+===================================== */
+
+
+.hall-of-fame{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:100px auto 135px auto;
+
+    text-align:center;
+
+}
+
+
+
+.hall-of-fame h2{
+
+    font-size:2.3rem;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.hall-subtitle{
+
+    color:#777;
+
+    margin-bottom:35px;
+
+}
+
+
+/* =====================================
+JOUEURS PODIUM
+===================================== */
+
+
+.podium{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    gap:90px;
+
+    margin-bottom:4px;
+
+}
+
+
+
+.champion{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+
+
+.champion img{
+
+    width:95px;
+
+    height:95px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    opacity:0;
+
+    transition:.3s;
+
+}
+
+
+
+.champion:hover img{
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* Premier */
+
+.first img{
+
+    width:120px;
+
+    height:120px;
+
+    border:5px solid gold;
+
+}
+
+
+/* Deuxième */
+
+.second img{
+
+    border:4px solid silver;
+
+}
+
+
+/* Troisième */
+
+.third img{
+
+    border:4px solid #cd7f32;
+
+}
+
+
+
+.second{
+
+    transform:translateY(40px);
+
+}
+
+
+
+.third{
+
+    transform:translateY(60px);
+
+}
+
+
+
+.medal{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.champion h3{
+
+    margin:5px 0;
+
+}
+
+
+
+.champion p{
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+
+/* =====================================
+BASES DU PODIUM
+===================================== */
+
+
+.podium-base{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    margin-bottom:-8px;
+
+}
+
+
+
+.step{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    color:white;
+
+    overflow:hidden;
+
+    opacity:0;
+
+}
+
+
+
+.first-step{
+
+    width:220px;
+
+    height:190px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #4a4a4a,
+        #b5b5b5
+    );
+
+    border-radius:15px 15px 0 0;
+
+}
+
+
+
+.second-step{
+
+    width:180px;
+
+    height:150px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #858585,
+        #d0d0d0
+    );
+
+    border-radius:15px 15px 0 0;
+
+}
+
+
+
+.third-step{
+
+    width:180px;
+
+    height:130px;
+
+    background:
+    linear-gradient(
+        to bottom,
+        #8f8f8f,
+        #d8d8d8
+    );
+
+    border-radius:15px 15px 0 0;
+
+}
+
+
+
+/* Contenu intérieur */
+
+
+.step-content{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    padding:12px 8px;
+
+}
+
+
+
+.step-number{
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    line-height:1;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.step-player{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+
+
+.step-level{
+
+    margin-top:10px;
+
+    font-size:15px;
+
+}
+
+
+
+.step-xp{
+
+    font-size:15px;
+
+    font-weight:500;
+
+}
+
+
+
+/* =====================================
+BOUTON TOP 10
+===================================== */
+
+
+.top10-btn{
+
+    margin-top:35px;
+
+}
+
+
+
+.top10-btn a{
+
+    display:inline-block;
+
+    padding:14px 35px;
+
+    border-radius:40px;
+
+    background:#111;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+
+
+.top10-btn a:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+/* =====================================
+ANIMATIONS HALL OF FAME
+===================================== */
+
+
+.hall-of-fame.animate .step{
+
+    animation:
+    podiumAppear .8s ease-out forwards;
+
+}
+
+
+
+.hall-of-fame.animate .champion img{
+
+    animation:
+    avatarAppear .8s ease-out forwards;
+
+}
+
+
+/* ordre d'apparition */
+
+.hall-of-fame.animate .second-step{
+
+    animation-delay:.1s;
+
+}
+
+
+
+.hall-of-fame.animate .first-step{
+
+    animation-delay:.2s;
+
+}
+
+
+
+.hall-of-fame.animate .third-step{
+
+    animation-delay:.3s;
+
+}
+
+
+
+.hall-of-fame.animate .first img{
+
+    animation-delay:.4s;
+
+}
+
+
+
+.hall-of-fame.animate .second img{
+
+    animation-delay:.5s;
+
+}
+
+
+
+.hall-of-fame.animate .third img{
+
+    animation-delay:.6s;
+
+}
+
+
+
+@keyframes podiumAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(40px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+
+
+@keyframes avatarAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        scale(.7);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        scale(1);
+
+    }
+
+}
+
+
+
+/* =====================================
+CLASSEMENT
+===================================== */
+
+
+.ranking{
+
+    padding:40px;
+
+}
+
+
+
+.player{
+
+    background:white;
+
+    margin:10px 0;
+
+    padding:15px;
+
+    border-radius:10px;
+
+}
+
+
+
+/* =====================================
+CARTES GENERALES
+===================================== */
+
+
+.card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.15);
+
+}
+
+
+
+.card h3{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.card p{
+
+    color:#666;
+
+    line-height:1.5;
+
+}
+
+
+/* =====================================
+ILLUSTRATIONS
+===================================== */
+
+
+.features{
+
+    display:flex;
+
+    gap:20px;
+
+    padding:40px 0;
+
+    overflow-x:auto;
+
+    scroll-behavior:smooth;
+
+    margin-bottom:60px;
+
+}
+
+
+
+.top-illustrations{
+
+    text-align:center;
+
+}
+
+
+
+.top-illustrations h2{
+
+    font-size:2.3rem;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.illustrations-subtitle{
+
+    color:#777;
+
+    margin-bottom:0;
+
+}
+
+
+/* Slider */
+
+
+.illustration-slider{
+
+    scroll-behavior:smooth;
+
+    scrollbar-width:none;
+
+    -ms-overflow-style:none;
+
+}
+
+
+
+.illustration-slider::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+
+/* Carte illustration */
+
+
+.illustration-card{
+
+    width:280px;
+
+    min-width:280px;
+
+    height:400px;
+
+    padding:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+
+
+.illustration-card h3{
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+
+    line-clamp:2;
+
+    margin-top:10px;
+
+    font-size:20px;
+
+}
+
+
+
+.illustration-card p{
+
+    margin-top:auto;
+
+}
+
+
+
+/* Image */
+
+
+.illustration-card img{
+
+    width:100%;
+
+    height:250px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    display:block;
+
+}
+
+
+
+/* =====================================
+BOUTON EXPLORER ILLUSTRATIONS
+===================================== */
+
+
+.explore-illustrations{
+
+    min-width:180px;
+
+    height:360px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+
+
+.explore-illustrations button{
+
+    width:70px;
+
+    height:70px;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    padding:0;
+
+    line-height:1;
+
+    font-size:34px;
+
+
+    margin:auto 50px;
+
+
+    border-radius:50%;
+
+
+    background:#111;
+
+    color:#fff;
+
+
+    transition:.3s;
+
+}
+
+
+
+.explore-illustrations button:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+.explore-illustrations button:active{
+
+    transform:
+    translateY(-1px)
+    scale(.97);
+
+}
+
+
+
+.explore-illustrations p{
+
+    margin-top:5px;
+
+    font-size:15px;
+
+    text-align:center;
+
+    color:rgb(164,156,156);
+
+}
+
+
+/* =====================================
+LIKE + COMMENTAIRES
+===================================== */
+
+
+.illustration-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    width:100%;
+
+
+    transition:.3s;
+
+}
+
+
+
+.illustration-actions i{
+
+    font-size:18px;
+
+    transition:.25s;
+
+}
+
+
+
+.like-btn.active i{
+
+    color:#ff2d55;
+
+    font-weight:900;
+
+    transform:scale(1.15);
+
+}
+
+
+
+.comment-btn i{
+
+    color:#555;
+
+}
+
+
+
+.comment-btn:hover i{
+
+    color:#111;
+
+}
+
+
+
+/* =====================================
+LIMITATION TEXTE CARTES
+===================================== */
+
+
+.illustration-card h3,
+.illustration-card p{
+
+    overflow-wrap:break-word;
+
+}
+
+
+/* Cache éléments */
+
+.hidden{
+
+    display:none;
+
+}
+
+
+
+/* =====================================
+EVENEMENTS
+===================================== */
+
+
+.events{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:100px auto;
+
+    text-align:center;
+
+}
+
+
+
+.events h2{
+
+    font-size:2.3rem;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.events-subtitle{
+
+    color:#777;
+
+    margin-bottom:5px;
+
+}
+
+
+
+/* Fenêtre du slider */
+
+.events-window{
+
+    width:85%;
+
+    margin:auto;
+
+    height:520px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    touch-action:none;
+
+    box-sizing:border-box;
+
+    padding:50px 0;
+
+}
+
+
+
+.events-slider{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+}
+
+
+
+/* =====================================
+CARTE EVENEMENT
+===================================== */
+
+
+.event-card{
+
+    position:absolute;
+
+    left:50%;
+
+
+    width:90%;
+
+
+    max-width:1000px;
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+    background:white;
+
+
+    border-radius:20px;
+
+
+    padding:25px 30px;
+
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+
+    transition:
+
+    top .7s ease,
+
+    transform .7s ease,
+
+    opacity .7s ease;
+
+}
+
+
+
+.event-card:hover{
+
+    transform:
+    translateY(-5px);
+
+}
+
+
+
+/* Informations */
+
+.event-info{
+
+    flex:1;
+
+}
+
+
+
+.event-info h3{
+
+    font-size:28px;
+
+    margin-bottom:0;
+
+}
+
+
+
+.event-info p{
+
+    margin:10px 0;
+
+    font-size:17px;
+
+}
+
+
+
+/* Affiche */
+
+.event-poster{
+
+    margin-left:0;
+
+}
+
+
+
+.event-poster img{
+
+    width:180px;
+
+    height:250px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    transition:.3s;
+
+}
+
+
+
+.event-poster img:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+/* =====================================
+POSITIONS CAROUSEL
+===================================== */
+
+
+/* Carte précédente */
+
+.event-card.previous{
+
+    top:25%;
+
+    transform:
+    translate(-50%,-50%)
+    scale(.82);
+
+
+    opacity:.45;
+
+    z-index:2;
+
+}
+
+
+
+/* Carte active */
+
+.event-card.active{
+
+    top:50%;
+
+
+    transform:
+    translate(-50%,-50%)
+    scale(1);
+
+
+    opacity:1;
+
+    z-index:3;
+
+}
+
+
+
+/* Carte suivante */
+
+.event-card.next{
+
+    top:75%;
+
+
+    transform:
+    translate(-50%,-50%)
+    scale(.82);
+
+
+    opacity:.45;
+
+    z-index:2;
+
+}
+
+
+
+/* Cartes cachées */
+
+.event-card.hidden{
+
+    top:120%;
+
+
+    transform:
+    translate(-50%,-50%)
+    scale(.7);
+
+
+    opacity:0;
+
+
+    z-index:1;
+
+
+    pointer-events:none;
+
+}
+
+
+
+/* =====================================
+NEWS
+===================================== */
+
+
+.news-section{
+
+    width:70%;
+
+    max-width:1400px;
+
+    margin:100px auto;
+
+}
+
+
+
+.news-header{
+
+    text-align:center;
+
+}
+
+
+
+.news-header h2{
+
+    font-size:2.3rem;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.news-subtitle{
+
+    color:#777;
+
+    margin-bottom:35px;
+
+}
+
+
+
+/* =====================================
+BOUTON SHOW ALL NEWS
+===================================== */
+
+
+.news-all{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    padding:14px 28px;
+
+
+    border-radius:999px;
+
+
+    background:#111;
+
+    color:#fff;
+
+
+    font-family:"Bricolage Grotesque",sans-serif;
+
+    font-weight:600;
+
+
+    transition:.3s;
+
+}
+
+
+
+.news-all:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+.news-all:active{
+
+    transform:
+    translateY(-1px)
+    scale(.97);
+
+}
+
+
+/* =====================================
+BOUTON FIN DE SLIDER NEWS
+===================================== */
+
+
+.explore-news{
+
+    min-width:150px;
+
+    height:155px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    flex-shrink:0;
+
+}
+
+
+
+.explore-news button{
+
+    width:70px;
+
+    height:70px;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    padding:0;
+
+    line-height:1;
+
+
+    font-size:34px;
+
+
+    margin:auto 50px;
+
+
+    border-radius:50%;
+
+
+    background:#111;
+
+    color:white;
+
+
+    transition:.3s;
+
+}
+
+
+
+.explore-news button:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+.explore-news button:active{
+
+    transform:
+    translateY(-1px)
+    scale(.97);
+
+}
+
+
+
+.explore-news p{
+
+    margin-top:5px;
+
+    font-size:15px;
+
+
+    text-align:center;
+
+
+    color:rgb(164,156,156);
+
+}
+
+
+/* =====================================
+NEWS PRINCIPALE
+===================================== */
+
+
+.featured-news{
+
+    display:grid;
+
+
+    grid-template-columns:1.2fr 1.2fr;
+
+
+    gap:20px;
+
+
+    align-items:center;
+
+
+    background:white;
+
+
+    border-radius:25px;
+
+
+    margin-bottom:20px;
+
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+
+    transition:.4s ease;
+
+
+    height:270px;
+
+
+    overflow:hidden;
+
+}
+
+
+
+.featured-news:hover{
+
+    transform:translateY(-8px);
+
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.15);
+
+}
+
+
+
+.featured-news.changing{
+
+    opacity:0;
+
+    transform:
+    translateY(15px);
+
+}
+
+
+
+/* Image principale */
+
+
+.featured-image{
+
+    width:100%;
+
+
+    height:270px;
+
+
+    padding:15px;
+
+
+    overflow:hidden;
+
+
+    border-radius:25px;
+
+}
+
+
+
+.featured-image img{
+
+    width:100%;
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    display:block;
+
+
+    border-radius:20px;
+
+}
+
+
+
+/* Contenu */
+
+
+.featured-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+
+    gap:18px;
+
+}
+
+
+
+.featured-content h3{
+
+
+    display:-webkit-box;
+
+    -webkit-box-orient:vertical;
+
+    -webkit-line-clamp:2;
+
+    line-clamp:2;
+
+
+    overflow:hidden;
+
+
+    padding-right:15px;
+
+
+    font-size:20px;
+
+}
+
+
+
+.featured-content p{
+
+
+    line-height:1.6;
+
+
+    margin:0;
+
+
+    display:-webkit-box;
+
+
+    -webkit-box-orient:vertical;
+
+
+    -webkit-line-clamp:3;
+
+    line-clamp:3;
+
+
+    overflow:hidden;
+
+
+    padding-right:15px;
+
+}
+
+
+
+.news-date{
+
+    opacity:.7;
+
+}
+
+
+
+/* =====================================
+BADGE NEWS
+===================================== */
+
+
+.news-badge{
+
+
+    display:inline-flex;
+
+
+    align-items:center;
+
+
+    width:max-content;
+
+
+    padding:8px 16px;
+
+
+    border-radius:999px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    font-size:.85rem;
+
+
+    font-weight:bold;
+
+
+    letter-spacing:.5px;
+
+
+    transition:.3s;
+
+
+    margin-bottom:5px;
+
+}
+
+
+
+.news-badge:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+/* =====================================
+PETITES NEWS
+===================================== */
+
+
+.news-grid{
+
+    display:grid;
+
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+
+    gap:25px;
+
+}
+
+
+
+.small-news{
+
+
+    background:transparent;
+
+
+    border-radius:0;
+
+
+    box-shadow:none;
+
+
+    cursor:pointer;
+
+
+    transition:none;
+
+
+    min-width:0;
+
+
+    max-width:0;
+
+
+    overflow:hidden;
+
+}
+
+
+
+.small-news-image{
+
+
+    width:100%;
+
+
+    aspect-ratio:16/9;
+
+
+    height:150px;
+
+
+    overflow:hidden;
+
+
+    border-radius:18px;
+
+
+    background:#555;
+
+
+    margin-bottom:12px;
+
+}
+
+
+
+.small-news-image img{
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    display:block;
+
+}
+
+
+
+.small-news h4,
+.small-news h3{
+
+
+    margin-bottom:8px;
+
+
+    overflow-wrap:break-word;
+
+
+    display:-webkit-box;
+
+
+    -webkit-line-clamp:2;
+
+
+    -webkit-box-orient:vertical;
+
+
+    line-clamp:2;
+
+
+    overflow:hidden;
+
+
+    line-height:1.3;
+
+
+    min-height:2.6em;
+
+}
+
+
+
+.small-news p{
+
+    display:none;
+
+}
+
+
+
+/* =====================================
+SLIDER HORIZONTAL NEWS
+===================================== */
+
+
+.news-horizontal-list{
+
+
+    width:100%;
+
+
+    display:flex;
+
+
+    gap:20px;
+
+
+    overflow-x:auto;
+
+
+    scroll-behavior:smooth;
+
+
+    padding:10px 20px;
+
+
+    box-sizing:border-box;
+
+
+    margin-top:-65px;
+
+
+    scrollbar-width:none;
+
+
+    -ms-overflow-style:none;
+
+}
+
+
+
+.news-horizontal-list::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+
+.news-horizontal-list .small-news{
+
+
+    min-width:250px;
+
+
+    flex-shrink:0;
+
+}
+
+
+
+/* =====================================
+FAQ
+===================================== */
+
+
+.faq-section{
+
+    width:90%;
+
+    max-width:1100px;
+
+    margin:120px auto 0 auto;
+
+}
+
+
+
+.faq-section h2{
+
+    text-align:center;
+
+    font-size:2.3rem;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.faq-subtitle{
+
+    text-align:center;
+
+    color:#777;
+
+    margin-bottom:35px;
+
+}
+
+
+
+.faq-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+.faq-item{
+
+    background:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+
+
+    transition:.3s ease;
+
+}
+
+
+
+.faq-item:hover{
+
+    transform:translateY(-4px);
+
+
+    box-shadow:
+    0 18px 35px rgba(0,0,0,.12);
+
+}
+
+
+
+.faq-question{
+
+    width:100%;
+
+
+    padding:22px 28px;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    background:white;
+
+
+    font-family:"Bricolage Grotesque",sans-serif;
+
+
+    font-size:20px;
+
+
+    font-weight:600;
+
+
+    color:#111;
+
+}
+
+
+
+.faq-icon{
+
+    font-size:28px;
+
+    transition:.3s;
+
+}
+
+
+
+.faq-answer{
+
+    max-height:0;
+
+    overflow:hidden;
+
+
+    transition:
+
+    max-height .35s ease,
+
+    padding .35s ease;
+
+
+    padding:0 28px;
+
+}
+
+
+
+.faq-answer p{
+
+    color:#666;
+
+
+    line-height:1.7;
+
+
+    padding-bottom:20px;
+
+}
+
+
+
+.faq-item.active .faq-answer{
+
+    max-height:200px;
+
+    padding:
+    0 28px 20px;
+
+}
+
+
+
+.faq-item.active .faq-icon{
+
+    transform:rotate(45deg);
+
+}
+
+
+
+/* Bouton FAQ */
+
+
+.faq-footer{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:50px;
+
+}
+
+
+
+.faq-btn{
+
+    display:inline-block;
+
+
+    padding:14px 35px;
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    border-radius:40px;
+
+
+    font-family:"Bricolage Grotesque",sans-serif;
+
+
+    font-weight:600;
+
+
+    transition:.3s;
+
+
+    margin-bottom:250px;
+
+}
+
+
+
+.faq-btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+/* =====================================
+RESPONSIVE TABLETTE
+===================================== */
+
+
+@media (max-width:900px){
+
+
+.main-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:nowrap;
+
+
+    padding:15px;
+
+    gap:20px;
+
+}
+
+
+
+nav{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+
+
+nav ul{
+
+    justify-content:flex-start;
+
+    width:max-content;
+
+    gap:15px;
+
+}
+
+
+
+.logo h1{
+
+    font-size:24px;
+
+}
+
+
+
+.menu-toggle{
+
+    display:block;
+
+}
+
+
+
+.mobile-nav{
+
+    display:none;
+
+    width:100%;
+
+
+    position:absolute;
+
+
+    top:70px;
+
+
+    left:0;
+
+
+    z-index:99999;
+
+}
+
+
+
+.mobile-nav.active{
+
+    display:block;
+
+}
+
+
+
+.mobile-nav ul{
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+    padding:20px 0;
+
+}
+
+
+
+.logo{
+
+    flex:1;
+
+}
+
+
+
+/* Profil mobile */
+
+
+.profile-button{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-right:10px;
+
+}
+
+
+
+.profile-button a{
+
+    width:42px;
+
+    height:42px;
+
+    padding:0;
+
+
+    font-size:24px;
+
+}
+
+
+/* Hero mobile */
+
+
+.hero{
+
+    width:95%;
+
+    height:220px;
+
+}
+
+
+
+.hero-content{
+
+    padding:20px;
+
+    align-items:center;
+
+}
+
+
+
+.hero-text{
+
+    max-width:60%;
+
+    margin-top:20px;
+
+}
+
+
+
+.hero-text h1{
+
+    font-size:28px;
+
+}
+
+
+
+.hero-btn{
+
+    padding:10px 15px;
+
+    font-size:14px;
+
+
+    right:20px;
+
+    bottom:20px;
+
+}
+
+
+}
+
+
+/* =====================================
+TABLETTE MOYENNE
+===================================== */
+
+
+@media (min-width:620px) and (max-width:900px){
+
+
+.hero-text h1{
+
+    font-size:32px;
+
+}
+
+
+
+.hero-text{
+
+    max-width:45%;
+
+}
+
+
+}
+
+
+
+/* =====================================
+PODIUM MOBILE
+===================================== */
+
+
+@media (max-width:550px){
+
+
+.podium{
+
+    gap:
+    clamp(45px,8vw,90px);
+
+}
+
+
+
+.champion img{
+
+    width:95px;
+
+    height:95px;
+
+}
+
+
+
+.first img{
+
+    width:120px;
+
+    height:120px;
+
+}
+
+
+}
+
+
+
+@media(max-width:431px){
+
+.podium{
+
+    gap:20px;
+
+}
+
+
+}
+
+
+
+@media(max-width:380px){
+
+.podium{
+
+    gap:5px;
+
+}
+
+
+}
+
+
+
+@media(max-width:325px){
+
+.podium{
+
+    gap:0;
+
+}
+
+
+}
+
+
+
+/* =====================================
+ILLUSTRATIONS MOBILE
+===================================== */
+
+
+@media(max-width:650px){
+
+
+.illustration-card{
+
+    width:220px;
+
+    min-width:220px;
+
+    height:300px;
+
+    padding:12px;
+
+}
+
+
+
+.illustration-card img{
+
+    height:190px;
+
+}
+
+
+
+.illustration-card h3{
+
+    font-size:18px;
+
+}
+
+
+
+.illustration-card p{
+
+    font-size:14px;
+
+}
+
+
+
+.illustration-card span{
+
+    font-size:13px;
+
+}
+
+
+
+.top-illustrations h2{
+
+    font-size:20px;
+
+}
+
+
+
+.illustrations-subtitle{
+
+    font-size:12px;
+
+}
+
+
+
+.explore-illustrations{
+
+    height:300px;
+
+    min-width:150px;
+
+}
+
+
+}
+
+
+
+/* =====================================
+EVENTS MOBILE
+===================================== */
+
+
+@media(max-width:650px){
+
+
+.events{
+
+    width:95%;
+
+    margin:50px auto;
+
+}
+
+
+
+.events-window{
+
+    width:100%;
+
+    height:280px;
+
+}
+
+
+
+.event-card{
+
+    width:95%;
+
+    padding:12px;
+
+
+    flex-direction:row;
+
+
+    justify-content:space-between;
+
+
+    text-align:left;
+
+}
+
+
+
+.event-info{
+
+    padding-right:10px;
+
+}
+
+
+
+.event-info h3{
+
+    font-size:17px;
+
+}
+
+
+
+.event-info p{
+
+    font-size:12px;
+
+    margin:4px 0;
+
+}
+
+
+
+.event-poster{
+
+    margin-left:10px;
+
+}
+
+
+
+.event-poster img{
+
+    width:80px;
+
+    height:110px;
+
+}
+
+
+
+.event-card.previous{
+
+    transform:
+    translate(-50%,-50%)
+    scale(.75);
+
+}
+
+
+
+.event-card.next{
+
+    transform:
+    translate(-50%,-50%)
+    scale(.75);
+
+}
+
+
+}
+
+
+
+/* =====================================
+NEWS MOBILE
+===================================== */
+
+
+@media(max-width:687px){
+
+
+.news-section{
+
+    width:95%;
+
+    margin:50px auto;
+
+}
+
+
+
+.featured-news{
+
+    grid-template-columns:1fr;
+
+    gap:15px;
+
+    padding:10px;
+
+}
+
+
+
+.featured-image{
+
+    height:180px;
+
+}
+
+
+
+.featured-content{
+
+    gap:10px;
+
+    padding:5px;
+
+}
+
+
+
+.featured-content h3{
+
+    font-size:1.3rem;
+
+}
+
+
+
+.featured-content p{
+
+    font-size:14px;
+
+}
+
+
+
+.news-badge{
+
+    font-size:12px;
+
+    padding:6px 12px;
+
+}
+
+
+
+.news-horizontal-list{
+
+    gap:15px;
+
+    padding:10px 5px;
+
+    margin-top:-45px;
+
+}
+
+
+
+.news-horizontal-list .small-news{
+
+    min-width:200px;
+
+}
+
+
+
+.small-news-image{
+
+    height:160px;
+
+}
+
+
+
+.small-news h4,
+.small-news h3{
+
+    font-size:15px;
+
+}
+
+
+
+}
+
+
+
+/* =====================================
+NAVIGATION MOBILE
+===================================== */
+
+
+.mobile-nav ul li a{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+
+.mobile-nav ul li a i{
+
+    font-size:20px;
+
+}
+
+
+
+@media(min-width:901px){
+
+.mobile-nav i{
+
+    display:none!important;
+
+}
+
+}
+
+
+/* =====================================
+ANIMATIONS FINALES
+===================================== */
+
+
+@keyframes fadeUp{
+
+from{
+
+    opacity:0;
+
+    transform:
+    translateY(40px);
+
+}
+
+
+to{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
+
+
+}
+
+
+
+@keyframes fadeUpBtn{
+
+
+from{
+
+    opacity:0;
+
+
+    transform:
+    translateX(-50%)
+    translateY(25px);
+
+}
+
+
+
+to{
+
+    opacity:1;
+
+
+    transform:
+    translateX(-50%)
+    translateY(0);
+
+}
+
+
+}
