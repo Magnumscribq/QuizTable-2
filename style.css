@@ -1752,6 +1752,18 @@ ILLUSTRATIONS
 
 }
 
+.top-illustrations::before,
+.events::before,
+.news-section::before,
+.faq-section::before{
+    content:"";
+    display:block;
+    width:120px;
+    height:1px;
+    background:rgba(0,0,0,.08);
+    margin:0 auto 60px;
+}
+
 
 
 /* =====================================
