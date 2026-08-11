@@ -1,34 +1,603 @@
-<!DOCTYPE html> 
-
-<html lang="fr"> 
-
-<head> 
-
-<meta charset="UTF-8"> 
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-<title>QuizTable - Communauté Pop Culture</title> 
-
-<link rel="stylesheet" href="../style.css">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> 
-
-</head> 
-
- 
-<body>
-
-<div id="header"></div>
-
-<main style="margin-top:1200px; padding:50px; background:red; color:white;">
-    Bonjour
-</main>
-
-<div id="footer"></div>
-
-<script src="../assets/js/main.js"></script>
-
-</body>
+<!DOCTYPE html>  <html lang="fr">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>QuizTable - Communauté Pop Culture</title>  
+<link rel="stylesheet" href="../style.css">  
+<link rel="stylesheet" href="../css/quiz.css">  
+<link  
+    rel="stylesheet"  
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">  
+</head>  
+<body>  
+<div id="header"></div>  
+<!-- ==================================================  
+BARRE DES QUIZ  
+================================================== -->  
+<div class="quiz-selector">  
+    <div  
+        class="quiz-selector-track"  
+        id="quiz-selector-track">  
+    </div>  
+</div>  
+<!-- ==================================================  
+PANNEAU LATÉRAL  
+================================================== -->  
+<aside  
+    class="quiz-sidebar"  
+    id="quiz-sidebar">  
+    <button  
+        class="quiz-sidebar-toggle"  
+        id="quiz-sidebar-toggle"  
+        aria-label="Ouvrir le menu">  
+        <i class="fa-solid fa-chevron-right"></i>  
+    </button>  
+    <div class="quiz-sidebar-content">  
+        <h3>Quiz</h3>  
+        <button  
+            class="quiz-filter active"  
+            data-filter="all">  
+            <i class="fa-solid fa-layer-group"></i>  
+            <span>Tout</span>  
+        </button>  
+        <button  
+            class="quiz-filter"  
+            data-filter="favorites">  
+            <i class="fa-solid fa-heart"></i>  
+            <span>Favoris</span>  
+        </button>  
+        <div class="quiz-sidebar-separator"></div>  
+        <p class="quiz-sidebar-title">  
+            Catégories  
+        </p>  
+        <button  
+            class="quiz-filter"  
+            data-filter="culture">  
+            <i class="fa-solid fa-globe"></i>  
+            <span>Culture</span>  
+        </button>  
+        <button  
+            class="quiz-filter"  
+            data-filter="manga">  
+            <i class="fa-solid fa-book-open"></i>  
+            <span>Manga & Anime</span>  
+        </button>  
+        <button  
+            class="quiz-filter"  
+            data-filter="gaming">  
+            <i class="fa-solid fa-gamepad"></i>  
+            <span>Gaming</span>  
+        </button>  
+        <button  
+            class="quiz-filter"  
+            data-filter="cinema">  
+            <i class="fa-solid fa-film"></i>  
+            <span>Cinéma</span>  
+        </button>  
+    </div>  
+</aside>  
+<!-- ==================================================  
+INFORMATIONS DU QUIZ  
+================================================== -->  
+<div class="quiz-top-info">  
+    <div class="quiz-banner">  
+        <h2  
+            class="quiz-title"  
+            id="quiz-main-title">  
+            La Question Du Mois  
+        </h2>  
+        <p  
+            class="quiz-title-sub"  
+            id="quiz-main-subtitle">  
+            Tentez de gagner 5000 FCFA  
+        </p>  
+    </div>  
+    <div class="quiz-countdown">  
+        <p class="count-status">  
+            Débute dans  
+        </p>  
+        <div class="count-item">  
+            <span class="count-value">  
+                00  
+            </span>  
+            <span class="count-label">  
+                jours  
+            </span>  
+        </div>  
+        <div class="count-item">  
+            <span class="count-value">  
+                00  
+            </span>  
+            <span class="count-label">  
+                heures  
+            </span>  
+        </div>  
+        <div class="count-item">  
+            <span class="count-value">  
+                00  
+            </span>  
+            <span class="count-label">  
+                minutes  
+            </span>  
+        </div>  
+        <div class="count-seconds">  
+            <span id="count-seconds">  
+                00  
+            </span>  
+        </div>  
+    </div>  
+</div>  
+<!-- ==================================================  
+SECTION QUIZ  
+================================================== -->  
+<section class="quiz-section">  
+    <div class="quiz-card">  
+        <!-- ==================================================  
+        ACTIONS  
+        ================================================== -->  
+        <div class="quiz-card-actions">  
+            <!-- INSCRIPTION -->  
+            <div class="qui-register-class">  
+                <button class="quiz-register-btn">  
+                    <i class="fa-solid fa-user-plus"></i>  
+                    S'inscrire  
+                </button>  
+            </div>  
+            <!-- JOUER + RÈGLEMENT + HISTORIQUE -->  
+            <div class="quiz-link">  
+                <!-- BOUTON JOUER -->  
+                <button  
+                    class="quiz-play-btn hidden">  
+                    <span class="play-shape play-shape-1"></span>  
+                    <span class="play-shape play-shape-2"></span>  
+                    <span class="play-shape play-shape-3"></span>  
+                    <span class="play-shape play-shape-4"></span>  
+                    <span class="play-button-content">  
+                        <i class="fa-solid fa-play"></i>  
+                        <span>  
+                            Jouer  
+                        </span>  
+                    </span>  
+                </button>  
+                <!-- RÈGLEMENT -->  
+                <button class="quiz-rules">  
+                    <i class="fa-solid fa-book-open"></i>  
+                    Règlement  
+                </button>  
+                <!-- HISTORIQUE -->  
+                <button class="quiz-history">  
+                    <i class="fa-solid fa-clock-rotate-left"></i>  
+                    Historique  
+                </button>  
+            </div>  
+            <!-- NOTIFICATION + LIKE -->  
+            <div class="quiz-ajust">  
+                <!-- NOTIFICATION -->  
+                <div class="quiz-notification-wrapper">  
+                    <button  
+                        class="quiz-notification"  
+                        aria-label="Notifications">  
+                        <i class="fa-regular fa-bell"></i>  
+                        <span  
+                            class="quiz-notification-badge hidden" >  
+                            0  
+                        </span>  
+                    </button>  
+                    <!-- PANNEAU NOTIFICATIONS -->  
+                    <div class="quiz-notification-panel">  
+                        <div class="quiz-notification-header">  
+                            <h3>  
+                                Notifications  
+                            </h3>  
+                            <button  
+                                class="quiz-notification-clear">  
+                                Tout supprimer  
+                            </button>  
+                        </div>  
+                        <div  
+                            class="quiz-notification-list">  
+                            <p class="quiz-notification-empty">  
+                                Aucune notification.  
+                            </p>  
+                        </div>  
+                    </div>  
+                </div>  
+                <!-- LIKE -->  
+                <button  
+                    class="quiz-like"  
+                    aria-label="Aimer ce quiz">  
+                    <i class="fa-regular fa-heart"></i>  
+                </button>  
+            </div>  
+        </div>  
+        <!-- ==================================================  
+        FENÊTRE D'INSCRIPTION  
+        ================================================== -->  
+        <div class="quiz-registration-modal">  
+            <div class="quiz-registration-box">  
+                <h3>  
+                    Confirmer votre inscription  
+                </h3>  
+                <label>  
+                    <input  
+                        type="checkbox"  
+                        class="registration-check">  
+                    <span>  
+                        J'ai lu et compris le règlement du quiz.  
+                    </span>  
+                </label>  
+                <label>  
+                    <input  
+                        type="checkbox"  
+                        class="registration-check">  
+                    <span>  
+                        J'accepte les conditions de participation au quiz.  
+                    </span>  
+                </label>  
+                <div class="registration-actions">  
+                    <button class="registration-cancel">  
+                        Annuler  
+                    </button>  
+                    <button  
+                        class="registration-confirm"  
+                        disabled>  
+                        Valider mon inscription  
+                    </button>  
+                </div>  
+            </div>  
+        </div>  
+        <!-- ==================================================  
+        FENÊTRE DE DÉSINSCRIPTION  
+        ================================================== -->  
+        <div class="quiz-unregister-modal">  
+            <div class="quiz-unregister-box">  
+                <h3>  
+                    Se désinscrire  
+                </h3>  
+                <p>  
+                    Voulez-vous vraiment vous désinscrire de ce quiz ?  
+                </p>  
+                <div class="unregister-actions">  
+                    <button class="unregister-no">  
+                        Non  
+                    </button>  
+                    <button class="unregister-yes">  
+                        Oui, me désinscrire  
+                    </button>  
+                </div>  
+            </div>  
+        </div>  
+        <!-- ==================================================  
+        CONTENU DU QUIZ  
+        ================================================== -->  
+        <div class="quiz-card-content">  
+            <div class="quiz-interactive">  
+                <div class="quiz-panel">  
+                    <!-- ==================================================  
+                    DESCRIPTION  
+                    ================================================== -->  
+                    <div  
+                        class="quiz-panel-content active"  
+                        id="quiz-description">  
+                        <h3>  
+                            Description  
+                        </h3>  
+                        <p id="quiz-description-text">  
+                            Découvrez la Question du Mois de QuizTable.  
+                            Participez au quiz, testez vos connaissances  
+                            et tentez de remporter la récompense mise en jeu.  
+                        </p>  
+                    </div>  
+                    <!-- ==================================================  
+                    RÈGLEMENT  
+                    ================================================== -->  
+                    <div  
+                        class="quiz-panel-content"  
+                        id="quiz-rules-content">  
+                        <h3>  
+                            Règlement  
+                        </h3>  
+                        <p>  
+                            Le règlement du quiz apparaîtra ici.  
+                        </p>  
+                        <button class="back-description">  
+                            Revenir à la description  
+                        </button>  
+                    </div>  
+                    <!-- ==================================================  
+                    HISTORIQUE  
+                    ================================================== -->  
+                    <div  
+                        class="quiz-panel-content"  
+                        id="quiz-history-content">  
+                        <h3>  
+                            Historique  
+                        </h3>  
+                        <p>  
+                            L'historique des précédentes Questions du Mois  
+                            apparaîtra ici.  
+                        </p>  
+                        <button class="back-description">  
+                            Revenir à la description  
+                        </button>  
+                    </div>  
+                    <!-- ==================================================  
+                    JEU  
+                    ================================================== -->  
+                    <div  
+                        class="quiz-panel-content"  
+                        id="quiz-game-content">  
+                        <!-- ATTENTE -->  
+                        <div class="quiz-game-waiting">  
+                            <h3>  
+                                Le quiz n'a pas encore commencé  
+                            </h3>  
+                            <p>  
+                                Le quiz débutera lorsque le compte à rebours sera terminé.  
+                            </p>  
+                        </div>  
+                        <!-- QUESTION -->  
+                        <div class="quiz-game-active">  
+                            <div class="quiz-game-header">  
+                                <span class="quiz-xp-reward">  
+                                    <i class="fa-solid fa-star"></i>  
+                                    <span class="quiz-xp-value">  
+                                        +100 XP  
+                                    </span>  
+                                </span>  
+                            </div>  
+                            <!-- ÉNONCÉ -->  
+                            <div class="quiz-question-box">  
+                                <span class="quiz-question-label">  
+                                    Énoncé  
+                                </span>  
+                                <p class="quiz-question">  
+                                    Quelle est votre réponse à la question du mois ?  
+                                </p>  
+                            </div>  
+                            <!-- RÉPONSE -->  
+                            <label class="quiz-answer-label">  
+                                Votre réponse  
+                            </label>  
+                            <textarea  
+                                class="quiz-answer"  
+                                placeholder="Écrivez votre réponse..."></textarea>  
+                            <button class="quiz-send-btn">  
+                                <i class="fa-solid fa-paper-plane"></i>  
+                                Envoyer ma réponse  
+                            </button>  
+                            <button class="back-description">  
+                             Revenir à la description  
+                            </button>  
+                        </div>  
+                        <!-- ==================================================  
+                        RÉPONSE ENVOYÉE  
+                        ================================================== -->  
+                        <div class="quiz-game-submitted">  
+                            <div class="quiz-submitted-icon">  
+                                <i class="fa-solid fa-check"></i>  
+                            </div>  
+                            <h3>  
+                                Réponse envoyée  
+                            </h3>  
+                            <p>  
+                                Votre réponse a bien été reçue.  
+                                La vérification de votre réponse sera effectuée  
+                                après la fin du quiz.  
+                            </p>  
+                            <p class="quiz-submitted-xp">  
+                                <i class="fa-solid fa-star"></i>  
+                                <strong>  
+                                    +100 XP  
+                                </strong>  
+                                <span>  
+                                    si votre réponse est correcte.  
+                                </span>  
+                            </p>  
+                            <button class="back-description">  
+                                Revenir à la description  
+                            </button>  
+                        </div>  
+                        <!-- ==================================================  
+                        RÉSULTATS EN ATTENTE  
+                        ================================================== -->  
+                        <div class="quiz-game-results-waiting">  
+                            <h3>  
+                                Quiz terminé  
+                            </h3>  
+                            <p>  
+                                Les réponses sont actuellement en cours  
+                                de vérification. Les résultats seront  
+                                disponibles prochainement.  
+                            </p>  
+                            <button class="back-description">  
+                                Revenir à la description  
+                            </button>  
+                        </div>  
+                        <!-- ==================================================  
+                        RÉSULTATS  
+                        ================================================== -->  
+                        <div class="quiz-game-results">  
+                            <h3>  
+                                Résultats disponibles  
+                            </h3>  
+                            <p>  
+                                Les résultats de cette édition sont maintenant disponibles.  
+                            </p>  
+                            <div class="quiz-winner-box">  
+                                <span>  
+                                    🏆 Gagnant  
+                                </span>  
+                                <strong class="quiz-winner-name">  
+                                    —  
+                                </strong>  
+                            </div>  
+                            <div class="quiz-xp-result">  
+                                <i class="fa-solid fa-star"></i>  
+                                <strong>  
+                                    +100 XP  
+                                </strong>  
+                                <span>  
+                                    pour les bonnes réponses  
+                                </span>  
+                            </div>  
+                            <button class="back-description">  
+                                Revenir à la description  
+                            </button>  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+            <!-- ==================================================  
+            MEMBRES  
+            ================================================== -->  
+            <div class="quiz-members">  
+                <i class="fa-solid fa-users"></i>  
+                <span>  
+                    128 inscrits  
+                </span>  
+            </div>  
+        </div>  
+    </div>  
+</section>  
+<!-- =====================================  
+     SECTION RÉCLAMATION  
+===================================== -->  
+<section class="reclamation-section">  
+    <div class="reclamation-container">  
+        <!-- INTRODUCTION -->  
+        <div class="reclamation-intro">  
+            <p class="reclamation-description">  
+                Vous avez rencontré un problème lié à un quiz ?  
+                Vous pouvez nous signaler votre situation et faire une réclamation.  
+            </p>  
+            <button type="button" class="reclamation-toggle" id="reclamationToggle">  
+                <i class="fa-solid fa-file-circle-exclamation"></i>  
+                <span>Faire une réclamation</span>  
+            </button>  
+        </div>  
+        <!-- FORMULAIRE -->  
+        <div class="reclamation-form-wrapper" id="reclamationFormWrapper">  
+            <form class="reclamation-form" id="reclamationForm">  
+                <div class="reclamation-header">  
+                    <h3>Faire une réclamation</h3>  
+                    <button  
+                        type="button"  
+                        class="reclamation-close"  
+                        id="reclamationClose"  
+                        aria-label="Fermer"  
+                    >  
+                        <i class="fa-solid fa-xmark"></i>  
+                    </button>  
+                </div>  
+                <!-- NOM DU QUIZ -->  
+                <div class="reclamation-field">  
+                    <label for="reclamationQuiz">  
+                        Nom du quiz  
+                    </label>  
+                    <input  
+                        type="text"  
+                        id="reclamationQuiz"  
+                        name="quiz"  
+                        placeholder="Ex. La Question du Mois"  
+                        required  
+                    >  
+                </div>  
+                <!-- DATE DU QUIZ -->  
+                <div class="reclamation-field">  
+                    <label for="reclamationDate">  
+                        Date de début du quiz  
+                    </label>  
+                    <input  
+                        type="date"  
+                        id="reclamationDate"  
+                        name="date"  
+                        required  
+                    >  
+                </div>  
+                <!-- TYPE -->  
+                <div class="reclamation-field">  
+                    <label for="reclamationType">  
+                        Type de réclamation  
+                    </label>  
+                    <select  
+                        id="reclamationType"  
+                        name="type"  
+                        required  
+                    >  
+                        <option value="" selected disabled>  
+                            Sélectionnez un type  
+                        </option>  
+                        <option value="reward">  
+                            Récompense non reçue  
+                        </option>  
+                        <option value="xp">  
+                            XP non reçu  
+                        </option>  
+                        <option value="other">  
+                            Autre  
+                        </option>  
+                    </select>  
+                </div>  
+                <!-- DISCLAIMER RÉCOMPENSE -->  
+                <div  
+                    class="reclamation-disclaimer"  
+                    id="rewardDisclaimer"  
+                >  
+                    <i class="fa-solid fa-circle-info"></i>  
+                    <p>  
+                        La récompense est uniquement réservée aux gagnants.  
+                        Ne remplissez ce champ que si vous êtes gagnant  
+                        et que vous n'avez pas reçu votre récompense  
+                        dans un délai de 24 heures.  
+                    </p>  
+                </div>  
+                <!-- PRÉCISION POUR "AUTRE" -->  
+                <div  
+                    class="reclamation-field reclamation-other-wrapper"  
+                    id="otherReclamationWrapper"  
+                >  
+                    <label for="reclamationOther">  
+                        Type de problème  
+                    </label>  
+                    <input  
+                        type="text"  
+                        id="reclamationOther"  
+                        name="otherType"  
+                        placeholder="Précisez le problème"  
+                    >  
+                </div>  
+                <!-- MESSAGE -->  
+                <div class="reclamation-field">  
+                    <label for="reclamationMessage">  
+                        Ajouter plus de précisions à votre réclamation  
+                    </label>  
+                    <textarea  
+                        id="reclamationMessage"  
+                        name="message"  
+                        rows="6"  
+                        placeholder="Expliquez-nous votre problème..."  
+                        required  
+                    ></textarea>  
+                </div>  
+                <!-- ENVOI -->  
+                <button  
+                    type="submit"  
+                    class="reclamation-submit"  
+                >  
+                    <i class="fa-solid fa-paper-plane"></i>  
+                    Envoyer la réclamation  
+                </button>  
+            </form>  
+        </div>  
+    </div>  
+</section>  
+<!-- ==================================================  
+FOOTER  
+================================================== -->  
+<div id="footer"></div>  
+<script src="../assets/js/main.js"></script>  
+<script src="../assets/js/quiz.js"></script>  
+<script src="../assets/js/reclamation.js"></script>  
+</body>  
+</html>
