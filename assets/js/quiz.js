@@ -501,7 +501,7 @@ button.classList.add("selected");
 // -------------------------------------------------
 // CONTENU DU BOUTON
 // -------------------------------------------------
-button.innerHTML =   <span class="quiz-selector-circle">   <img   src="${quiz.image}"   alt="${quiz.title}"   >   </span>  ;
+button.innerHTML =   `<span class="quiz-selector-circle">   <img   src="${quiz.image}"   alt="${quiz.title}"   >   </span>  `;
 // -------------------------------------------------
 // CLICK
 // -------------------------------------------------
