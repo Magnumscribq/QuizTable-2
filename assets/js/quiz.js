@@ -633,7 +633,7 @@ checkbox.checked = false;
 });
 registrationConfirm.disabled = true;
 addNotification(
-Vous êtes maintenant inscrit à "${currentQuiz.title}". Vous recevrez les notifications liées à ce quiz.,
+`Vous êtes maintenant inscrit à "${currentQuiz.title}". Vous recevrez les notifications liées à ce quiz.`,
 "fa-bell"
 );
 updateQuizInterface();
@@ -852,7 +852,7 @@ question.textContent = currentQuiz.question;
 // XP
 // -----------------------------------------------------
 if (xpValue) {
-xpValue.textContent = +${currentQuiz.xpReward} XP;
+xpValue.textContent = `+${currentQuiz.xpReward} XP`;
 }
 // -----------------------------------------------------
 // CACHER LES ÉTATS
@@ -912,7 +912,7 @@ if (state === "finished") {
 if (!showResultsPanel) {
 const sessionEnded = document.createElement("div");
 sessionEnded.className = "quiz-session-ended";
-sessionEnded.innerHTML =   <h3>   Session terminée   </h3>   <p>   Cette session de quiz est maintenant terminée.   </p>   <button   type="button"   class="back-description">   Revenir à la description   </button>  ;
+sessionEnded.innerHTML =   `<h3>   Session terminée   </h3>   <p>   Cette session de quiz est maintenant terminée.   </p>   <button   type="button"   class="back-description">   Revenir à la description   </button>  `;
 game.appendChild(sessionEnded);
 const backButton = sessionEnded.querySelector(".back-description");
 if (backButton) {
@@ -960,7 +960,7 @@ answeredQuizzes.add(currentQuiz.id);
 textarea.value = "";
 updateGameInterface();
 addNotification(
-Votre réponse au "${currentQuiz.title}" a bien été envoyée. La vérification sera effectuée après la fin du quiz.,
+`Votre réponse au "${currentQuiz.title}" a bien été envoyée. La vérification sera effectuée après la fin du quiz.`,
 "check"
 );
 });
