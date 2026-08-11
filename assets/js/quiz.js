@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-// =========================================================
+//=========================================================
 // DONNÉES DES QUIZ
 // =========================================================
 const quizzes = [
@@ -230,7 +230,7 @@ playButton.setAttribute("aria-label", "Jouer");
 *
 * Ainsi, le point rouge s'affiche sur le quiz réellement "en cours",
 * qu'il soit sélectionné ou non.
-/
+*/
 function updateLiveButton() {
 if (!quizTrack) {
 return;
@@ -513,12 +513,12 @@ quizTrack.appendChild(button);
 // -----------------------------------------------------
 // SYNCHRONISATION DU LIVE
 // -----------------------------------------------------
-/
+/*
 * On ne calcule plus l'état d'un seul quiz ici :
 * updateLiveButton() vérifie désormais chaque quiz
 * individuellement et place le point rouge sur celui
 * qui est réellement "en cours".
-/
+*/
 updateLiveButton();
 quizTrack.scrollLeft = scrollPosition;
 }
@@ -799,11 +799,11 @@ resultsLink.style.display = "none";
 // =========================================================
 // ÉTAT D'UN QUIZ (GÉNÉRIQUE)
 // =========================================================
-/
+/*
 * Calcule l'état de N'IMPORTE QUEL quiz passé en paramètre.
 * Utilisée par getQuizState() (pour currentQuiz) ET par
 * updateLiveButton() (pour tous les quiz de la barre).
-/
+*/
 function getStateForQuiz(quiz) {
 const now = new Date();
 const start = new Date(quiz.startTime);
