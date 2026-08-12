@@ -1622,7 +1622,7 @@ if (state === "playing") {
 countStatus.innerHTML = `
 <span class="quiz-live-indicator">
 <span class="quiz-live-dot"></span>
-Quiz en cours
+En cours
 </span>
 <span class="quiz-count-label">
 Se termine dans
