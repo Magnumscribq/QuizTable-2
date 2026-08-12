@@ -3,676 +3,949 @@ PAGE QUIZ
 ===================================== */
 
 .quiz-section{
-    min-height:100vh;
-    padding:35px 0 80px;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    border-top:1px solid rgba(0,0,0,.08);
-    background:#f5f5f5;
+min-height:100vh;
+padding:140px 0 140px;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+background:#f5f5f5;
 }
-
 
 /* =====================================
 BARRE DES QUIZ
 ===================================== */
 
 .quiz-selector{
-    position:sticky;
-    top:51px;
-    z-index:99;
-    width:100%;
-    padding:10px 25px;
-    background:rgba(255,255,255,0.15);
-    border-bottom:1px solid rgba(255,255,255,0.4);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    box-shadow:0 2px 5px rgba(0,0,0,.25);
+position:fixed;
+top:65px;
+left:50%;
+transform:translateX(-50%);
+z-index:99;
+width:fit-content;
+max-width:420px;
+display:flex;
+flex-direction:column;
+align-items:stretch;
+padding:6px 8px;
+border-radius:25px;
+background:rgba(255,255,255,0.55);
+border:1px solid rgba(255,255,255,0.6);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+box-shadow:0 15px 40px rgba(0,0,0,.18);
+transition:opacity .25s ease, transform .25s ease;
+}
+
+.quiz-selector.expanded{
+width:auto;
+max-width:340px;
+}
+
+/* -------- réduction au scroll -------- */
+
+.quiz-selector.collapsed{
+opacity:0;
+transform:translateX(-50%) translateY(-12px);
+pointer-events:none;
+}
+
+.quiz-selector-main{
+display:flex;
+align-items:center;
+gap:0px;
 }
 
 .quiz-selector-track{
-    width:100%;
-    max-width:1400px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:18px;
-    overflow-x:auto;
-    overflow-y:hidden;
-    scrollbar-width:none;
-    -ms-overflow-style:none;
+max-width:1400px;
+display:flex;
+align-items:center;
+gap:12px;
+overflow-x:auto;
+overflow-y:hidden;
+scrollbar-width:none;
+-ms-overflow-style:none;
 }
 
 .quiz-selector-track::-webkit-scrollbar{
-    display:none;
+display:none;
 }
 
+.quiz-selector.expanded .quiz-selector-track{
+display:grid;
+grid-template-columns:repeat(4, 44px);
+justify-content:center;
+gap:14px;
+width:100%;
+max-height:55vh;
+overflow-y:auto;
+overflow-x:hidden;
+padding:6px 2px;
+}
+
+/* =====================================
+BOUTONS FILTRE / AGRANDIR
+===================================== */
+
+.quiz-selector-filter-toggle,
+.quiz-selector-expand{
+flex:0 0 auto;
+width:34px;
+height:34px;
+border:none;
+border-radius:50%;
+background:transparent;
+color:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:13px;
+cursor:pointer;
+transition:.25s ease;
+}
+
+.quiz-selector-filter-toggle:hover,
+.quiz-selector-expand:hover{
+background:rgba(0,0,0,.08);
+}
+
+
+
+/* =====================================
+LIGNE DE FILTRES (repliable dans la barre)
+===================================== */
+
+.quiz-selector-filters{
+display:flex;
+align-items:center;
+gap:10px;
+max-height:0;
+opacity:0;
+overflow:hidden;
+transition:max-height .3s ease, opacity .25s ease, margin-top .3s ease;
+}
+
+.quiz-selector.filters-open .quiz-selector-filters{
+max-height:60px;
+opacity:1;
+margin-top:8px;
+overflow-x:auto;
+overflow-y:hidden;
+scrollbar-width:none;
+-ms-overflow-style:none;
+}
+
+.quiz-selector-filters::-webkit-scrollbar{
+display:none;
+}
+
+/* =====================================
+BOUTON "ŒIL" (barre réduite au scroll)
+===================================== */
+
+.quiz-selector-peek{
+position:fixed;
+top:65px;
+left:50%;
+transform:translateX(-50%) scale(.6);
+z-index:98;
+width:40px;
+height:40px;
+border:none;
+border-radius:50%;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+cursor:pointer;
+opacity:0;
+pointer-events:none;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+transition:opacity .25s ease, transform .25s ease;
+}
+
+.quiz-selector-peek.visible{
+opacity:1;
+transform:translateX(-50%) scale(1);
+pointer-events:auto;
+}
 
 /* =====================================
 CERCLES DES QUIZ
 ===================================== */
 
+.quiz-selector-track .quiz-selector-item{
+width:44px;
+height:44px;
+}
+
 .quiz-selector-item{
-    flex:0 0 auto;
-    width:62px;
-    height:62px;
-    padding:3px;
-    border-radius:50%;
-    border:2px solid transparent;
-    background:transparent;
-    cursor:pointer;
-    transition:.3s ease;
+position:relative;
+flex:0 0 auto;
+width:62px;
+height:62px;
+padding:3px;
+border-radius:50%;
+border:2px solid transparent;
+background:transparent;
+cursor:pointer;
+transition:.3s ease;
 }
 
 .quiz-selector-item.selected{
-    border-color:#111;
+border-color:#111;
 }
 
 .quiz-selector-circle{
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:50%;
-    background:#f0f0f0;
-    color:#111;
-    font-size:21px;
-    overflow:hidden;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+background:#f0f0f0;
+color:#111;
+font-size:21px;
+overflow:hidden;
 }
 
 .quiz-selector-circle img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-
 /* =====================================
-PANNEAU LATÉRAL
+INDICATEUR QUIZ EN COURS
 ===================================== */
 
-.quiz-sidebar{
-    position:fixed;
-    top:160px;
-    left:0;
-    width:245px;
-    z-index:110;
-    transform:translateX(-200px);
-    transition:.35s ease;
+.quiz-selector-item.quiz-live::after{
+content:"";
+position:absolute;
+top:2px;
+right:4px;
+width:11px;
+height:11px;
+border-radius:50%;
+background:#e53935;
+box-shadow:0 2px 6px rgba(0,0,0,.2);
+z-index:5;
 }
-
-.quiz-sidebar.open{
-    transform:translateX(0);
-}
-
-.quiz-sidebar-content{
-    width:200px;
-    padding:20px 15px;
-    background:rgba(255,255,255,0.15);
-    border-bottom:1px solid rgba(255,255,255,0.4);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    border:1px solid rgba(0,0,0,.08);
-    border-radius:0 18px 18px 0;
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
-}
-
-.quiz-sidebar-content h3{
-    margin:0 0 18px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:20px;
-    color:#111;
-}
-
-.quiz-sidebar-toggle{
-    position:absolute;
-    top:40%;
-    right:0;
-    width:45px;
-    height:45px;
-    border:none;
-    border-radius:0 12px 12px 0;
-    background:#111;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    transition:.35s ease;
-}
-
-.quiz-sidebar-toggle i{
-    transition:.35s ease;
-}
-
-.quiz-sidebar.open .quiz-sidebar-toggle i{
-    transform:rotate(180deg);
-}
-
-.quiz-filter{
-    width:100%;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:11px 12px;
-    margin-bottom:5px;
-    border:none;
-    border-radius:12px;
-    background:transparent;
-    color:#333;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    text-align:left;
-    cursor:pointer;
-    transition:.25s ease;
-}
-
-.quiz-filter.active{
-    background:#111;
-    color:white;
-}
-
-.quiz-sidebar-separator{
-    width:100%;
-    height:1px;
-    margin:15px 0;
-    background:rgba(0,0,0,.08);
-}
-
-.quiz-sidebar-title{
-    margin:0 10px 10px;
-    font-size:11px;
-    font-weight:700;
-    text-transform:uppercase;
-    color:#111;
-}
-
 
 /* =====================================
-INFORMATIONS DU HAUT
+INFORMATIONS DU HAUT (en-tête + panneau pub)
 ===================================== */
 
 .quiz-top-info{
-    width:90%;
-    max-width:1400px;
-    margin:80px auto 10px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:40px;
+position:relative;
+width:100%;
+min-height:360px;
+margin:0 0 25px;
+overflow:visible;
+}
+
+/* ------- Colonne gauche : titre / compteur / disclaimer ------- */
+
+.quiz-header-left{
+position:relative;
+z-index:2;
+width:100%;
+max-width:420px;
+padding:36px 0 24px;
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:14px;
 }
 
 .quiz-banner{
-    text-align:left;
+text-align:left;
 }
 
 .quiz-title{
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:50px;
-    margin:0 0 5px;
-    color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:32px;
+margin:0 0 4px;
+color:#111;
+line-height:1.15;
 }
 
 .quiz-title-sub{
-    margin:0;
-    color:#777;
+margin:0;
+color:#777;
+font-size:14px;
 }
 
+/* =====================================
+COMPTEUR (désormais sous le titre)
+===================================== */
+
+.quiz-countdown{
+position:relative;
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:6px;
+color:#111;
+}
+
+.count-status{
+margin:0;
+color:#777;
+font-size:13px;
+text-align:left;
+}
+
+.quiz-countdown-digits{
+display:flex;
+flex-direction:row;
+align-items:center;
+gap:16px;
+}
+
+.count-item{
+width:58px;
+text-align:center;
+flex:0 0 58px;
+}
+
+.count-value{
+display:block;
+width:100%;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:40px;
+font-weight:800;
+line-height:.9;
+font-variant-numeric:tabular-nums;
+}
+
+.count-label{
+font-size:12px;
+opacity:.65;
+}
+
+/* SECONDES — EN INDICE, PROCHE DU HAUT DES CHIFFRES */
+.count-seconds{
+display:flex;
+align-items:flex-start;
+margin-left:-8px;
+margin-top:2px;
+width:24px;
+flex:0 0 24px;
+}
+
+.count-seconds span{
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:500;
+color:#999;
+line-height:1;
+font-variant-numeric:tabular-nums;
+}
+
+.quiz-count-label{
+display:block;
+color:#777;
+}
+
+.quiz-live-indicator{
+display:flex;
+gap:7px;
+font-size:13px;
+font-weight:600;
+color:#e53935;
+}
+
+.quiz-live-dot{
+position:relative;
+width:17px;
+height:17px;
+display:inline-block;
+flex:0 0 17px;
+}
+
+.quiz-live-dot::before{
+content:"";
+position:absolute;
+width:6px;
+height:6px;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+border-radius:50%;
+background:#e53935;
+}
+
+.quiz-live-dot::after{
+content:"";
+position:absolute;
+width:14px;
+height:14px;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+border:2px solid #e53935;
+border-top-color:transparent;
+border-bottom-color:transparent;
+border-radius:50%;
+opacity:.8;
+}
+
+.count-results-link{
+background:#111;
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:25px;
+cursor:pointer;
+font-size:13px;
+font-weight:600;
+}
+
+.count-results-link:hover{
+transform:translateY(-2px);
+}
+
+/* =====================================
+DISCLAIMER GRATUITÉ
+===================================== */
+
+.quiz-disclaimer-free{
+display:flex;
+align-items:flex-start;
+gap:9px;
+padding:12px 14px;
+border-radius:14px;
+background:rgba(233,30,99,.08);
+border:1px solid rgba(233,30,99,.18);
+color:#c2185b;
+}
+
+.quiz-disclaimer-free i{
+margin-top:2px;
+flex-shrink:0;
+}
+
+.quiz-disclaimer-free p{
+margin:0;
+font-size:12.5px;
+line-height:1.5;
+}
+
+.quiz-disclaimer-free strong{
+color:#ad1457;
+}
+
+/* =====================================
+PANNEAU PUBLICITAIRE (partenaires)
+===================================== */
+
+.quiz-partner-banner{
+position:absolute;
+top:0;
+right:calc(-1 * ((100vw - min(90vw, 1400px)) / 2));
+bottom:0;
+width:56%;
+min-width:320px;
+min-height:360px;
+overflow:hidden;
+background:#111;
+border-radius:60px 0 0 60px;
+z-index:1;
+}
+
+.quiz-partner-track{
+position:relative;
+width:100%;
+height:100%;
+min-height:260px;
+}
+
+.quiz-partner-slide{
+position:absolute;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:28px 30px;
+box-sizing:border-box;
+opacity:0;
+visibility:hidden;
+transition:opacity .6s ease;
+background-size:cover;
+background-position:center;
+}
+
+.quiz-partner-slide::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 60%, rgba(0,0,0,0) 100%);
+}
+
+.quiz-partner-slide.active{
+opacity:1;
+visibility:visible;
+}
+
+.quiz-partner-eyebrow{
+position:relative;
+z-index:2;
+margin:0 0 6px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:11px;
+font-weight:700;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:rgba(255,255,255,.75);
+}
+
+.quiz-partner-name{
+position:relative;
+z-index:2;
+margin:0 0 8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:26px;
+font-weight:800;
+color:white;
+}
+
+.quiz-partner-text{
+position:relative;
+z-index:2;
+margin:0 0 16px;
+max-width:480px;
+color:rgba(255,255,255,.85);
+font-size:13.5px;
+line-height:1.5;
+}
+
+.quiz-partner-cta{
+position:relative;
+z-index:2;
+display:inline-flex;
+align-items:center;
+gap:8px;
+width:fit-content;
+padding:9px 16px;
+border:none;
+border-radius:50px;
+background:white;
+color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+cursor:pointer;
+transition:.25s ease;
+}
+
+.quiz-partner-cta:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.quiz-partner-dots{
+position:absolute;
+z-index:3;
+bottom:18px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:6px;
+}
+
+.quiz-partner-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:rgba(255,255,255,.4);
+cursor:pointer;
+border:none;
+padding:0;
+transition:.25s ease;
+}
+
+.quiz-partner-dot.active{
+background:white;
+width:20px;
+border-radius:5px;
+}
 
 /* =====================================
 ZONE PRINCIPALE
 ===================================== */
 
 .quiz-card{
-    position:relative;
-    width:90%;
-    max-width:1400px;
-    min-height:450px;
-    overflow:visible;
-    border-radius:0;
-    box-shadow:none;
-    background:transparent;
+position:relative;
+width:90%;
+max-width:1400px;
+min-height:450px;
+overflow:visible;
+border-radius:0;
+box-shadow:none;
+background:transparent;
 }
 
 .quiz-background{
-    display:none;
+display:none;
 }
-
 
 /* =====================================
 CONTENU PRINCIPAL
 ===================================== */
 
 .quiz-card-content{
-    position:relative;
-    z-index:2;
-    width:100%;
-    min-height:450px;
-    padding:110px 0 25px;
-    display:grid;
-    grid-template-columns:1fr;
-    gap:25px;
-    background:transparent;
-    border:none;
-    overflow:visible;
+position:relative;
+z-index:2;
+width:100%;
+min-height:450px;
+padding:0 0 25px;
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+background:transparent;
+border:none;
+overflow:visible;
 }
-
 
 /* =====================================
 ACTIONS
 ===================================== */
 
 .quiz-card-actions{
-    position:absolute;
-    top:15px;
-    right:0;
-    z-index:20;
-    display:flex;
-    align-items:center;
-    gap:10px;
+position:relative;
+z-index:5;
+display:flex;
+align-items:center;
+justify-content:flex-end;
+flex-wrap:wrap;
+gap:10px;
+margin:0 0 22px;
 }
 
 .quiz-card-actions button{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border:none;
-    background:#111;
-    color:white;
-    font-size:15px;
-    cursor:pointer;
-    transition:.3s ease;
+display:flex;
+justify-content:center;
+align-items:center;
+border:none;
+background:#111;
+color:white;
+font-size:15px;
+cursor:pointer;
+transition:.3s ease;
 }
 
 .quiz-card-actions button:hover{
-    transform:translateY(-2px);
-    background:#222;
+transform:translateY(-2px);
+background:#222;
 }
 
 .quiz-card-actions button.active{
-    background:#111;
-    color:white;
+background:#111;
+color:white;
 }
-
 
 /* =====================================
 LIENS
 ===================================== */
 
 .quiz-link{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
 }
 
 .quiz-link button{
-    position:relative;
-    border-radius:25px;
-    padding:10px 17px;
-    gap:8px;
-    overflow:hidden;
+position:relative;
+border-radius:25px;
+padding:10px 17px;
+gap:8px;
+overflow:hidden;
 }
-
 
 /* =====================================
 BOUTON JOUER
 ===================================== */
 
 .quiz-play-btn{
-    position:relative;
-    padding:0 !important;
-    width:105px;
-    height:42px;
-    border-radius:50px !important;
-    background:black !important;
-    color:white !important;
-    border:none;
-    overflow:hidden;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s ease;
-    isolation:isolate;
+position:relative;
+padding:0 !important;
+width:105px;
+height:42px;
+border-radius:50px !important;
+background:black !important;
+color:white !important;
+border:none;
+overflow:hidden;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+cursor:pointer;
+transition:.3s ease;
+isolation:isolate;
 }
 
 .quiz-play-btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 8px 20px rgba(0,0,0,.2);
+transform:scale(1.05);
+box-shadow:0 8px 20px rgba(0,0,0,.2);
 }
 
 .quiz-play-btn.hidden{
-    display:none;
+display:none;
 }
 
 .play-button-content{
-    position:relative;
-    z-index:10;
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    color:white;
-    pointer-events:none;
+position:relative;
+z-index:10;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+color:white;
+pointer-events:none;
 }
-
 
 /* =====================================
 FORMES DU BOUTON JOUER
 ===================================== */
 
 .play-shape{
-    position:absolute;
-    z-index:1;
-    pointer-events:none;
-    filter:blur(15px);
-    opacity:1;
-    transform-origin:center;
+position:absolute;
+z-index:1;
+pointer-events:none;
+filter:blur(15px);
+opacity:1;
+transform-origin:center;
 }
 
 .play-shape-1{
-    width:50px;
-    height:45px;
-    background:#00c6ff;
-    border-radius:50%;
-    left:-1.5px;
-    top:-1.5px;
-    animation:playBlue 2s infinite alternate ease-in-out;
+width:50px;
+height:45px;
+background:#00c6ff;
+border-radius:50%;
+left:-1.5px;
+top:-1.5px;
+animation:playBlue 2s infinite alternate ease-in-out;
 }
 
 .play-shape-2{
-    width:60px;
-    height:45px;
-    background:#9b5cff;
-    border-radius:50%;
-    right:-1.5px;
-    bottom:-2px;
-    animation:playPurple 2s infinite alternate ease-in-out;
+width:60px;
+height:45px;
+background:#9b5cff;
+border-radius:50%;
+right:-1.5px;
+bottom:-2px;
+animation:playPurple 2s infinite alternate ease-in-out;
 }
 
 .play-shape-3{
-    width:50px;
-    height:35px;
-    background:#ff4ecd;
-    border-radius:50%;
-    left:3px;
-    top:-2px;
-    animation:playPink 2s infinite alternate ease-in-out;
+width:50px;
+height:35px;
+background:#ff4ecd;
+border-radius:50%;
+left:3px;
+top:-2px;
+animation:playPink 2s infinite alternate ease-in-out;
 }
 
 .play-shape-4{
-    width:50px;
-    height:35px;
-    background:#ffb347;
-    border-radius:50%;
-    right:1.5px;
-    top:1px;
-    animation:playOrange 2s infinite alternate ease-in-out;
+width:50px;
+height:35px;
+background:#ffb347;
+border-radius:50%;
+right:1.5px;
+top:1px;
+animation:playOrange 2s infinite alternate ease-in-out;
 }
-
 
 /* =====================================
 INSCRIPTION
 ===================================== */
 
 .quiz-register-btn{
-    padding:10px 17px;
-    border-radius:50px !important;
-    background:#111 !important;
-    color:white !important;
-    font-family:"Bricolage Grotesque",sans-serif;
-    gap:8px;
-    font-weight:600;
+padding:10px 17px;
+border-radius:50px !important;
+background:#111 !important;
+color:white !important;
+font-family:"Bricolage Grotesque",sans-serif;
+gap:8px;
+font-weight:600;
 }
 
 .quiz-register-btn:hover{
-    transform:scale(1.05);
+transform:scale(1.05);
 }
-
 
 /* =====================================
 AJUSTEMENTS
 ===================================== */
 
 .quiz-ajust{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
 }
 
 .quiz-ajust button{
-    width:40px;
-    height:40px;
-    padding:0;
-    border-radius:50% !important;
+width:40px;
+height:40px;
+padding:0;
+border-radius:50% !important;
 }
 
 .quiz-like i{
-    display:block;
-    line-height:1;
-    transform:translateY(1px);
+display:block;
+line-height:1;
+transform:translateY(1px);
 }
-
 
 /* =====================================
 NOTIFICATIONS
 ===================================== */
 
 .quiz-notification-wrapper{
-    position:relative;
+position:relative;
 }
 
 .quiz-notification{
-    position:relative;
+position:relative;
 }
 
 .quiz-notification-badge{
-    position:absolute;
-    top:-5px;
-    right:-5px;
-    min-width:18px;
-    height:18px;
-    padding:0 5px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50px;
-    background:#e53935;
-    color:white;
-    font-family:Arial,sans-serif;
-    font-size:10px;
-    font-weight:700;
-    border:2px solid #111;
+position:absolute;
+top:-5px;
+right:-5px;
+min-width:18px;
+height:18px;
+padding:0 5px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50px;
+background:#e53935;
+color:white;
+font-family:Arial,sans-serif;
+font-size:10px;
+font-weight:700;
+border:2px solid #111;
 }
 
-.quiz-notification-badge.hidden {
-    display: none !important;
+.quiz-notification-badge.hidden{
+display:none !important;
 }
 
 .quiz-notification-panel{
-    position:absolute;
-    top:50px;
-    right:0;
-    width:320px;
-    max-height:400px;
-    overflow-y:auto;
-    display:none;
-    padding:15px;
-    border-radius:18px;
-    background:white;
-    box-shadow:0 15px 40px rgba(0,0,0,.18);
-    border:1px solid rgba(0,0,0,.08);
-    z-index:200;
+position:absolute;
+top:50px;
+right:0;
+width:320px;
+max-height:400px;
+overflow-y:auto;
+display:none;
+padding:15px;
+border-radius:18px;
+background:white;
+box-shadow:0 15px 40px rgba(0,0,0,.18);
+border:1px solid rgba(0,0,0,.08);
+z-index:200;
 }
 
 .quiz-notification-panel.active{
-    display:block;
+display:block;
 }
 
 .quiz-notification-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:12px;
 }
 
 .quiz-notification-header h3{
-    margin:0;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:18px;
-    color:#111;
+margin:0;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:18px;
+color:#111;
 }
 
 .quiz-notification-clear{
-    padding:5px 8px !important;
-    border:none !important;
-    background:transparent !important;
-    color:#777 !important;
-    font-size:11px !important;
-    cursor:pointer;
+padding:5px 8px !important;
+border:none !important;
+background:transparent !important;
+color:#777 !important;
+font-size:11px !important;
+cursor:pointer;
 }
 
 .quiz-notification-clear:hover{
-    color:#111 !important;
+color:#111 !important;
 }
 
 .quiz-notification-item{
-    position:relative;
-    display:flex;
-    align-items:flex-start;
-    gap:10px;
-    padding:12px 30px 12px 5px;
-    border-bottom:1px solid rgba(0,0,0,.08);
+position:relative;
+display:flex;
+align-items:flex-start;
+gap:10px;
+padding:12px 30px 12px 5px;
+border-bottom:1px solid rgba(0,0,0,.08);
 }
 
 .quiz-notification-item:last-child{
-    border-bottom:none;
+border-bottom:none;
 }
 
 .quiz-notification-item i{
-    margin-top:3px;
-    color:#111;
+margin-top:3px;
+color:#111;
 }
 
 .quiz-notification-item p{
-    margin:0;
-    font-size:13px;
-    line-height:1.4;
-    color:#333;
+margin:0;
+font-size:13px;
+line-height:1.4;
+color:#333;
 }
 
 .quiz-notification-delete{
-    position:absolute;
-    top:8px;
-    right:0;
-    width:24px !important;
-    height:24px !important;
-    padding:0 !important;
-    border-radius:50% !important;
-    background:transparent !important;
-    color:#999 !important;
-    font-size:11px !important;
+position:absolute;
+top:8px;
+right:0;
+width:24px !important;
+height:24px !important;
+padding:0 !important;
+border-radius:50% !important;
+background:transparent !important;
+color:#999 !important;
+font-size:11px !important;
 }
 
 .quiz-notification-delete:hover{
-    color:#111 !important;
+color:#111 !important;
 }
 
 .quiz-notification-empty{
-    margin:10px 0;
-    text-align:center;
-    color:#999;
-    font-size:13px;
+margin:10px 0;
+text-align:center;
+color:#999;
+font-size:13px;
 }
-
 
 /* =====================================
 MEMBRES
 ===================================== */
 
 .quiz-members{
-    position:absolute;
-    top:8px;
-    left:0;
-    margin:10px 0;
-    color:#333;
-    text-align:center;
-    font-size:14px;
-    z-index:10;
-}
-
-
-/* =====================================
-COMPTEUR
-===================================== */
-.quiz-countdown{
-    position:relative;
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content:center;
-    gap:22px;
-    color:#111;
-    flex-shrink:0;
-}
-
-.count-status{
-    position:absolute;
-    top:-15px;
-    left:-120px;
-    transform:none;
-    width:max-content;
-    font-family:"Bricolage Grotesque",sans-serif;
-    margin:0;
-    color:#777;
-    text-align:left;
-    padding:10px 0 0;
-}
-
-.count-item{
-    width:90px;
-    text-align:center;
-    flex:0 0 90px;
-}
-
-.count-value{
-    display:block;
-    width:100%;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:70px;
-    font-weight:800;
-    line-height:.9;
-    font-variant-numeric:tabular-nums;
-}
-
-.count-label{
-    font-size:18px;
-    opacity:.65;
-}
-
-/* SECONDES — POSITION INDÉPENDANTE */
-.count-seconds{
-    display:flex;
-    align-items:flex-end;
-    margin-left:-10px;
-    margin-bottom:5px;
-    width:30px;
-    flex:0 0 30px;
-    transform:translateY(8px);
-}
-
-.count-seconds span{
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:18px;
-    font-weight:500;
-    color:#999;
-    line-height:1;
-    font-variant-numeric:tabular-nums;
+display:flex;
+align-items:center;
+gap:8px;
+margin:0 0 14px;
+color:#333;
+font-size:14px;
 }
 
 /* =====================================
@@ -680,69 +953,66 @@ ZONE INTERACTIVE
 ===================================== */
 
 .quiz-interactive{
-    grid-column:1;
-    width:100%;
-    height:100%;
-    min-width:0;
-    min-height:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+grid-column:1;
+width:100%;
+height:100%;
+min-width:0;
+min-height:0;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
 }
-
 
 /* =====================================
 PANNEAU
 ===================================== */
 
 .quiz-panel{
-    width:100%;
-    height:500px;
-    min-width:0;
-    background:transparent;
-    border:none;
-    box-shadow:none;
-    color:#111;
-    overflow-y:auto;
-    overflow-x:hidden;
-    scrollbar-width:none;
-    -ms-overflow-style:none;
+width:100%;
+height:500px;
+min-width:0;
+background:transparent;
+border:none;
+box-shadow:none;
+color:#111;
+overflow-y:auto;
+overflow-x:hidden;
+scrollbar-width:none;
+-ms-overflow-style:none;
 }
 
 .quiz-panel::-webkit-scrollbar{
-    display:none;
+display:none;
 }
-
 
 /* =====================================
 CONTENU
 ===================================== */
 
 .quiz-panel-content{
-    display:none;
-    color:#111;
+display:none;
+color:#111;
 }
 
 .quiz-panel-content.active{
-    display:block;
+display:block;
 }
 
 .quiz-panel-content h3{
-    margin:0 0 15px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:24px;
-    color:#111;
+margin:0 0 15px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:24px;
+color:#111;
 }
 
 .quiz-panel-content p{
-    margin:0;
-    line-height:1.6;
-    color:#333;
-    text-align:justify;
-    hyphens:auto;
+margin:0;
+line-height:1.6;
+color:#333;
+text-align:justify;
+hyphens:auto;
 }
-
 
 /* =====================================
 ZONE DE JEU
@@ -753,883 +1023,768 @@ ZONE DE JEU
 .quiz-game-submitted,
 .quiz-game-results-waiting,
 .quiz-game-results{
-    display:none;
+display:none;
 }
 
 .quiz-game-active h3,
 .quiz-game-submitted h3,
 .quiz-game-results-waiting h3,
 .quiz-game-results h3{
-    margin-bottom:15px;
+margin-bottom:15px;
 }
-
 
 /* =====================================
 XP À GAGNER
 ===================================== */
 
 .quiz-game-header{
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    margin-bottom:15px;
+display:flex;
+justify-content:flex-end;
+align-items:center;
+margin-bottom:15px;
 }
 
 .quiz-xp-reward{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:7px 12px;
-    border-radius:50px;
-    background:#111;
-    color:white;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:13px;
-    font-weight:600;
+display:inline-flex;
+align-items:center;
+gap:6px;
+padding:7px 12px;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
 }
 
 .quiz-xp-reward i{
-    color:#ffd43b;
+color:#ffd43b;
 }
-
 
 /* =====================================
 ÉNONCÉ
 ===================================== */
 
 .quiz-question-box{
-    width:100%;
-    margin-bottom:20px;
-    padding:18px;
-    border-radius:18px;
-    background:#f0f0f0;
-    box-sizing:border-box;
+width:100%;
+margin-bottom:20px;
+padding:18px;
+border-radius:18px;
+background:#f0f0f0;
+box-sizing:border-box;
 }
 
 .quiz-question-label{
-    display:block;
-    margin-bottom:8px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
-    color:#888;
+display:block;
+margin-bottom:8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:12px;
+font-weight:700;
+text-transform:uppercase;
+color:#888;
 }
 
 .quiz-question{
-    margin:0 !important;
-    color:#111 !important;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:17px;
-    font-weight:600;
-    line-height:1.5 !important;
-    text-align:left !important;
+margin:0 !important;
+color:#111 !important;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:17px;
+font-weight:600;
+line-height:1.5 !important;
+text-align:left !important;
 }
-
 
 /* =====================================
 ZONE RÉPONSE
 ===================================== */
 
 .quiz-answer-label{
-    display:block;
-    margin-bottom:8px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    font-weight:600;
-    color:#333;
+display:block;
+margin-bottom:8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+color:#333;
 }
 
 .quiz-answer{
-    display:block;
-    width:100%;
-    min-height:120px;
-    margin:0;
-    padding:15px;
-    resize:none;
-    border-radius:18px;
-    border:1px solid rgba(0,0,0,.15);
-    background:#f5f5f5;
-    color:#111;
-    outline:none;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:15px;
-    line-height:1.5;
-    box-sizing:border-box;
+display:block;
+width:100%;
+min-height:120px;
+margin:0;
+padding:15px;
+resize:none;
+border-radius:18px;
+border:1px solid rgba(0,0,0,.15);
+background:#f5f5f5;
+color:#111;
+outline:none;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:15px;
+line-height:1.5;
+box-sizing:border-box;
 }
 
 .quiz-answer:focus{
-    border-color:#111;
+border-color:#111;
 }
 
 .quiz-answer::placeholder{
-    color:#999;
+color:#999;
 }
-
 
 /* =====================================
 BOUTON ENVOYER
 ===================================== */
 
 .quiz-send-btn{
-    margin-top:15px;
-    padding:12px 24px;
-    border:none;
-    border-radius:50px;
-    background:#111;
-    color:white;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-weight:600;
-    cursor:pointer;
+margin-top:15px;
+padding:12px 24px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+cursor:pointer;
 }
 
 .quiz-send-btn:hover{
-    transform:translateY(-2px);
+transform:translateY(-2px);
 }
-
 
 /* =====================================
 RÉPONSE ENVOYÉE
 ===================================== */
 
 .quiz-game-submitted{
-    text-align:left;
+text-align:left;
 }
 
 .quiz-submitted-icon{
-    width:50px;
-    height:50px;
-    margin-bottom:15px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:50%;
-    background:#111;
-    color:white;
-    font-size:20px;
+width:50px;
+height:50px;
+margin-bottom:15px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+background:#111;
+color:white;
+font-size:20px;
 }
 
 .quiz-game-submitted p{
-    color:#555;
+color:#555;
 }
 
 .quiz-submitted-xp{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    flex-wrap:wrap;
-    margin-top:15px !important;
-    color:#333 !important;
+display:flex;
+align-items:center;
+gap:6px;
+flex-wrap:wrap;
+margin-top:15px !important;
+color:#333 !important;
 }
 
 .quiz-submitted-xp i{
-    color:#e4a900;
+color:#e4a900;
 }
 
 .quiz-submitted-xp strong{
-    color:#111;
+color:#111;
 }
-
 
 /* =====================================
 RÉSULTATS EN ATTENTE
 ===================================== */
 
 .quiz-game-results-waiting{
-    text-align:left;
+text-align:left;
 }
 
 .quiz-game-results-waiting p{
-    color:#555;
+color:#555;
 }
-
 
 /* =====================================
 RÉSULTATS
 ===================================== */
 
 .quiz-game-results{
-    text-align:left;
+text-align:left;
 }
 
 .quiz-winner-box{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    margin-top:20px;
-    padding:18px;
-    border-radius:18px;
-    background:#f0f0f0;
+display:flex;
+flex-direction:column;
+gap:5px;
+margin-top:20px;
+padding:18px;
+border-radius:18px;
+background:#f0f0f0;
 }
 
 .quiz-winner-box span{
-    font-size:12px;
-    color:#777;
+font-size:12px;
+color:#777;
 }
 
 .quiz-winner-name{
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:20px;
-    color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:20px;
+color:#111;
 }
 
 .quiz-xp-result{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    margin-top:15px;
-    color:#333;
+display:flex;
+align-items:center;
+gap:7px;
+margin-top:15px;
+color:#333;
 }
 
 .quiz-xp-result i{
-    color:#e4a900;
+color:#e4a900;
 }
-
 
 /* =====================================
 RETOUR À LA DESCRIPTION
 ===================================== */
 
 .back-description{
-    display:block;
-    margin-top:20px;
-    padding:0;
-    border:none;
-    background:transparent;
-    color:#1479d1;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-    text-decoration:none;
-    transition:.2s ease;
+display:block;
+margin-top:20px;
+padding:0;
+border:none;
+background:transparent;
+color:#1479d1;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+text-decoration:none;
+transition:.2s ease;
 }
 
 .back-description:hover{
-    color:#0d5fa8;
-    text-decoration:underline;
+color:#0d5fa8;
+text-decoration:underline;
 }
-
 
 /* =====================================
 MODAL INSCRIPTION
 ===================================== */
 
 .quiz-registration-modal{
-    position:fixed;
-    inset:0;
-    z-index:30;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    background:rgba(0,0,0,.45);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
+position:fixed;
+inset:0;
+z-index:30;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
 }
 
 .quiz-registration-modal.active{
-    display:flex;
+display:flex;
 }
 
 .quiz-registration-box{
-    width:90%;
-    max-width:500px;
-    padding:30px;
-    border-radius:25px;
-    background:#181818;
-    border:1px solid rgba(255,255,255,.2);
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
-    color:white;
+width:90%;
+max-width:500px;
+padding:30px;
+border-radius:25px;
+background:#181818;
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+color:white;
 }
 
 .quiz-registration-box h3{
-    margin:0 0 25px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:24px;
+margin:0 0 25px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:24px;
 }
 
 .quiz-registration-box label{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-    margin-bottom:18px;
-    font-size:15px;
-    line-height:1.5;
-    cursor:pointer;
+display:flex;
+align-items:flex-start;
+gap:12px;
+margin-bottom:18px;
+font-size:15px;
+line-height:1.5;
+cursor:pointer;
 }
 
 .quiz-registration-box input{
-    width:18px;
-    height:18px;
-    margin-top:2px;
-    cursor:pointer;
+width:18px;
+height:18px;
+margin-top:2px;
+cursor:pointer;
 }
 
 .registration-actions{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-    margin-top:25px;
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-top:25px;
 }
 
 .registration-cancel,
 .registration-confirm{
-    padding:10px 18px;
-    border:none;
-    border-radius:50px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-weight:600;
-    cursor:pointer;
+padding:10px 18px;
+border:none;
+border-radius:50px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+cursor:pointer;
 }
 
 .registration-cancel{
-    background:rgba(255,255,255,.12);
-    color:white;
+background:rgba(255,255,255,.12);
+color:white;
 }
 
 .registration-confirm{
-    background:white;
-    color:#111;
+background:white;
+color:#111;
 }
 
 .registration-confirm:disabled{
-    opacity:.4;
-    cursor:not-allowed;
+opacity:.4;
+cursor:not-allowed;
 }
-
 
 /* =====================================
 MODAL DÉSINSCRIPTION
 ===================================== */
 
 .quiz-unregister-modal{
-    position:fixed;
-    inset:0;
-    z-index:30;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    background:rgba(0,0,0,.45);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
+position:fixed;
+inset:0;
+z-index:30;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
 }
 
 .quiz-unregister-modal.active{
-    display:flex;
+display:flex;
 }
 
 .quiz-unregister-box{
-    width:90%;
-    max-width:450px;
-    padding:30px;
-    border-radius:25px;
-    background:#181818;
-    border:1px solid rgba(255,255,255,.2);
-    box-shadow:0 20px 50px rgba(0,0,0,.35);
-    color:white;
+width:90%;
+max-width:450px;
+padding:30px;
+border-radius:25px;
+background:#181818;
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+color:white;
 }
 
 .quiz-unregister-box h3{
-    margin:0 0 15px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:24px;
+margin:0 0 15px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:24px;
 }
 
 .quiz-unregister-box p{
-    margin:0;
-    line-height:1.5;
-    color:rgba(255,255,255,.8);
+margin:0;
+line-height:1.5;
+color:rgba(255,255,255,.8);
 }
 
 .unregister-actions{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-    margin-top:25px;
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-top:25px;
 }
 
 .unregister-no,
 .unregister-yes{
-    padding:10px 18px;
-    border:none;
-    border-radius:50px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-weight:600;
-    cursor:pointer;
+padding:10px 18px;
+border:none;
+border-radius:50px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+cursor:pointer;
 }
 
 .unregister-no{
-    background:rgba(255,255,255,.12);
-    color:white;
+background:rgba(255,255,255,.12);
+color:white;
 }
 
 .unregister-yes{
-    background:white;
-    color:#111;
-}
-
-
-/* =====================================
-INDICATEUR LIVE
-===================================== */
-.quiz-live-indicator{
-    display:flex;
-    
-    gap:7px;
-    
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:13px;
-    font-weight:600;
-    color:#e53935;
-}
-
-/* Icône LIVE avec ondes */
-.quiz-live-dot{
-    position:relative;
-    width:17px;
-    height:17px;
-    display:inline-block;
-    flex:0 0 17px;
-}
-
-/* point central */
-.quiz-live-dot::before{
-    content:"";
-    position:absolute;
-    width:6px;
-    height:6px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    border-radius:50%;
-    background:#e53935;
-}
-
-/* ondes */
-.quiz-live-dot::after{
-    content:"";
-    position:absolute;
-    width:14px;
-    height:14px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    border:2px solid #e53935;
-    border-top-color:transparent;
-    border-bottom-color:transparent;
-    border-radius:50%;
-    opacity:.8;
-}
-
-.quiz-count-label{
-    display:block;
-    color:#777;
-}
-
-
-.count-results-link {
-    background: #111;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.count-results-link:hover {
-    transform:translateY(-2px);
-}
-.quiz-count-label {
-    transform: translateY(-10px);
-}
-.quiz-live-indicator{
-
-    transform: translateY(-10px);
-
-}
-
-
-/* =====================================
-   SECTION RÉCLAMATION
-===================================== */
-
-.reclamation-section{
-    width:100%;
-    padding:70px 25px 90px;
-    background:#f5f5f5;
-    border-top:1px solid rgba(0,0,0,.06);
-}
-
-.reclamation-container{
-    width:90%;
-    max-width:900px;
-    margin:auto;
-}
-
-
-/* =====================================
-   INTRODUCTION
-===================================== */
-
-.reclamation-intro{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-}
-
-.reclamation-description{
-    max-width:650px;
-    margin:0 0 22px;
-    color:#777;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    line-height:1.6;
-}
-
-
-/* =====================================
-   BOUTON RÉCLAMATION
-===================================== */
-
-.reclamation-toggle{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-
-    padding:12px 20px;
-
-    border:none;
-    border-radius:50px;
-
-    background:#111;
-    color:white;
-
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    font-weight:600;
-
-    cursor:pointer;
-    transition:.3s ease;
-}
-
-.reclamation-toggle:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-}
-
-
-/* =====================================
-   FORMULAIRE
-===================================== */
-
-.reclamation-form-wrapper{
-    display:none;
-    margin-top:30px;
-}
-
-.reclamation-form-wrapper.active{
-    display:block;
-}
-
-.reclamation-form{
-    position:relative;
-
-    width:100%;
-    padding:30px;
-
-    background:white;
-
-    border:1px solid rgba(0,0,0,.08);
-    border-radius:22px;
-
-    box-shadow:0 12px 35px rgba(0,0,0,.08);
-}
-
-
-/* =====================================
-   EN-TÊTE DU FORMULAIRE
-===================================== */
-
-.reclamation-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    margin-bottom:25px;
-}
-
-.reclamation-header h3{
-    margin:0;
-
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:24px;
-    color:#111;
-}
-
-.reclamation-close{
-    width:35px;
-    height:35px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:none;
-    border-radius:50%;
-
-    background:#f0f0f0;
-    color:#333;
-
-    cursor:pointer;
-    transition:.25s ease;
-}
-
-.reclamation-close:hover{
-    background:#111;
-    color:white;
-}
-
-
-/* =====================================
-   CHAMPS
-===================================== */
-
-.reclamation-field{
-    margin-bottom:20px;
-}
-
-.reclamation-field label{
-    display:block;
-
-    margin-bottom:8px;
-
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:13px;
-    font-weight:600;
-
-    color:#333;
-}
-
-.reclamation-field input,
-.reclamation-field select,
-.reclamation-field textarea{
-    width:100%;
-
-    padding:12px 14px;
-
-    border:1px solid rgba(0,0,0,.15);
-    border-radius:12px;
-
-    background:#f8f8f8;
-    color:#111;
-
-    outline:none;
-
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-
-    box-sizing:border-box;
-
-    transition:.25s ease;
-}
-
-.reclamation-field input,
-.reclamation-field select{
-    height:45px;
-}
-
-.reclamation-field textarea{
-    resize:vertical;
-    min-height:130px;
-    line-height:1.5;
-}
-
-.reclamation-field input:focus,
-.reclamation-field select:focus,
-.reclamation-field textarea:focus{
-    border-color:#111;
-    background:white;
-}
-
-
-
-
-/* =====================================
-   DISCLAIMER RÉCOMPENSE
-===================================== */
-
-.reclamation-disclaimer{
-    display:none;
-
-    align-items:flex-start;
-    gap:10px;
-
-    margin:-5px 0 20px;
-    padding:12px 14px;
-
-    border-radius:12px;
-
-    background:rgba(229,57,53,.08);
-    border:1px solid rgba(229,57,53,.15);
-
-    color:#e53935;
-}
-
-.reclamation-disclaimer.active{
-    display:flex;
-}
-
-.reclamation-disclaimer i{
-    margin-top:2px;
-    flex-shrink:0;
-}
-
-.reclamation-disclaimer p{
-    margin:0;
-
-    font-size:12px;
-    line-height:1.5;
-}
-
-
-/* =====================================
-   AUTRE
-===================================== */
-
-.reclamation-other-wrapper{
-    display:none;
-}
-
-.reclamation-other-wrapper.active{
-    display:block;
-}
-
-
-/* =====================================
-   BOUTON ENVOYER
-===================================== */
-
-.reclamation-submit{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-
-    width:100%;
-
-    padding:13px 20px;
-
-    border:none;
-    border-radius:50px;
-
-    background:#111;
-    color:white;
-
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.3s ease;
-}
-
-.reclamation-submit:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
+background:white;
+color:#111;
 }
 
 /* =====================================
-   FLÈCHE DU SELECT
+FILTRES (intégrés à la barre des quiz)
 ===================================== */
 
-.reclamation-field select{
-    appearance:none;
-    -webkit-appearance:none;
-    -moz-appearance:none;
-
-    padding-right:45px;
-
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-
-    background-repeat:no-repeat;
-    background-size:14px 14px;
-
-    background-position:right 16px center;
+.quiz-filter-group{
+flex:0 0 auto;
+display:flex;
+align-items:center;
+gap:5px;
 }
 
-
-/* =====================================
-INDICATEUR QUIZ EN COURS
-===================================== */
-
-.quiz-selector-item{
-    position:relative;
+.quiz-filter-separator{
+flex:0 0 auto;
+width:1px;
+height:22px;
+background:rgba(0,0,0,.12);
 }
 
-.quiz-selector-item.quiz-live::after{
-    content:"";
-    position:absolute;
-    top:2px;
-    right:4px;
-    width:11px;
-    height:11px;
-    border-radius:50%;
-    background:#e53935;
-    
-    box-shadow:0 2px 6px rgba(0,0,0,.2);
-    z-index:5;
+.quiz-filter{
+flex:0 0 auto;
+display:flex;
+align-items:center;
+gap:6px;
+padding:8px 12px;
+border:none;
+border-radius:50px;
+background:transparent;
+color:#333;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:12px;
+white-space:nowrap;
+cursor:pointer;
+transition:.25s ease;
 }
 
+.quiz-filter.active{
+background:#111;
+color:white;
+}
 
 /* =====================================
 ANIMATION DU BOUTON JOUER
 ===================================== */
 
 @keyframes playBlue{
-    0%{
-        transform:translate(-10px,0) scale(1);
-    }
-
-    100%{
-        transform:translate(25px,12px) scale(1.15);
-    }
+0%{ transform:translate(-10px,0) scale(1); }
+100%{ transform:translate(25px,12px) scale(1.15); }
 }
 
 @keyframes playPurple{
-    0%{
-        transform:translate(10px,10px) scale(1);
-    }
-
-    100%{
-        transform:translate(-20px,-15px) scale(1.15);
-    }
+0%{ transform:translate(10px,10px) scale(1); }
+100%{ transform:translate(-20px,-15px) scale(1.15); }
 }
 
 @keyframes playPink{
-    0%{
-        transform:translate(0,0) rotate(0deg);
-    }
-
-    100%{
-        transform:translate(15px,10px) rotate(20deg);
-    }
+0%{ transform:translate(0,0) rotate(0deg); }
+100%{ transform:translate(15px,10px) rotate(20deg); }
 }
 
 @keyframes playOrange{
-    0%{
-        transform:translate(0,0) scale(1);
-    }
-
-    100%{
-        transform:translate(-15px,15px) scale(1.2);
-    }
+0%{ transform:translate(0,0) scale(1); }
+100%{ transform:translate(-15px,15px) scale(1.2); }
 }
 
+/* =====================================
+QUIZ SIMILAIRES
+===================================== */
+
+.quiz-similar-section{
+width:100%;
+padding:10px 25px 60px;
+background:#f5f5f5;
+}
+
+.quiz-similar-container{
+width:90%;
+max-width:1400px;
+margin:auto;
+}
+
+.quiz-similar-title{
+margin:0 0 18px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:20px;
+color:#111;
+}
+
+.quiz-similar-track{
+display:flex;
+align-items:center;
+gap:18px;
+overflow-x:auto;
+scrollbar-width:none;
+-ms-overflow-style:none;
+}
+
+.quiz-similar-track::-webkit-scrollbar{
+display:none;
+}
+
+/* =====================================
+SECTION RÉCLAMATION
+===================================== */
+
+.reclamation-section{
+width:100%;
+padding:70px 25px 90px;
+background:#f5f5f5;
+}
+
+.reclamation-container{
+width:90%;
+max-width:900px;
+margin:auto;
+}
+
+/* =====================================
+INTRODUCTION
+===================================== */
+
+.reclamation-intro{
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.reclamation-description{
+max-width:650px;
+margin:0 0 22px;
+color:#777;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+line-height:1.6;
+}
+
+/* =====================================
+BOUTON RÉCLAMATION
+===================================== */
+
+.reclamation-toggle{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:9px;
+padding:12px 20px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s ease;
+}
+
+.reclamation-toggle:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* =====================================
+FORMULAIRE
+===================================== */
+
+.reclamation-form-wrapper{
+display:none;
+margin-top:30px;
+}
+
+.reclamation-form-wrapper.active{
+display:block;
+}
+
+.reclamation-form{
+position:relative;
+width:100%;
+padding:30px;
+background:white;
+border:1px solid rgba(0,0,0,.08);
+border-radius:22px;
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+}
+
+/* =====================================
+EN-TÊTE DU FORMULAIRE
+===================================== */
+
+.reclamation-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:25px;
+}
+
+.reclamation-header h3{
+margin:0;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:24px;
+color:#111;
+}
+
+.reclamation-close{
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:none;
+border-radius:50%;
+background:#f0f0f0;
+color:#333;
+cursor:pointer;
+transition:.25s ease;
+}
+
+.reclamation-close:hover{
+background:#111;
+color:white;
+}
+
+/* =====================================
+CHAMPS
+===================================== */
+
+.reclamation-field{
+margin-bottom:20px;
+}
+
+.reclamation-field label{
+display:block;
+margin-bottom:8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+color:#333;
+}
+
+.reclamation-field input,
+.reclamation-field select,
+.reclamation-field textarea{
+width:100%;
+padding:12px 14px;
+border:1px solid rgba(0,0,0,.15);
+border-radius:12px;
+background:#f8f8f8;
+color:#111;
+outline:none;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+box-sizing:border-box;
+transition:.25s ease;
+}
+
+.reclamation-field input,
+.reclamation-field select{
+height:45px;
+}
+
+.reclamation-field textarea{
+resize:vertical;
+min-height:130px;
+line-height:1.5;
+}
+
+.reclamation-field input:focus,
+.reclamation-field select:focus,
+.reclamation-field textarea:focus{
+border-color:#111;
+background:white;
+}
+
+/* =====================================
+DISCLAIMER RÉCOMPENSE
+===================================== */
+
+.reclamation-disclaimer{
+display:none;
+align-items:flex-start;
+gap:10px;
+margin:-5px 0 20px;
+padding:12px 14px;
+border-radius:12px;
+background:rgba(229,57,53,.08);
+border:1px solid rgba(229,57,53,.15);
+color:#e53935;
+}
+
+.reclamation-disclaimer.active{
+display:flex;
+}
+
+.reclamation-disclaimer i{
+margin-top:2px;
+flex-shrink:0;
+}
+
+.reclamation-disclaimer p{
+margin:0;
+font-size:12px;
+line-height:1.5;
+}
+
+/* =====================================
+AUTRE
+===================================== */
+
+.reclamation-other-wrapper{
+display:none;
+}
+
+.reclamation-other-wrapper.active{
+display:block;
+}
+
+/* =====================================
+BOUTON ENVOYER
+===================================== */
+
+.reclamation-submit{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+width:100%;
+padding:13px 20px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s ease;
+}
+
+.reclamation-submit:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* =====================================
+FLÈCHE DU SELECT
+===================================== */
+
+.reclamation-field select{
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+padding-right:45px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-size:14px 14px;
+background-position:right 16px center;
+}
 
 /* =====================================
 RESPONSIVE
@@ -1637,107 +1792,113 @@ RESPONSIVE
 
 @media(max-width:900px){
 
-    .quiz-card-content{
-        grid-template-columns:1fr;
-    }
+.quiz-top-info{
+min-height:auto;
+}
 
-    .quiz-countdown{
-        display:none;
-    }
+.quiz-header-left{
+position:static;
+max-width:none;
+padding:24px 0 0;
+}
 
-    .quiz-card-actions{
-        position:relative;
-        top:auto;
-        right:auto;
-        justify-content:flex-end;
-        flex-wrap:wrap;
-        margin-bottom:25px;
-    }
+.quiz-partner-banner{
+position:relative;
+top:auto;
+right:auto;
+bottom:auto;
+width:100%;
+min-width:0;
+min-height:220px;
+margin-top:18px;
+border-radius:28px;
+}
 
-    .quiz-interactive{
-        grid-column:1;
-    }
+.quiz-card-content{
+grid-template-columns:1fr;
+}
+
+.quiz-card-actions{
+justify-content:flex-end;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.quiz-interactive{
+grid-column:1;
+}
 
 }
 
-
 @media(max-width:600px){
 
-    .quiz-selector{
-        padding:8px 12px;
-    }
+.quiz-selector{
+padding:6px 10px;
+}
 
-    .quiz-selector-item{
-        width:54px;
-        height:54px;
-    }
+.quiz-title{
+font-size:24px;
+}
 
-    .quiz-sidebar{
-        top:135px;
-    }
+.quiz-card{
+width:94%;
+}
 
-    .quiz-title{
-        font-size:28px;
-    }
+.quiz-card-content{
+padding-top:15px;
+}
 
-    .quiz-card{
-        width:94%;
-    }
+.quiz-card-actions{
+gap:6px;
+}
 
-    .quiz-card-content{
-        padding-top:15px;
-    }
+.quiz-link{
+gap:5px;
+}
 
-    .quiz-card-actions{
-        gap:6px;
-    }
+.quiz-link button{
+padding:9px 12px;
+font-size:13px;
+}
 
-    .quiz-link{
-        gap:5px;
-    }
+.quiz-play-btn{
+width:90px;
+height:38px;
+}
 
-    .quiz-link button{
-        padding:9px 12px;
-        font-size:13px;
-    }
-
-    .quiz-play-btn{
-        width:90px;
-        height:38px;
-    }
-
-    .quiz-notification-panel{
-        position:fixed;
-        top:120px;
-        left:5%;
-        right:5%;
-        width:auto;
-    }
-
+.quiz-notification-panel{
+position:fixed;
+top:120px;
+left:5%;
+right:5%;
+width:auto;
 }
 
 
-/* =====================================
-   RESPONSIVE
-===================================== */
+
+.quiz-filter{
+padding:10px;
+}
+
+}
 
 @media(max-width:600px){
 
-    .reclamation-section{
-        padding:55px 15px 70px;
-    }
+.reclamation-section{
+padding:55px 15px 70px;
+}
 
-    .reclamation-container{
-        width:94%;
-    }
+.reclamation-container{
+width:94%;
+}
 
-    .reclamation-form{
-        padding:22px;
-        border-radius:18px;
-    }
+.reclamation-form{
+padding:22px;
+border-radius:18px;
+}
 
-    .reclamation-header h3{
-        font-size:20px;
-    }
+.reclamation-header h3{
+font-size:20px;
+}
 
 }
