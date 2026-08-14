@@ -11,6 +11,26 @@ title: "La Question Du Mois",
 subtitle: "Tentez de gagner 5000 FCFA",
 category: "culture",
 frequency: "monthly",
+type: "monthly",
+coinsReward: 60,
+questionsCount: 1,
+xpPerQuestion: 100,
+coinsPerQuestion: 20,
+seriesBonusXP: 0,
+seriesBonusCoins: 0,
+difficulty: "normal",
+allowSecondAttempt: false,
+secondAttemptCoinsCost: 30,
+secondAttemptAdEnabled: true,
+launchAdEnabled: true,
+launchAdRewardCoins: 0,
+freeSlotsMax: 500,
+unlockSlotCoinsCost: 50,
+xpRequired: 0,
+unlockWithXPCoinsCost: 50,
+unlockLowXPCoinsCost: 100,
+sponsorMessageEnabled: true,
+sponsorMessage: "Merci à GeekOtaku et CultureBox, partenaires de cette édition.",
 image: "../assets/images/quiz/question-du-mois.jpg",
 members: 128,
 liked: false,
@@ -45,6 +65,26 @@ title: "Quiz Manga",
 subtitle: "Testez vos connaissances sur les mangas",
 category: "manga",
 frequency: "daily",
+type: "daily",
+coinsReward: 0,
+questionsCount: 5,
+xpPerQuestion: 20,
+coinsPerQuestion: 5,
+seriesBonusXP: 20,
+seriesBonusCoins: 10,
+difficulty: "normal",
+allowSecondAttempt: false,
+secondAttemptCoinsCost: 15,
+secondAttemptAdEnabled: true,
+launchAdEnabled: false,
+launchAdRewardCoins: 0,
+freeSlotsMax: 500,
+unlockSlotCoinsCost: 50,
+xpRequired: 0,
+unlockWithXPCoinsCost: 50,
+unlockLowXPCoinsCost: 100,
+sponsorMessageEnabled: true,
+sponsorMessage: "Merci à MangaZone, partenaire de cette édition.",
 image: "../assets/images/quiz/question-du-mois.jpg",
 members: 94,
 liked: false,
@@ -72,6 +112,26 @@ title: "Quiz Anime",
 subtitle: "Quel fan d'anime êtes-vous ?",
 category: "manga",
 frequency: "daily",
+type: "daily",
+coinsReward: 0,
+questionsCount: 5,
+xpPerQuestion: 20,
+coinsPerQuestion: 5,
+seriesBonusXP: 20,
+seriesBonusCoins: 10,
+difficulty: "normal",
+allowSecondAttempt: false,
+secondAttemptCoinsCost: 15,
+secondAttemptAdEnabled: true,
+launchAdEnabled: false,
+launchAdRewardCoins: 0,
+freeSlotsMax: 500,
+unlockSlotCoinsCost: 50,
+xpRequired: 0,
+unlockWithXPCoinsCost: 50,
+unlockLowXPCoinsCost: 100,
+sponsorMessageEnabled: true,
+sponsorMessage: "Merci à AnimeVerse, partenaire de cette édition.",
 image: "../assets/images/quiz/question-du-mois.jpg",
 members: 76,
 liked: false,
@@ -99,6 +159,26 @@ title: "Quiz Gaming",
 subtitle: "Testez votre culture vidéoludique",
 category: "gaming",
 frequency: "special",
+type: "monthly",
+coinsReward: 60,
+questionsCount: 1,
+xpPerQuestion: 100,
+coinsPerQuestion: 20,
+seriesBonusXP: 0,
+seriesBonusCoins: 0,
+difficulty: "hard",
+allowSecondAttempt: true,
+secondAttemptCoinsCost: 30,
+secondAttemptAdEnabled: true,
+launchAdEnabled: true,
+launchAdRewardCoins: 30,
+freeSlotsMax: 500,
+unlockSlotCoinsCost: 50,
+xpRequired: 0,
+unlockWithXPCoinsCost: 50,
+unlockLowXPCoinsCost: 100,
+sponsorMessageEnabled: true,
+sponsorMessage: "Merci à GameHub, partenaire de cette édition spéciale.",
 image: "../assets/images/quiz/question-du-mois.jpg",
 members: 112,
 liked: false,
@@ -126,6 +206,26 @@ title: "Quiz Cinéma",
 subtitle: "Les grands classiques du cinéma",
 category: "cinema",
 frequency: "yearly",
+type: "yearly",
+coinsReward: 100,
+questionsCount: 1,
+xpPerQuestion: 100,
+coinsPerQuestion: 20,
+seriesBonusXP: 0,
+seriesBonusCoins: 0,
+difficulty: "normal",
+allowSecondAttempt: false,
+secondAttemptCoinsCost: 40,
+secondAttemptAdEnabled: true,
+launchAdEnabled: true,
+launchAdRewardCoins: 0,
+freeSlotsMax: 500,
+unlockSlotCoinsCost: 50,
+xpRequired: 0,
+unlockWithXPCoinsCost: 50,
+unlockLowXPCoinsCost: 100,
+sponsorMessageEnabled: true,
+sponsorMessage: "Merci à CineClub, partenaire de cette édition annuelle.",
 image: "../assets/images/quiz/question-du-mois.jpg",
 members: 83,
 liked: false,
@@ -153,6 +253,26 @@ title: "Culture Africaine",
 subtitle: "Découvrez la richesse des cultures africaines",
 category: "culture",
 frequency: "monthly",
+type: "monthly",
+coinsReward: 60,
+questionsCount: 1,
+xpPerQuestion: 100,
+coinsPerQuestion: 20,
+seriesBonusXP: 0,
+seriesBonusCoins: 0,
+difficulty: "normal",
+allowSecondAttempt: false,
+secondAttemptCoinsCost: 30,
+secondAttemptAdEnabled: true,
+launchAdEnabled: true,
+launchAdRewardCoins: 0,
+freeSlotsMax: 500,
+unlockSlotCoinsCost: 50,
+xpRequired: 0,
+unlockWithXPCoinsCost: 50,
+unlockLowXPCoinsCost: 100,
+sponsorMessageEnabled: true,
+sponsorMessage: "Merci à AfrikRoots, partenaire de cette édition.",
 image: "../assets/images/quiz/question-du-mois.jpg",
 members: 105,
 liked: false,
@@ -180,6 +300,26 @@ title: "Pop Culture",
 subtitle: "Un mélange de culture pop",
 category: "culture",
 frequency: "special",
+type: "daily",
+coinsReward: 0,
+questionsCount: 10,
+xpPerQuestion: 15,
+coinsPerQuestion: 5,
+seriesBonusXP: 30,
+seriesBonusCoins: 15,
+difficulty: "normal",
+allowSecondAttempt: false,
+secondAttemptCoinsCost: 15,
+secondAttemptAdEnabled: true,
+launchAdEnabled: false,
+launchAdRewardCoins: 0,
+freeSlotsMax: 500,
+unlockSlotCoinsCost: 50,
+xpRequired: 0,
+unlockWithXPCoinsCost: 50,
+unlockLowXPCoinsCost: 100,
+sponsorMessageEnabled: true,
+sponsorMessage: "Merci à PopWave, partenaire de cette édition.",
 image: "../assets/images/quiz/question-du-mois.jpg",
 members: 67,
 liked: false,
@@ -221,6 +361,18 @@ let showResultsPanel = false;
 
 let currentPartnerIndex = 0;
 let partnerInterval = null;
+
+// -----------------------------------------------------
+// QUIZ COINS (monnaie interne, simulation front-end)
+// -----------------------------------------------------
+/*
+* Ressource globale commune à tous les quiz (journaliers,
+* mensuels, annuels). Gagnée dans un type de quiz, elle peut
+* être dépensée dans n'importe quel autre (2e tentative,
+* déblocage d'inscription, etc. — phases suivantes).
+*/
+
+let userQuizCoins = 250;
 
 // =========================================================
 // ÉLÉMENTS HTML
@@ -454,6 +606,47 @@ partnerInterval = setInterval(() => {
 goToPartnerSlide((currentPartnerIndex + 1) % partners.length);
 }, 5000);
 }
+}
+
+// =========================================================
+// QUIZ COINS
+// =========================================================
+/*
+* formatCoins() génère le badge [icône] valeur à utiliser
+* PARTOUT où un montant de Quiz Coins doit être affiché dans
+* l'interface (jamais le texte "Quiz Coins" à côté du nombre).
+*/
+
+function formatCoins(value) {
+return `<span class="quiz-coin-value"><i class="fa-solid fa-coins quiz-coin-icon"></i>${value}</span>`;
+}
+
+function renderCoinBalance() {
+const valueEl = document.getElementById("quizCoinBalanceValue");
+
+if (valueEl) {
+valueEl.textContent = userQuizCoins;
+}
+}
+
+function addQuizCoins(amount) {
+if (!amount) {
+return;
+}
+
+userQuizCoins += amount;
+renderCoinBalance();
+}
+
+function spendQuizCoins(amount) {
+if (userQuizCoins < amount) {
+return false;
+}
+
+userQuizCoins -= amount;
+renderCoinBalance();
+
+return true;
 }
 
 // =========================================================
@@ -844,6 +1037,7 @@ src="${quiz.image}"
 alt="${quiz.title}"
 >
 </span>
+<span class="quiz-item-name">${quiz.title}</span>
 `;
 
 // -------------------------------------------------
@@ -932,6 +1126,7 @@ src="${quiz.image}"
 alt="${quiz.title}"
 >
 </span>
+<span class="quiz-item-name">${quiz.title}</span>
 `;
 
 button.addEventListener("click", () => {
@@ -1848,6 +2043,8 @@ renderSimilarQuizzes();
 renderNotifications();
 updateQuizInterface();
 updatePlayButton();
+renderCoinBalance();
 
 startQuizCountdown();
+
 });

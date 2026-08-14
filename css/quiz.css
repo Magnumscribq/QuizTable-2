@@ -38,7 +38,8 @@ transition:opacity .25s ease, transform .25s ease;
 
 .quiz-selector.expanded{
 width:auto;
-max-width:340px;
+max-width:380px;
+padding:10px 12px;
 }
 
 /* -------- réduction au scroll -------- */
@@ -72,14 +73,23 @@ display:none;
 
 .quiz-selector.expanded .quiz-selector-track{
 display:grid;
-grid-template-columns:repeat(4, 44px);
+grid-template-columns:repeat(4, 62px);
 justify-content:center;
-gap:14px;
+gap:22px 16px;
 width:100%;
-max-height:55vh;
+max-height:60vh;
 overflow-y:auto;
 overflow-x:hidden;
-padding:6px 2px;
+padding:10px 4px;
+}
+
+.quiz-selector.expanded .quiz-selector-track .quiz-selector-item{
+width:62px;
+}
+
+.quiz-selector.expanded .quiz-selector-track .quiz-selector-circle{
+width:62px;
+height:62px;
 }
 
 /* =====================================
@@ -107,7 +117,6 @@ transition:.25s ease;
 .quiz-selector-expand:hover{
 background:rgba(0,0,0,.08);
 }
-
 
 
 /* =====================================
@@ -163,20 +172,20 @@ pointer-events:none;
 box-shadow:0 4px 10px rgba(0,0,0,.25);
 transition:opacity .25s ease, transform .25s ease;
 background:rgba(255,255,255,0.55);
-    border:1px solid rgba(255,255,255,0.6);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,0.6);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
 
-    color:#111;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:14px;
-    cursor:pointer;
-    opacity:0;
-    pointer-events:none;
+color:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+cursor:pointer;
+opacity:0;
+pointer-events:none;
 
-    transition:opacity .25s ease, transform .25s ease;
+transition:opacity .25s ease, transform .25s ease;
 
 }
 
@@ -192,6 +201,10 @@ CERCLES DES QUIZ
 
 .quiz-selector-track .quiz-selector-item{
 width:44px;
+}
+
+.quiz-selector-track .quiz-selector-circle{
+width:44px;
 height:44px;
 }
 
@@ -199,30 +212,37 @@ height:44px;
 position:relative;
 flex:0 0 auto;
 width:62px;
-height:62px;
-padding:3px;
-border-radius:50%;
-border:2px solid transparent;
-background:transparent;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:6px;
 cursor:pointer;
+background:transparent;
+border:none;
+padding:0;
 transition:.3s ease;
 }
 
-.quiz-selector-item.selected{
-border-color:#111;
-}
-
 .quiz-selector-circle{
-width:100%;
-height:100%;
+position:relative;
+width:62px;
+height:62px;
+padding:3px;
+box-sizing:border-box;
 display:flex;
 justify-content:center;
 align-items:center;
 border-radius:50%;
+border:2px solid transparent;
 background:#f0f0f0;
 color:#111;
 font-size:21px;
 overflow:hidden;
+transition:.3s ease;
+}
+
+.quiz-selector-item.selected .quiz-selector-circle{
+border-color:#111;
 }
 
 .quiz-selector-circle img{
@@ -232,20 +252,46 @@ object-fit:cover;
 }
 
 /* =====================================
+NOM DU QUIZ (masqué dans la barre compacte,
+révélé en mode agrandi et sur "Quiz similaires")
+===================================== */
+
+.quiz-item-name{
+display:none;
+width:100%;
+font-size:11px;
+font-weight:600;
+color:#111;
+text-align:center;
+line-height:1.3;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.quiz-selector.expanded .quiz-item-name{
+display:block;
+}
+
+.quiz-similar-track .quiz-item-name{
+display:block;
+}
+
+/* =====================================
 INDICATEUR QUIZ EN COURS
 ===================================== */
 
 .quiz-selector-item.quiz-live::after{
 content:"";
 position:absolute;
-top:2px;
-right:4px;
+top:-2px;
+right:-2px;
 width:11px;
 height:11px;
 border-radius:50%;
 background:#e53935;
 box-shadow:0 2px 6px rgba(0,0,0,.2);
-z-index:5;
+z-index:10;
 }
 
 /* =====================================
@@ -808,6 +854,46 @@ align-items:center;
 gap:8px;
 }
 
+/* =====================================
+QUIZ COINS (monnaie interne)
+===================================== */
+
+.quiz-coin-balance{
+display:flex;
+align-items:center;
+gap:6px;
+height:40px;
+padding:0 14px;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:700;
+white-space:nowrap;
+}
+
+.quiz-coin-balance i{
+color:#ffc93c;
+font-size:13px;
+}
+
+/* Badge réutilisable [icône] valeur — utilisé partout où
+un montant en Quiz Coins doit être affiché dans l'interface */
+
+.quiz-coin-value{
+display:inline-flex;
+align-items:center;
+gap:5px;
+font-weight:700;
+}
+
+.quiz-coin-value i,
+.quiz-coin-icon{
+color:#f5b700;
+}
+
+
 .quiz-ajust button{
 width:40px;
 height:40px;
@@ -951,6 +1037,16 @@ margin:10px 0;
 text-align:center;
 color:#999;
 font-size:13px;
+}
+
+/* =====================================
+BOUTON JOUER (au-dessus du nombre d'inscrits)
+===================================== */
+
+.quiz-play-row{
+display:flex;
+justify-content:flex-start;
+margin:0 0 12px;
 }
 
 /* =====================================
@@ -1550,251 +1646,251 @@ display:none;
 SECTION RÉCLAMATION
 ===================================== */
 .reclamation-section{
-    width:100%;
-    padding:70px 25px 90px;
-    background:#f5f5f5;
+width:100%;
+padding:70px 25px 90px;
+background:#f5f5f5;
 }
 
 .reclamation-container{
-    width:90%;
-    max-width:900px;
-    margin:auto;
+width:90%;
+max-width:900px;
+margin:auto;
 }
 
 /* =====================================
 INTRODUCTION
 ===================================== */
 .reclamation-intro{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
 }
 
 .reclamation-description{
-    max-width:650px;
-    margin:0 0 22px;
-    color:#777;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    line-height:1.6;
+max-width:650px;
+margin:0 0 22px;
+color:#777;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+line-height:1.6;
 }
 
 /* =====================================
 FORMULAIRE
 ===================================== */
 .reclamation-form-wrapper{
-    width:100%;
-    display:none;
-    margin-top:30px;
+width:100%;
+display:none;
+margin-top:30px;
 }
 
 .reclamation-form-wrapper.active{
-    display:block;
+display:block;
 }
 
 .reclamation-form{
-    position:relative;
-    width:100%;
-    padding:30px;
-    box-sizing:border-box;
-    background:white;
-    border:1px solid rgba(0,0,0,.08);
-    border-radius:22px;
-    box-shadow:0 12px 35px rgba(0,0,0,.08);
-    text-align:left;
+position:relative;
+width:100%;
+padding:30px;
+box-sizing:border-box;
+background:white;
+border:1px solid rgba(0,0,0,.08);
+border-radius:22px;
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+text-align:left;
 }
 
 /* =====================================
 EN-TÊTE DU FORMULAIRE
 ===================================== */
 .reclamation-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:25px;
 }
 
 .reclamation-header h3{
-    margin:0;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:24px;
-    color:#111;
+margin:0;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:24px;
+color:#111;
 }
 
 .reclamation-close{
-    width:35px;
-    height:35px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:none;
-    border-radius:50%;
-    background:#f0f0f0;
-    color:#333;
-    cursor:pointer;
-    transition:.25s ease;
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:none;
+border-radius:50%;
+background:#f0f0f0;
+color:#333;
+cursor:pointer;
+transition:.25s ease;
 }
 
 .reclamation-close:hover{
-    background:#111;
-    color:white;
+background:#111;
+color:white;
 }
 
 /* =====================================
 CHAMPS
 ===================================== */
 .reclamation-field{
-    margin-bottom:20px;
+margin-bottom:20px;
 }
 
 .reclamation-field label{
-    display:block;
-    margin-bottom:8px;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:13px;
-    font-weight:600;
-    color:#333;
+display:block;
+margin-bottom:8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+color:#333;
 }
 
 .reclamation-field input,
 .reclamation-field select,
 .reclamation-field textarea{
-    width:100%;
-    padding:12px 14px;
-    border:1px solid rgba(0,0,0,.15);
-    border-radius:12px;
-    background:#f8f8f8;
-    color:#111;
-    outline:none;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    box-sizing:border-box;
-    transition:.25s ease;
+width:100%;
+padding:12px 14px;
+border:1px solid rgba(0,0,0,.15);
+border-radius:12px;
+background:#f8f8f8;
+color:#111;
+outline:none;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+box-sizing:border-box;
+transition:.25s ease;
 }
 
 .reclamation-field input,
 .reclamation-field select{
-    height:45px;
+height:45px;
 }
 
 .reclamation-field textarea{
-    resize:vertical;
-    min-height:130px;
-    line-height:1.5;
+resize:vertical;
+min-height:130px;
+line-height:1.5;
 }
 
 .reclamation-field input:focus,
 .reclamation-field select:focus,
 .reclamation-field textarea:focus{
-    border-color:#111;
-    background:white;
+border-color:#111;
+background:white;
 }
 
 /* =====================================
 DISCLAIMER RÉCOMPENSE
 ===================================== */
 .reclamation-disclaimer{
-    display:none;
-    align-items:flex-start;
-    gap:10px;
-    margin:-5px 0 20px;
-    padding:12px 14px;
-    border-radius:12px;
-    background:rgba(229,57,53,.08);
-    border:1px solid rgba(229,57,53,.15);
-    color:#e53935;
+display:none;
+align-items:flex-start;
+gap:10px;
+margin:-5px 0 20px;
+padding:12px 14px;
+border-radius:12px;
+background:rgba(229,57,53,.08);
+border:1px solid rgba(229,57,53,.15);
+color:#e53935;
 }
 
 .reclamation-disclaimer.active{
-    display:flex;
+display:flex;
 }
 
 .reclamation-disclaimer i{
-    margin-top:2px;
-    flex-shrink:0;
+margin-top:2px;
+flex-shrink:0;
 }
 
 .reclamation-disclaimer p{
-    margin:0;
-    font-size:12px;
-    line-height:1.5;
+margin:0;
+font-size:12px;
+line-height:1.5;
 }
 
 /* =====================================
 AUTRE
 ===================================== */
 .reclamation-other-wrapper{
-    display:none;
+display:none;
 }
 
 .reclamation-other-wrapper.active{
-    display:block;
+display:block;
 }
 
 /* =====================================
 BOUTON RÉCLAMATION
 ===================================== */
 .reclamation-toggle{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    padding:12px 20px;
-    border:none;
-    border-radius:50px;
-    background:#111;
-    color:white;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s ease;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:9px;
+padding:12px 20px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s ease;
 }
 
 .reclamation-toggle:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 
 /* =====================================
 BOUTON ENVOYER
 ===================================== */
 .reclamation-submit{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    width:100%;
-    padding:13px 20px;
-    border:none;
-    border-radius:50px;
-    background:#111;
-    color:white;
-    font-family:"Bricolage Grotesque",sans-serif;
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s ease;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+width:100%;
+padding:13px 20px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s ease;
 }
 
 .reclamation-submit:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 
 /* =====================================
 FLÈCHE DU SELECT
 ===================================== */
 .reclamation-field select{
-    appearance:none;
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    padding-right:45px;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;
-    background-size:14px 14px;
-    background-position:right 16px center;
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+padding-right:45px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-size:14px 14px;
+background-position:right 16px center;
 }
 
 /* =====================================
@@ -1802,22 +1898,22 @@ RESPONSIVE RÉCLAMATION
 ===================================== */
 @media(max-width:600px){
 
-    .reclamation-section{
-        padding:55px 15px 70px;
-    }
+.reclamation-section{
+padding:55px 15px 70px;
+}
 
-    .reclamation-container{
-        width:94%;
-    }
+.reclamation-container{
+width:94%;
+}
 
-    .reclamation-form{
-        padding:22px;
-        border-radius:18px;
-    }
+.reclamation-form{
+padding:22px;
+border-radius:18px;
+}
 
-    .reclamation-header h3{
-        font-size:20px;
-    }
+.reclamation-header h3{
+font-size:20px;
+}
 }
 
 /* =====================================
@@ -1909,11 +2005,8 @@ width:auto;
 }
 
 
-
 .quiz-filter{
 padding:10px;
 }
 
 }
-
-

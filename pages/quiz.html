@@ -208,22 +208,8 @@ S'inscrire
 </button>
 </div>
 
-<!-- JOUER + RÈGLEMENT + HISTORIQUE -->
+<!-- RÈGLEMENT + HISTORIQUE -->
 <div class="quiz-link">
-
-<!-- BOUTON JOUER -->
-<button
-class="quiz-play-btn hidden">
-<span class="play-shape play-shape-1"></span>
-<span class="play-shape play-shape-2"></span>
-<span class="play-shape play-shape-3"></span>
-<span class="play-shape play-shape-4"></span>
-
-<span class="play-button-content">
-<i class="fa-solid fa-play"></i>
-<span>Jouer</span>
-</span>
-</button>
 
 <!-- RÈGLEMENT -->
 <button class="quiz-rules">
@@ -238,8 +224,18 @@ Historique
 </button>
 </div>
 
-<!-- NOTIFICATION + LIKE -->
+<!-- SOLDE + NOTIFICATION + LIKE -->
 <div class="quiz-ajust">
+
+<!-- SOLDE QUIZ COINS -->
+<div
+class="quiz-coin-balance"
+id="quizCoinBalance"
+title="Vos Quiz Coins"
+aria-label="Vos Quiz Coins">
+<i class="fa-solid fa-coins"></i>
+<span id="quizCoinBalanceValue">0</span>
+</div>
 
 <!-- NOTIFICATION -->
 <div class="quiz-notification-wrapper">
@@ -310,6 +306,22 @@ FENÊTRE DE DÉSINSCRIPTION
 <button class="unregister-yes">Oui, me désinscrire</button>
 </div>
 </div>
+</div>
+
+<!-- BOUTON JOUER (au-dessus du nombre d'inscrits, visible seulement après inscription) -->
+<div class="quiz-play-row">
+<button
+class="quiz-play-btn hidden">
+<span class="play-shape play-shape-1"></span>
+<span class="play-shape play-shape-2"></span>
+<span class="play-shape play-shape-3"></span>
+<span class="play-shape play-shape-4"></span>
+
+<span class="play-button-content">
+<i class="fa-solid fa-play"></i>
+<span>Jouer</span>
+</span>
+</button>
 </div>
 
 <!-- MEMBRES (juste au-dessus du contenu du quiz) -->
