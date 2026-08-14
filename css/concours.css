@@ -1,0 +1,2043 @@
+/* =====================================
+PAGE CONCOURS
+===================================== */
+
+.concours-section{
+min-height:100vh;
+padding:140px 0 140px;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+background:#f5f5f5;
+}
+
+/* =====================================
+BARRE DE CONCOURS (flottante, fusionnée avec les filtres)
+===================================== */
+
+.concours-selector{
+position:fixed;
+top:65px;
+left:50%;
+transform:translateX(-50%);
+z-index:99;
+width:fit-content;
+max-width:420px;
+display:flex;
+flex-direction:column;
+align-items:stretch;
+padding:6px 8px;
+border-radius:25px;
+background:rgba(255,255,255,0.3);
+border:1px solid rgba(255,255,255,0.6);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(12px);
+box-shadow:0 7px 10px rgba(0,0,0,.18);
+transition:opacity .25s ease, transform .25s ease;
+}
+
+.concours-selector.expanded{
+width:auto;
+max-width:340px;
+}
+
+/* -------- réduction au scroll -------- */
+
+.concours-selector.collapsed{
+opacity:0;
+transform:translateX(-50%) translateY(-12px);
+pointer-events:none;
+}
+
+.concours-selector-main{
+display:flex;
+align-items:center;
+gap:0px;
+}
+
+.concours-selector-track{
+max-width:1200px;
+display:flex;
+align-items:center;
+gap:12px;
+overflow-x:auto;
+overflow-y:hidden;
+scrollbar-width:none;
+-ms-overflow-style:none;
+}
+
+.concours-selector-track::-webkit-scrollbar{
+display:none;
+}
+
+.concours-selector.expanded .concours-selector-track{
+display:grid;
+grid-template-columns:repeat(4, 44px);
+justify-content:center;
+gap:14px;
+width:100%;
+max-height:55vh;
+overflow-y:auto;
+overflow-x:hidden;
+padding:6px 2px;
+}
+
+/* =====================================
+BOUTONS FILTRE / AGRANDIR
+===================================== */
+
+.concours-selector-filter-toggle,
+.concours-selector-expand{
+flex:0 0 auto;
+width:34px;
+height:34px;
+border:none;
+border-radius:50%;
+background:transparent;
+color:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:13px;
+cursor:pointer;
+transition:.25s ease;
+}
+
+.concours-selector-filter-toggle:hover,
+.concours-selector-expand:hover{
+background:rgba(0,0,0,.08);
+}
+
+.concours-selector-filter-toggle.active{
+background:rgba(0,0,0,.08);
+color:#111;
+}
+
+/* =====================================
+LIGNE DE FILTRES (repliable dans la barre)
+===================================== */
+
+.concours-selector-filters{
+display:flex;
+align-items:center;
+gap:10px;
+max-height:0;
+opacity:0;
+overflow:hidden;
+transition:max-height .3s ease, opacity .25s ease, margin-top .3s ease;
+}
+
+.concours-selector.filters-open .concours-selector-filters{
+max-height:60px;
+opacity:1;
+margin-top:8px;
+overflow-x:auto;
+overflow-y:hidden;
+scrollbar-width:none;
+-ms-overflow-style:none;
+}
+
+.concours-selector-filters::-webkit-scrollbar{
+display:none;
+}
+
+/* =====================================
+BOUTON "ŒIL" (barre réduite au scroll)
+===================================== */
+
+.concours-selector-peek{
+position:fixed;
+top:65px;
+left:50%;
+transform:translateX(-50%) scale(.6);
+z-index:98;
+width:40px;
+height:40px;
+border:1px solid rgba(255,255,255,0.6);
+border-radius:50%;
+background:rgba(255,255,255,0.55);
+backdrop-filter:blur(14px);
+-webkit-backdrop-filter:blur(14px);
+color:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:14px;
+cursor:pointer;
+opacity:0;
+pointer-events:none;
+box-shadow:0 15px 40px rgba(0,0,0,.18);
+transition:opacity .25s ease, transform .25s ease;
+}
+
+.concours-selector-peek.visible{
+opacity:1;
+transform:translateX(-50%) scale(1);
+pointer-events:auto;
+}
+
+/* =====================================
+CERCLES DES CONCOURS
+===================================== */
+
+.concours-selector-track .concours-selector-item{
+width:44px;
+height:44px;
+}
+
+.concours-selector-item{
+position:relative;
+flex:0 0 auto;
+width:62px;
+height:62px;
+padding:3px;
+border-radius:50%;
+border:2px solid transparent;
+background:transparent;
+cursor:pointer;
+transition:.3s ease;
+}
+
+.concours-selector-item.selected{
+border-color:#111;
+}
+
+.concours-selector-circle{
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+background:#f0f0f0;
+color:#111;
+font-size:21px;
+overflow:hidden;
+}
+
+.concours-selector-circle img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.concours-selector-empty{
+padding:10px 14px;
+color:#777;
+font-size:13px;
+}
+
+/* =====================================
+POINT DE STATUT (vert / rouge / bleu)
+===================================== */
+
+.concours-selector-item::after{
+content:"";
+position:absolute;
+top:1px;
+right:3px;
+width:11px;
+height:11px;
+border-radius:50%;
+box-shadow:0 2px 6px rgba(0,0,0,.2);
+z-index:5;
+display:none;
+}
+
+.concours-selector-item.status-open::after{
+display:block;
+background:#2e9e44;
+}
+
+.concours-selector-item.status-ongoing::after{
+display:block;
+background:#e53935;
+}
+
+.concours-selector-item.status-results::after{
+display:block;
+background:#1479d1;
+}
+
+/* =====================================
+INFORMATIONS DU HAUT (en-tête + panneau pub)
+===================================== */
+
+.concours-top-info{
+position:relative;
+width:100%;
+min-height:360px;
+margin:0 0 25px;
+overflow:visible;
+}
+
+/* ------- Colonne gauche : titre / infos / disclaimer ------- */
+
+.concours-header-left{
+position:relative;
+z-index:2;
+width:100%;
+max-width:440px;
+padding:10px 0 24px;
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:16px;
+}
+
+.concours-banner{
+text-align:left;
+}
+
+.concours-title{
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:40px;
+margin:0 0 4px;
+color:#111;
+line-height:1.15;
+}
+
+.concours-title-sub{
+margin:0;
+color:#777;
+font-size:14px;
+}
+
+/* =====================================
+INFOS CLÉS (période / limite / pays)
+===================================== */
+
+.concours-info-list{
+display:flex;
+flex-direction:column;
+gap:10px;
+width:100%;
+}
+
+.concours-info-row{
+display:flex;
+align-items:flex-start;
+gap:10px;
+color:#333;
+}
+
+.concours-info-row i{
+margin-top:3px;
+width:16px;
+text-align:center;
+color:#111;
+flex-shrink:0;
+}
+
+.concours-info-row .concours-info-label{
+display:block;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:11px;
+font-weight:700;
+text-transform:uppercase;
+color:#888;
+margin-bottom:2px;
+}
+
+.concours-info-row .concours-info-value{
+font-size:13.5px;
+color:#111;
+line-height:1.5;
+}
+
+.concours-country-flags{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+margin-top:4px;
+}
+
+.concours-country-flag{
+display:inline-flex;
+align-items:center;
+gap:5px;
+padding:4px 10px;
+border-radius:50px;
+background:#f0f0f0;
+font-size:12px;
+color:#333;
+}
+
+/* =====================================
+DISCLAIMER CONCOURS
+===================================== */
+
+.concours-disclaimer{
+display:flex;
+align-items:flex-start;
+gap:9px;
+padding:12px 14px;
+border-radius:14px;
+background:rgba(233,30,99,.08);
+border:1px solid rgba(233,30,99,.18);
+color:#c2185b;
+}
+
+.concours-disclaimer i{
+margin-top:2px;
+flex-shrink:0;
+}
+
+.concours-disclaimer p{
+margin:0;
+font-size:12.5px;
+line-height:1.5;
+}
+
+.concours-disclaimer strong{
+color:#ad1457;
+}
+
+/* =====================================
+PANNEAU PUBLICITAIRE (partenaires)
+===================================== */
+/*
+* Ordinateur : le bord droit ET le bord haut touchent
+* les limites de l'écran (sous le header). Seul le coin
+* bas gauche est arrondi.
+*/
+
+.concours-partner-banner{
+position:absolute;
+top:0;
+right:calc(-1 * ((100vw - min(90vw, 1400px)) / 2));
+bottom:0;
+width:56%;
+min-width:320px;
+min-height:400px;
+overflow:hidden;
+background:#111;
+border-radius:60px 0 0 60px;
+z-index:1;
+}
+
+.concours-partner-track{
+position:relative;
+width:100%;
+height:100%;
+min-height:280px;
+}
+
+.concours-partner-slide{
+position:absolute;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:28px 30px;
+box-sizing:border-box;
+opacity:0;
+visibility:hidden;
+transition:opacity .6s ease;
+background-size:cover;
+background-position:center;
+}
+
+.concours-partner-slide::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 60%, rgba(0,0,0,0) 100%);
+}
+
+.concours-partner-slide.active{
+opacity:1;
+visibility:visible;
+}
+
+.concours-partner-eyebrow{
+position:relative;
+z-index:2;
+margin:0 0 6px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:11px;
+font-weight:700;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:rgba(255,255,255,.75);
+}
+
+.concours-partner-name{
+position:relative;
+z-index:2;
+margin:0 0 8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:26px;
+font-weight:800;
+color:white;
+}
+
+.concours-partner-text{
+position:relative;
+z-index:2;
+margin:0 0 16px;
+max-width:480px;
+color:rgba(255,255,255,.85);
+font-size:13.5px;
+line-height:1.5;
+}
+
+.concours-partner-cta{
+position:relative;
+z-index:2;
+display:inline-flex;
+align-items:center;
+gap:8px;
+width:fit-content;
+padding:9px 16px;
+border:none;
+border-radius:50px;
+background:white;
+color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+cursor:pointer;
+transition:.25s ease;
+}
+
+.concours-partner-cta:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.concours-partner-dots{
+position:absolute;
+z-index:3;
+bottom:15px;
+right:0%;
+transform:translateX(-50%);
+display:flex;
+gap:6px;
+}
+
+.concours-partner-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:rgba(255,255,255,.4);
+cursor:pointer;
+border:none;
+padding:0;
+transition:.25s ease;
+}
+
+.concours-partner-dot.active{
+background:white;
+width:20px;
+border-radius:5px;
+}
+
+/* =====================================
+ZONE PRINCIPALE
+===================================== */
+
+.concours-card{
+position:relative;
+width:90%;
+max-width:1400px;
+min-height:450px;
+overflow:visible;
+border-radius:0;
+box-shadow:none;
+background:transparent;
+}
+
+/* =====================================
+RAPPEL INSCRIPTION UNIQUE
+===================================== */
+
+.concours-register-note{
+display:flex;
+align-items:flex-start;
+gap:8px;
+margin:0 0 15px;
+color:#996600;
+font-size:12.5px;
+line-height:1.5;
+}
+
+.concours-register-note i{
+margin-top:2px;
+color:#e4a900;
+flex-shrink:0;
+}
+
+/* =====================================
+CONTENU PRINCIPAL
+===================================== */
+
+.concours-card-content{
+position:relative;
+z-index:2;
+width:100%;
+min-height:450px;
+padding:0 0 25px;
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+background:transparent;
+border:none;
+overflow:visible;
+}
+
+/* =====================================
+ACTIONS
+===================================== */
+
+.concours-card-actions{
+position:relative;
+z-index:5;
+display:flex;
+align-items:center;
+justify-content:flex-end;
+flex-wrap:wrap;
+gap:10px;
+margin:0 0 22px;
+}
+
+.concours-card-actions button{
+display:flex;
+justify-content:center;
+align-items:center;
+border:none;
+background:#111;
+color:white;
+font-size:15px;
+cursor:pointer;
+transition:.3s ease;
+}
+
+.concours-card-actions button:hover{
+transform:translateY(-2px);
+background:#222;
+}
+
+.concours-card-actions button.active{
+background:#111;
+color:white;
+}
+
+.concours-card-actions button:disabled{
+opacity:.5;
+cursor:not-allowed;
+transform:none;
+}
+
+/* =====================================
+LIENS
+===================================== */
+
+.concours-link{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+}
+
+.concours-link button{
+position:relative;
+border-radius:25px;
+padding:10px 17px;
+gap:8px;
+overflow:hidden;
+}
+
+/* =====================================
+INSCRIPTION
+===================================== */
+
+.concours-register-btn{
+padding:10px 17px;
+border-radius:50px !important;
+background:#111 !important;
+color:white !important;
+font-family:"Bricolage Grotesque",sans-serif;
+gap:8px;
+font-weight:600;
+}
+
+.concours-register-btn:hover{
+transform:scale(1.05);
+}
+
+.concours-register-btn.registered{
+background:#e53935 !important;
+}
+
+.concours-register-btn.pending{
+background:#999 !important;
+cursor:not-allowed;
+}
+
+.concours-register-btn.results-btn{
+background:#111;   
+color:white;
+}
+
+/* =====================================
+AJUSTEMENTS
+===================================== */
+
+.concours-ajust{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+}
+
+.concours-ajust button{
+width:40px;
+height:40px;
+padding:0;
+border-radius:50% !important;
+}
+
+.concours-like i{
+display:block;
+line-height:1;
+transform:translateY(1px);
+}
+
+/* =====================================
+NOTIFICATIONS
+===================================== */
+
+.concours-notification-wrapper{
+position:relative;
+}
+
+.concours-notification{
+position:relative;
+}
+
+.concours-notification-badge{
+position:absolute;
+top:-5px;
+right:-5px;
+min-width:18px;
+height:18px;
+padding:0 5px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50px;
+background:#e53935;
+color:white;
+font-family:Arial,sans-serif;
+font-size:10px;
+font-weight:700;
+border:2px solid #111;
+}
+
+.concours-notification-badge.hidden{
+display:none !important;
+}
+
+.concours-notification-panel{
+position:absolute;
+top:50px;
+right:0;
+width:320px;
+max-height:400px;
+overflow-y:auto;
+display:none;
+padding:15px;
+border-radius:18px;
+background:white;
+box-shadow:0 15px 40px rgba(0,0,0,.18);
+border:1px solid rgba(0,0,0,.08);
+z-index:200;
+}
+
+.concours-notification-panel.active{
+display:block;
+}
+
+.concours-notification-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:12px;
+}
+
+.concours-notification-header h3{
+margin:0;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:18px;
+color:#111;
+}
+
+.concours-notification-clear{
+padding:5px 8px !important;
+border:none !important;
+background:transparent !important;
+color:#777 !important;
+font-size:11px !important;
+cursor:pointer;
+}
+
+.concours-notification-clear:hover{
+color:#111 !important;
+}
+
+.concours-notification-item{
+position:relative;
+display:flex;
+align-items:flex-start;
+gap:10px;
+padding:12px 30px 12px 5px;
+border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.concours-notification-item:last-child{
+border-bottom:none;
+}
+
+.concours-notification-item i{
+margin-top:3px;
+color:#111;
+}
+
+.concours-notification-item p{
+margin:0;
+font-size:13px;
+line-height:1.4;
+color:#333;
+}
+
+.concours-notification-delete{
+position:absolute;
+top:8px;
+right:0;
+width:24px !important;
+height:24px !important;
+padding:0 !important;
+border-radius:50% !important;
+background:transparent !important;
+color:#999 !important;
+font-size:11px !important;
+}
+
+.concours-notification-delete:hover{
+color:#111 !important;
+}
+
+.concours-notification-empty{
+margin:10px 0;
+text-align:center;
+color:#999;
+font-size:13px;
+}
+
+/* =====================================
+MEMBRES
+===================================== */
+
+.concours-members{
+display:flex;
+align-items:center;
+gap:8px;
+margin:0 0 14px;
+color:#333;
+font-size:14px;
+}
+
+/* =====================================
+ZONE INTERACTIVE
+===================================== */
+
+.concours-interactive{
+grid-column:1;
+width:100%;
+height:100%;
+min-width:0;
+min-height:0;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.concours-panel{
+width:100%;
+height:500px;
+min-width:0;
+background:transparent;
+border:none;
+box-shadow:none;
+color:#111;
+overflow-y:auto;
+overflow-x:hidden;
+scrollbar-width:none;
+-ms-overflow-style:none;
+}
+
+.concours-panel::-webkit-scrollbar{
+display:none;
+}
+
+.concours-panel-content{
+display:none;
+color:#111;
+}
+
+.concours-panel-content.active{
+display:block;
+}
+
+.concours-panel-content h3{
+margin:0 0 15px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:24px;
+color:#111;
+}
+
+.concours-panel-content p{
+margin:0;
+line-height:1.6;
+color:#333;
+text-align:justify;
+hyphens:auto;
+}
+
+/* =====================================
+BLOC RÉSULTATS (texte propre à chaque concours)
+===================================== */
+
+.concours-results-box{
+display:flex;
+flex-direction:column;
+gap:8px;
+margin-top:20px;
+padding:18px;
+border-radius:18px;
+background:rgba(33,150,243,.08);
+border:1px solid rgba(33,150,243,.18);
+}
+
+.concours-results-box.hidden{
+display:none;
+}
+
+.concours-results-label{
+display:flex;
+align-items:center;
+gap:7px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:700;
+color:#1565c0;
+}
+
+.concours-results-label i{
+color:#ffb300;
+}
+
+.concours-results-box p{
+margin:0;
+color:#333;
+line-height:1.6;
+text-align:left;
+}
+
+.concours-pdf-link{
+display:inline-flex;
+align-items:center;
+gap:8px;
+margin-top:18px;
+padding:11px 18px;
+border-radius:50px;
+background:#f0f0f0;
+color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+text-decoration:none;
+transition:.25s ease;
+}
+
+.concours-pdf-link i{
+color:#e53935;
+}
+
+.concours-pdf-link:hover{
+background:#111;
+color:white;
+}
+
+.concours-pdf-link:hover i{
+color:white;
+}
+
+.concours-pdf-link.hidden{
+display:none;
+}
+
+/* =====================================
+RETOUR À LA DESCRIPTION
+===================================== */
+
+.back-description{
+display:block;
+margin-top:20px;
+padding:0;
+border:none;
+background:transparent;
+color:#1479d1;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+text-decoration:none;
+transition:.2s ease;
+}
+
+.back-description:hover{
+color:#0d5fa8;
+text-decoration:underline;
+}
+
+/* =====================================
+MODAL CONFIRMATION (avant formulaire)
+===================================== */
+
+.concours-registration-modal,
+.concours-form-modal,
+.concours-code-modal,
+.concours-unregister-modal,
+.concours-code-check-modal{
+position:fixed;
+inset:0;
+z-index:300;
+display:none;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+box-sizing:border-box;
+}
+
+.concours-registration-modal.active,
+.concours-form-modal.active,
+.concours-code-modal.active,
+.concours-unregister-modal.active,
+.concours-code-check-modal.active{
+display:flex;
+}
+
+.concours-registration-box,
+.concours-unregister-box{
+width:90%;
+max-width:500px;
+padding:30px;
+border-radius:25px;
+background:#181818;
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+color:white;
+}
+
+.concours-registration-box h3,
+.concours-unregister-box h3{
+margin:0 0 25px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:24px;
+}
+
+.concours-unregister-box h3{
+margin-bottom:15px;
+}
+
+.concours-unregister-box p{
+margin:0 0 8px;
+line-height:1.5;
+color:rgba(255,255,255,.8);
+}
+
+.concours-registration-box label{
+display:flex;
+align-items:flex-start;
+gap:12px;
+margin-bottom:18px;
+font-size:15px;
+line-height:1.5;
+cursor:pointer;
+}
+
+.concours-registration-box input[type="checkbox"]{
+width:18px;
+height:18px;
+margin-top:2px;
+cursor:pointer;
+}
+
+.registration-actions,
+.unregister-actions{
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-top:25px;
+}
+
+.registration-cancel,
+.registration-confirm,
+.unregister-no,
+.unregister-yes,
+.code-check-cancel,
+.code-check-confirm{
+padding:10px 18px;
+border:none;
+border-radius:50px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+cursor:pointer;
+}
+
+.registration-cancel,
+.unregister-no,
+.code-check-cancel{
+background:rgba(255,255,255,.12);
+color:white;
+}
+
+.registration-confirm,
+.unregister-yes,
+.code-check-confirm{
+background:white;
+color:#111;
+}
+
+.registration-confirm:disabled{
+opacity:.4;
+cursor:not-allowed;
+}
+
+/* =====================================
+CODE DE DÉSINSCRIPTION / VÉRIFICATION
+===================================== */
+
+.concours-code-box{
+width:90%;
+max-width:440px;
+padding:30px;
+border-radius:25px;
+background:#181818;
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+color:white;
+text-align:center;
+}
+
+.concours-code-icon{
+width:54px;
+height:54px;
+margin:0 auto 16px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,.12);
+font-size:22px;
+}
+
+.concours-code-box h3{
+margin:0 0 12px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:22px;
+}
+
+.concours-code-box p{
+margin:0 0 18px;
+color:rgba(255,255,255,.8);
+line-height:1.5;
+font-size:14px;
+}
+
+.concours-code-display{
+margin:0 0 18px;
+padding:16px;
+border-radius:16px;
+background:rgba(255,255,255,.08);
+border:1px dashed rgba(255,255,255,.35);
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:26px;
+font-weight:800;
+letter-spacing:.08em;
+color:#ffd43b;
+}
+
+.concours-code-warning{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+color:#ffb74d !important;
+font-size:12.5px !important;
+}
+
+.concours-code-close{
+width:100%;
+margin-top:8px;
+padding:12px;
+border:none;
+border-radius:50px;
+background:white;
+color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+cursor:pointer;
+}
+
+.concours-code-input{
+width:100%;
+margin-top:6px;
+padding:13px 16px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.25);
+background:rgba(255,255,255,.08);
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:15px;
+box-sizing:border-box;
+outline:none;
+}
+
+.concours-code-input:focus{
+border-color:white;
+}
+
+.concours-code-error{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:10px !important;
+color:#ff6b6b !important;
+font-size:12.5px !important;
+}
+
+.concours-code-error.hidden{
+display:none;
+}
+
+/* =====================================
+FORMULAIRE D'INSCRIPTION
+===================================== */
+
+.concours-form-box{
+width:92%;
+max-width:600px;
+max-height:88vh;
+overflow-y:auto;
+padding:30px;
+border-radius:25px;
+background:white;
+border:1px solid rgba(0,0,0,.08);
+box-shadow:0 20px 50px rgba(0,0,0,.35);
+color:#111;
+box-sizing:border-box;
+scrollbar-width:none;
+-ms-overflow-style:none;
+}
+
+.concours-form-box::-webkit-scrollbar{
+display:none;
+}
+
+.concours-form-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:22px;
+}
+
+.concours-form-header h3{
+margin:0;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:22px;
+color:#111;
+}
+
+.concours-form-close{
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:none;
+border-radius:50%;
+background:#f0f0f0;
+color:#333;
+cursor:pointer;
+transition:.25s ease;
+flex-shrink:0;
+}
+
+.concours-form-close:hover{
+background:#111;
+color:white;
+}
+
+.concours-form-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
+
+.concours-form-field{
+margin-bottom:18px;
+}
+
+.concours-form-field label{
+display:block;
+margin-bottom:8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+color:#333;
+}
+
+.concours-optional{
+font-weight:400;
+color:#999;
+text-transform:none;
+}
+
+.concours-form-field input,
+.concours-form-field select{
+width:100%;
+height:45px;
+padding:0 14px;
+border:1px solid rgba(0,0,0,.15);
+border-radius:12px;
+background:#f8f8f8;
+color:#111;
+outline:none;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+box-sizing:border-box;
+transition:.25s ease;
+}
+
+.concours-form-field input:focus,
+.concours-form-field select:focus{
+border-color:#111;
+background:white;
+}
+
+.concours-form-field input[type="file"]{
+padding:9px 14px;
+height:auto;
+}
+
+.concours-access-choice{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.concours-radio{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 14px;
+border:1px solid rgba(0,0,0,.12);
+border-radius:14px;
+cursor:pointer;
+font-size:13.5px;
+color:#333;
+transition:.2s ease;
+}
+
+.concours-radio:has(input:checked){
+border-color:#111;
+background:#f5f5f5;
+}
+
+.concours-radio input{
+width:16px;
+height:16px;
+cursor:pointer;
+}
+
+.concours-radio.disabled{
+opacity:.45;
+cursor:not-allowed;
+}
+
+/* =====================================
+INFO XP
+===================================== */
+
+.concours-xp-info{
+display:none;
+align-items:flex-start;
+gap:9px;
+margin:-6px 0 18px;
+padding:12px 14px;
+border-radius:14px;
+background:rgba(228,169,0,.1);
+border:1px solid rgba(228,169,0,.22);
+color:#8a6300;
+}
+
+.concours-xp-info.active{
+display:flex;
+}
+
+.concours-xp-info i{
+margin-top:2px;
+color:#e4a900;
+flex-shrink:0;
+}
+
+.concours-xp-info p{
+margin:0;
+font-size:12.5px;
+line-height:1.5;
+}
+
+/* =====================================
+BLOC PAIEMENT
+===================================== */
+
+.concours-payment-block{
+padding-top:4px;
+border-top:1px solid rgba(0,0,0,.08);
+}
+
+.concours-payment-block.hidden{
+display:none;
+}
+
+.concours-price-display{
+margin:0;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:22px;
+font-weight:800;
+color:#111;
+}
+
+.concours-payment-methods{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.concours-payment-option{
+display:flex;
+align-items:center;
+gap:9px;
+padding:11px 12px;
+border:1px solid rgba(0,0,0,.12);
+border-radius:12px;
+cursor:pointer;
+font-size:13px;
+color:#333;
+transition:.2s ease;
+}
+
+.concours-payment-option:has(input:checked){
+border-color:#111;
+background:#f5f5f5;
+}
+
+.concours-payment-option input{
+width:15px;
+height:15px;
+}
+
+.concours-payment-option.hidden{
+display:none;
+}
+
+.concours-payment-detail{
+margin:16px 0 18px;
+padding:16px;
+border-radius:14px;
+background:#f8f8f8;
+}
+
+.concours-payment-detail.hidden{
+display:none;
+}
+
+.concours-payment-detail label{
+display:block;
+margin-bottom:8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+color:#333;
+}
+
+.concours-payment-detail input{
+width:100%;
+height:42px;
+padding:0 12px;
+border:1px solid rgba(0,0,0,.15);
+border-radius:10px;
+background:white;
+outline:none;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13.5px;
+box-sizing:border-box;
+}
+
+.concours-field-hint{
+margin:0 0 10px !important;
+color:#777 !important;
+font-size:12px !important;
+line-height:1.5 !important;
+text-align:left !important;
+}
+
+.concours-form-submit{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+width:100%;
+padding:13px 20px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s ease;
+}
+
+.concours-form-submit:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* =====================================
+FLÈCHE DU SELECT
+===================================== */
+
+.concours-form-field select{
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+padding-right:40px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-size:14px 14px;
+background-position:right 14px center;
+}
+
+/* =====================================
+CONCOURS SIMILAIRES
+===================================== */
+
+.similar-concours-section{
+width:90%;
+max-width:1400px;
+margin:0 auto 50px;
+padding:0 0 0;
+}
+
+.similar-concours-title{
+margin:0 0 18px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:20px;
+color:#111;
+}
+
+.similar-concours-track{
+display:flex;
+align-items:flex-start;
+gap:20px;
+overflow-x:auto;
+padding-bottom:6px;
+scrollbar-width:none;
+-ms-overflow-style:none;
+}
+
+.similar-concours-track::-webkit-scrollbar{
+display:none;
+}
+
+.similar-concours-item{
+flex:0 0 auto;
+width:90px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:6px;
+cursor:pointer;
+text-align:center;
+}
+
+.similar-concours-circle{
+position:relative;
+width:62px;
+height:62px;
+border-radius:50%;
+overflow:hidden;
+background:#f0f0f0;
+border:2px solid transparent;
+transition:.25s ease;
+}
+
+.similar-concours-item:hover .similar-concours-circle{
+border-color:#111;
+transform:translateY(-2px);
+}
+
+.similar-concours-circle img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.similar-concours-circle::after{
+content:"";
+position:absolute;
+top:1px;
+right:3px;
+width:11px;
+height:11px;
+border-radius:50%;
+box-shadow:0 2px 6px rgba(0,0,0,.2);
+display:none;
+}
+
+.similar-concours-circle.status-open::after{
+display:block;
+background:#2e9e44;
+}
+
+.similar-concours-circle.status-ongoing::after{
+display:block;
+background:#e53935;
+}
+
+.similar-concours-circle.status-results::after{
+display:block;
+background:#1479d1;
+}
+
+.similar-concours-name{
+font-size:11.5px;
+font-weight:600;
+color:#111;
+line-height:1.3;
+}
+
+.similar-concours-empty{
+color:#999;
+font-size:13px;
+}
+
+/* =====================================
+FILTRES (intégrés à la barre de concours)
+===================================== */
+
+.concours-filter-group{
+flex:0 0 auto;
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+.concours-filter-separator{
+flex:0 0 auto;
+width:1px;
+height:22px;
+background:rgba(0,0,0,.12);
+}
+
+.concours-filter{
+flex:0 0 auto;
+display:flex;
+align-items:center;
+gap:6px;
+padding:8px 12px;
+border:none;
+border-radius:50px;
+background:transparent;
+color:#333;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:12px;
+white-space:nowrap;
+cursor:pointer;
+transition:.25s ease;
+}
+
+.concours-filter.active{
+background:#111;
+color:white;
+}
+
+/* =====================================
+SECTION RÉCLAMATION
+===================================== */
+
+.reclamation-section{
+width:100%;
+padding:70px 25px 90px;
+background:#f5f5f5;
+}
+
+.reclamation-container{
+width:90%;
+max-width:900px;
+margin:auto;
+}
+
+/* ------- Introduction ------- */
+
+.reclamation-intro{
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.reclamation-description{
+max-width:650px;
+margin:0 0 22px;
+color:#777;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+line-height:1.6;
+}
+
+.reclamation-toggle{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:9px;
+padding:12px 20px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s ease;
+}
+
+.reclamation-toggle:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* ------- Formulaire ------- */
+
+.reclamation-form-wrapper{
+display:none;
+margin-top:30px;
+}
+
+.reclamation-form-wrapper.active{
+display:block;
+}
+
+.reclamation-form{
+position:relative;
+width:100%;
+padding:30px;
+background:white;
+border:1px solid rgba(0,0,0,.08);
+border-radius:22px;
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+}
+
+.reclamation-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:25px;
+}
+
+.reclamation-header h3{
+margin:0;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:24px;
+color:#111;
+}
+
+.reclamation-close{
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border:none;
+border-radius:50%;
+background:#f0f0f0;
+color:#333;
+cursor:pointer;
+transition:.25s ease;
+}
+
+.reclamation-close:hover{
+background:#111;
+color:white;
+}
+
+/* ------- Champs ------- */
+
+.reclamation-field{
+margin-bottom:20px;
+}
+
+.reclamation-field label{
+display:block;
+margin-bottom:8px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+color:#333;
+}
+
+.reclamation-field input,
+.reclamation-field select,
+.reclamation-field textarea{
+width:100%;
+padding:12px 14px;
+border:1px solid rgba(0,0,0,.15);
+border-radius:12px;
+background:#f8f8f8;
+color:#111;
+outline:none;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+box-sizing:border-box;
+transition:.25s ease;
+}
+
+.reclamation-field input,
+.reclamation-field select{
+height:45px;
+}
+
+.reclamation-field textarea{
+resize:vertical;
+min-height:130px;
+line-height:1.5;
+}
+
+.reclamation-field input:focus,
+.reclamation-field select:focus,
+.reclamation-field textarea:focus{
+border-color:#111;
+background:white;
+}
+
+/* ------- Disclaimers ------- */
+
+.reclamation-disclaimer{
+display:none;
+align-items:flex-start;
+gap:10px;
+margin:-5px 0 20px;
+padding:12px 14px;
+border-radius:12px;
+background:rgba(229,57,53,.08);
+border:1px solid rgba(229,57,53,.15);
+color:#e53935;
+}
+
+.reclamation-disclaimer.active{
+display:flex;
+}
+
+.reclamation-disclaimer i{
+margin-top:2px;
+flex-shrink:0;
+}
+
+.reclamation-disclaimer p{
+margin:0;
+font-size:12px;
+line-height:1.5;
+}
+
+/* ------- Autre ------- */
+
+.reclamation-other-wrapper{
+display:none;
+}
+
+.reclamation-other-wrapper.active{
+display:block;
+}
+
+/* ------- Bouton envoyer ------- */
+
+.reclamation-submit{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+width:100%;
+padding:13px 20px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+transition:.3s ease;
+}
+
+.reclamation-submit:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* ------- Flèche du select ------- */
+
+.reclamation-field select{
+appearance:none;
+-webkit-appearance:none;
+-moz-appearance:none;
+padding-right:45px;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-size:14px 14px;
+background-position:right 16px center;
+}
+
+/* =====================================
+RESPONSIVE
+===================================== */
+
+@media(max-width:900px){
+
+.concours-section{
+padding-top:150px;
+}
+
+.concours-top-info{
+min-height:auto;
+}
+
+.concours-header-left{
+position:static;
+max-width:none;
+padding:0;
+}
+
+.concours-partner-banner{
+position:relative;
+top:auto;
+right:auto;
+bottom:auto;
+width:100%;
+min-width:0;
+min-height:220px;
+margin-top:18px;
+border-radius:24px;
+}
+
+.concours-card-content{
+grid-template-columns:1fr;
+}
+
+.concours-card-actions{
+justify-content:flex-end;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.concours-interactive{
+grid-column:1;
+}
+
+.concours-form-row,
+.concours-payment-methods{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.concours-selector{
+top:60px;
+padding:6px 10px;
+}
+
+.concours-title{
+font-size:24px;
+}
+
+.concours-card{
+width:94%;
+}
+
+.concours-card-content{
+padding-top:15px;
+}
+
+.concours-card-actions{
+gap:6px;
+}
+
+.concours-link button{
+padding:9px 12px;
+font-size:13px;
+}
+
+.concours-notification-panel{
+position:fixed;
+top:120px;
+left:5%;
+right:5%;
+width:auto;
+}
+
+.concours-filter span{
+display:none;
+}
+
+.concours-filter{
+padding:10px;
+}
+
+.similar-concours-section{
+width:94%;
+}
+
+}
+
+@media(max-width:600px){
+
+.reclamation-section{
+padding:55px 15px 70px;
+}
+
+.reclamation-container{
+width:94%;
+}
+
+.reclamation-form{
+padding:22px;
+border-radius:18px;
+}
+
+.reclamation-header h3{
+font-size:20px;
+}
+
+}

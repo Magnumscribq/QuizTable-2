@@ -1,34 +1,738 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<html lang="fr"> 
-
-<head> 
-
-<meta charset="UTF-8"> 
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-<title>QuizTable - Communauté Pop Culture</title> 
+<title>QuizTable - Concours</title>
 
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../css/concours.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> 
-
-</head> 
-
- 
 <body>
 
 <div id="header"></div>
 
-<main style="margin-top:1200px; padding:50px; background:red; color:white;">
-    Bonjour
-</main>
+<!-- ==================================================
+BARRE DE CONCOURS
+================================================== -->
+
+<div class="concours-selector" id="concours-selector">
+
+<div class="concours-selector-main">
+
+<div
+class="concours-selector-track"
+id="concours-selector-track">
+</div>
+
+<button
+type="button"
+class="concours-selector-filter-toggle"
+id="concours-selector-filter-toggle"
+aria-label="Afficher les filtres">
+<i class="fa-solid fa-filter"></i>
+</button>
+
+<button
+type="button"
+class="concours-selector-expand"
+id="concours-selector-expand"
+aria-label="Agrandir la liste des concours">
+<i class="fa-solid fa-expand"></i>
+</button>
+
+</div>
+
+<!-- LIGNE DE FILTRES (cachée par défaut) -->
+<div class="concours-selector-filters" id="concours-selector-filters">
+
+<div class="concours-filter-group">
+<button class="concours-filter active" data-filter="all">
+<i class="fa-solid fa-layer-group"></i>
+<span>Tout</span>
+</button>
+
+<button class="concours-filter" data-filter="favorites">
+<i class="fa-solid fa-heart"></i>
+<span>Favoris</span>
+</button>
+
+<button class="concours-filter" data-filter="open">
+<i class="fa-solid fa-lock-open"></i>
+<span>Inscriptions ouvertes</span>
+</button>
+</div>
+
+<div class="concours-filter-separator"></div>
+
+<div class="concours-filter-group">
+<button class="concours-filter" data-filter="art">
+<i class="fa-solid fa-palette"></i>
+<span>Art &amp; littérature</span>
+</button>
+
+<button class="concours-filter" data-filter="music">
+<i class="fa-solid fa-music"></i>
+<span>Musique</span>
+</button>
+
+<button class="concours-filter" data-filter="culture">
+<i class="fa-solid fa-globe"></i>
+<span>Culture générale</span>
+</button>
+
+<button class="concours-filter" data-filter="other">
+<i class="fa-solid fa-ellipsis"></i>
+<span>Autres</span>
+</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- BOUTON "ŒIL" : réapparaît quand la barre est réduite au scroll -->
+<button
+type="button"
+class="concours-selector-peek"
+id="concours-selector-peek"
+aria-label="Afficher la barre des concours">
+<i class="fa-solid fa-eye"></i>
+</button>
+
+<!-- ==================================================
+SECTION CONCOURS
+================================================== -->
+
+<section class="concours-section">
+<div class="concours-card">
+
+<!-- ==================================================
+INFORMATIONS DU CONCOURS (en-tête + panneau publicitaire)
+================================================== -->
+
+<div class="concours-top-info">
+
+<!-- ================= COLONNE GAUCHE ================= -->
+<div class="concours-header-left">
+
+<div class="concours-banner">
+<h2
+class="concours-title"
+id="concours-main-title">
+Concours QuizTable
+</h2>
+<p
+class="concours-title-sub"
+id="concours-main-subtitle">
+Participez et tentez de gagner des récompenses exclusives
+</p>
+</div>
+
+<!-- INFOS CLÉS -->
+<div class="concours-info-list" id="concours-info-list">
+<!-- injecté en JS : période d'inscription / date limite / pays éligibles -->
+</div>
+
+<!-- DISCLAIMER CONCOURS -->
+<div class="concours-disclaimer">
+<i class="fa-solid fa-circle-info"></i>
+<p>
+La plupart des concours QuizTable sont <strong>payants</strong> à l'inscription.
+Vérifiez toujours le prix d'inscription, les conditions de participation
+et l'éligibilité de votre pays avant de vous inscrire. Certains concours
+peuvent être rejoints <strong>gratuitement</strong> si vous disposez du nombre
+d'XP requis. Aucun remboursement n'est possible après inscription.
+</p>
+</div>
+
+</div>
+
+<!-- ================= PANNEAU PUBLICITAIRE ================= -->
+<div class="concours-partner-banner" id="concours-partner-banner">
+
+<div class="concours-partner-track" id="concours-partner-track">
+<!-- slides injectées en JS -->
+</div>
+
+<div class="concours-partner-dots" id="concours-partner-dots">
+<!-- points injectés en JS -->
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ==================================================
+ACTIONS
+================================================== -->
+
+<div class="concours-card-actions">
+
+<!-- INSCRIPTION -->
+<div class="concours-register-class">
+<button class="concours-register-btn">
+<i class="fa-solid fa-user-plus"></i>
+S'inscrire
+</button>
+</div>
+
+<!-- INFORMATIONS -->
+<div class="concours-link">
+<button class="concours-info-btn">
+<i class="fa-solid fa-circle-info"></i>
+Informations
+</button>
+</div>
+
+<!-- NOTIFICATION + FAVORI -->
+<div class="concours-ajust">
+
+<!-- NOTIFICATION -->
+<div class="concours-notification-wrapper">
+<button
+class="concours-notification"
+aria-label="Notifications">
+<i class="fa-regular fa-bell"></i>
+<span class="concours-notification-badge hidden">0</span>
+</button>
+
+<!-- PANNEAU NOTIFICATIONS -->
+<div class="concours-notification-panel">
+<div class="concours-notification-header">
+<h3>Notifications</h3>
+<button class="concours-notification-clear">Tout supprimer</button>
+</div>
+
+<div class="concours-notification-list">
+<p class="concours-notification-empty">Aucune notification.</p>
+</div>
+</div>
+</div>
+
+<!-- FAVORI -->
+<button
+class="concours-like"
+aria-label="Ajouter aux favoris">
+<i class="fa-regular fa-heart"></i>
+</button>
+</div>
+</div>
+
+<!-- ==================================================
+RAPPEL INSCRIPTION UNIQUE
+================================================== -->
+
+<p class="concours-register-note">
+<i class="fa-solid fa-triangle-exclamation"></i>
+Merci de ne vous inscrire qu'une seule fois à ce concours et d'éviter d'envoyer
+plusieurs demandes d'inscription.
+</p>
+
+<!-- ==================================================
+FENÊTRE DE CONFIRMATION (avant le formulaire)
+================================================== -->
+
+<div class="concours-registration-modal">
+<div class="concours-registration-box">
+<h3>Avant de vous inscrire</h3>
+
+<label>
+<input type="checkbox" class="registration-check">
+<span>J'ai lu et compris les informations du concours.</span>
+</label>
+
+<label>
+<input type="checkbox" class="registration-check">
+<span>J'accepte les conditions de participation au concours.</span>
+</label>
+
+<div class="registration-actions">
+<button class="registration-cancel">Annuler</button>
+<button class="registration-confirm" disabled>Continuer vers le formulaire</button>
+</div>
+</div>
+</div>
+
+<!-- ==================================================
+FORMULAIRE D'INSCRIPTION
+================================================== -->
+
+<div class="concours-form-modal">
+<div class="concours-form-box">
+
+<div class="concours-form-header">
+<h3>Formulaire d'inscription</h3>
+<button type="button" class="concours-form-close" aria-label="Fermer">
+<i class="fa-solid fa-xmark"></i>
+</button>
+</div>
+
+<form id="concoursForm" class="concours-form">
+
+<div class="concours-form-row">
+<div class="concours-form-field">
+<label for="regNom">Nom</label>
+<input type="text" id="regNom" name="nom" required>
+</div>
+
+<div class="concours-form-field">
+<label for="regPrenom">Prénom</label>
+<input type="text" id="regPrenom" name="prenom" required>
+</div>
+</div>
+
+<div class="concours-form-field">
+<label for="regPays">Pays de résidence</label>
+<select id="regPays" name="pays" required>
+<option value="" selected disabled>Sélectionnez votre pays</option>
+</select>
+</div>
+
+<!-- MODE D'ACCÈS -->
+<div class="concours-form-field concours-access-field">
+<label>Mode d'inscription</label>
+<div class="concours-access-choice">
+<label class="concours-radio">
+<input type="radio" name="accessMode" value="pay" checked>
+<span>Payer les frais d'inscription</span>
+</label>
+<label class="concours-radio" id="xpAccessLabel">
+<input type="radio" name="accessMode" value="xp">
+<span>Utiliser mes XP (gratuit)</span>
+</label>
+</div>
+</div>
+
+<!-- PSEUDONYME (obligatoire si XP) -->
+<div class="concours-form-field">
+<label for="regPseudo">
+Pseudonyme
+<span class="concours-optional" id="pseudoHint">(facultatif)</span>
+</label>
+<input type="text" id="regPseudo" name="pseudo" placeholder="Votre pseudonyme QuizTable">
+</div>
+
+<!-- INFO XP -->
+<div class="concours-xp-info" id="xpInfoBox">
+<i class="fa-solid fa-star"></i>
+<p>
+Ce concours nécessite <strong id="xpRequiredValue">0 XP</strong> pour une participation
+gratuite. Vous possédez actuellement <strong id="xpUserValue">0 XP</strong>.
+</p>
+</div>
+
+<!-- BLOC PAIEMENT -->
+<div class="concours-payment-block" id="paymentBlock">
+
+<div class="concours-form-field">
+<label for="regPrix">Frais d'inscription</label>
+<p class="concours-price-display" id="regPrixDisplay">—</p>
+</div>
+
+<div class="concours-form-field">
+<label>Mode de paiement</label>
+<div class="concours-payment-methods" id="paymentMethods">
+
+<label class="concours-payment-option">
+<input type="radio" name="paymentMethod" value="tmoney" checked>
+<span><i class="fa-solid fa-mobile-screen-button"></i> T-Money</span>
+</label>
+
+<label class="concours-payment-option">
+<input type="radio" name="paymentMethod" value="flooz">
+<span><i class="fa-solid fa-mobile-screen-button"></i> Flooz</span>
+</label>
+
+<label class="concours-payment-option">
+<input type="radio" name="paymentMethod" value="card">
+<span><i class="fa-solid fa-credit-card"></i> Carte bancaire</span>
+</label>
+
+<label class="concours-payment-option">
+<input type="radio" name="paymentMethod" value="bank">
+<span><i class="fa-solid fa-building-columns"></i> Virement bancaire</span>
+</label>
+
+<label class="concours-payment-option" id="screenshotOption">
+<input type="radio" name="paymentMethod" value="other">
+<span><i class="fa-solid fa-camera"></i> Autre / Capture d'écran</span>
+</label>
+
+</div>
+</div>
+
+<!-- T-MONEY / FLOOZ -->
+<div class="concours-payment-detail" id="mobileMoneyDetail">
+<p class="concours-field-hint">
+Effectuez le paiement via le service concerné, puis indiquez la référence de votre paiement ci-dessous.
+</p>
+<label for="regMobileCode">Référence de paiement</label>
+<input type="text" id="regMobileCode" name="mobileCode" placeholder="Référence de la transaction">
+</div>
+
+<!-- CARTE -->
+<div class="concours-payment-detail hidden" id="cardDetail">
+<label for="regCardNumber">Numéro de carte</label>
+<input type="text" id="regCardNumber" name="cardNumber" placeholder="0000 0000 0000 0000">
+<div class="concours-form-row">
+<div class="concours-form-field">
+<label for="regCardExpiry">Expiration</label>
+<input type="text" id="regCardExpiry" name="cardExpiry" placeholder="MM/AA">
+</div>
+<div class="concours-form-field">
+<label for="regCardCvc">CVC</label>
+<input type="text" id="regCardCvc" name="cardCvc" placeholder="000">
+</div>
+</div>
+</div>
+
+<!-- VIREMENT -->
+<div class="concours-payment-detail hidden" id="bankDetail">
+<p class="concours-field-hint">
+Effectuez le virement vers les coordonnées bancaires communiquées dans la partie
+« Informations », puis indiquez la référence de votre virement ci-dessous.
+</p>
+<label for="regBankRef">Référence du virement</label>
+<input type="text" id="regBankRef" name="bankRef" placeholder="Référence de la transaction">
+</div>
+
+<!-- CAPTURE D'ÉCRAN -->
+<div class="concours-payment-detail hidden" id="screenshotDetail">
+<p class="concours-field-hint">
+Si aucun mode de paiement disponible ne correspond à votre situation,
+joignez une capture d'écran de votre paiement afin que nous puissions le vérifier.
+</p>
+<label for="regScreenshot">Capture d'écran du paiement</label>
+<input type="file" id="regScreenshot" name="screenshot" accept="image/*">
+</div>
+
+</div>
+
+<button type="submit" class="concours-form-submit">
+<i class="fa-solid fa-paper-plane"></i>
+Envoyer mon inscription
+</button>
+
+</form>
+</div>
+</div>
+
+<!-- ==================================================
+CODE DE DÉSINSCRIPTION (affiché après inscription)
+================================================== -->
+
+<div class="concours-code-modal">
+<div class="concours-code-box">
+<div class="concours-code-icon">
+<i class="fa-solid fa-key"></i>
+</div>
+<h3>Inscription envoyée</h3>
+<p>
+Votre demande d'inscription est en cours de traitement. Conservez précieusement
+le code ci-dessous : il vous sera demandé si vous souhaitez déclarer forfait.
+</p>
+
+<div class="concours-code-display" id="concoursCodeDisplay">—</div>
+
+<p class="concours-code-warning">
+<i class="fa-solid fa-camera"></i>
+Faites une capture d'écran de ce code, il ne sera plus réaffiché.
+</p>
+
+<button class="concours-code-close">J'ai noté mon code</button>
+</div>
+</div>
+
+<!-- ==================================================
+DÉCLARER FORFAIT — CONFIRMATION
+================================================== -->
+
+<div class="concours-unregister-modal">
+<div class="concours-unregister-box">
+<h3>Déclarer forfait</h3>
+<p>Voulez-vous vraiment déclarer forfait pour ce concours ?</p>
+<div class="unregister-actions">
+<button class="unregister-no">Non</button>
+<button class="unregister-yes">Oui, continuer</button>
+</div>
+</div>
+</div>
+
+<!-- ==================================================
+DÉCLARER FORFAIT — CODE
+================================================== -->
+
+<div class="concours-code-check-modal">
+<div class="concours-unregister-box">
+<h3>Confirmez votre code</h3>
+<p>Entrez le code de désinscription qui vous a été communiqué lors de votre inscription.</p>
+
+<input
+type="text"
+class="concours-code-input"
+placeholder="Code de désinscription">
+
+<p class="concours-code-error hidden">
+<i class="fa-solid fa-circle-exclamation"></i>
+Code incorrect. Veuillez réessayer.
+</p>
+
+<div class="unregister-actions">
+<button class="code-check-cancel">Annuler</button>
+<button class="code-check-confirm">Valider</button>
+</div>
+</div>
+</div>
+
+<!-- MEMBRES -->
+<div class="concours-members">
+<i class="fa-solid fa-users"></i>
+<span>0 inscrits</span>
+</div>
+
+<!-- ==================================================
+CONTENU DU CONCOURS
+================================================== -->
+
+<div class="concours-card-content">
+
+<div class="concours-interactive">
+<div class="concours-panel">
+
+<!-- DESCRIPTION -->
+<div
+class="concours-panel-content active"
+id="concours-description">
+<h3>Description</h3>
+<p id="concours-description-text">
+Découvrez ce concours QuizTable et tentez de remporter la récompense mise en jeu.
+</p>
+</div>
+
+<!-- INFORMATIONS -->
+<div
+class="concours-panel-content"
+id="concours-info-content">
+<h3>Informations</h3>
+<div id="concours-info-full">
+<p>Les informations détaillées du concours apparaîtront ici.</p>
+</div>
+
+<!-- RÉSULTATS (texte propre à chaque concours, visible une fois disponibles) -->
+<div class="concours-results-box hidden" id="concoursResultsBox">
+<span class="concours-results-label">
+<i class="fa-solid fa-trophy"></i>
+Résultats
+</span>
+<p id="concoursResultsText">Les résultats seront communiqués ici.</p>
+</div>
+
+<a
+id="concours-pdf-link"
+class="concours-pdf-link hidden"
+href="#"
+target="_blank"
+rel="noopener">
+<i class="fa-solid fa-file-pdf"></i>
+Télécharger le document du concours
+</a>
+
+<button class="back-description">Revenir à la description</button>
+</div>
+
+<!-- RÉSULTATS SEULS (affiché uniquement via "Voir les résultats") -->
+<div
+class="concours-panel-content"
+id="concours-results-content">
+<h3>Résultats</h3>
+
+<div class="concours-results-box" id="concoursResultsBoxStandalone">
+<span class="concours-results-label">
+<i class="fa-solid fa-trophy"></i>
+Résultats
+</span>
+<p id="concoursResultsTextStandalone">Les résultats seront communiqués ici.</p>
+</div>
+
+<button class="back-description">Revenir à la description</button>
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ==================================================
+CONCOURS SIMILAIRES
+================================================== -->
+
+<section class="similar-concours-section">
+<h3 class="similar-concours-title">Concours similaires</h3>
+<div class="similar-concours-track" id="similar-concours-track">
+<!-- injecté en JS -->
+</div>
+</section>
+
+<!-- =====================================
+SECTION RÉCLAMATION
+===================================== -->
+
+<section class="reclamation-section">
+<div class="reclamation-container">
+
+<!-- INTRODUCTION -->
+<div class="reclamation-intro">
+<p class="reclamation-description">
+Vous avez rencontré un problème lié à un concours ?
+Vous pouvez nous signaler votre situation et faire une réclamation.
+</p>
+
+<button type="button" class="reclamation-toggle" id="reclamationToggle">
+<i class="fa-solid fa-file-circle-exclamation"></i>
+<span>Faire une réclamation</span>
+</button>
+</div>
+
+<!-- FORMULAIRE -->
+<div class="reclamation-form-wrapper" id="reclamationFormWrapper">
+
+<form class="reclamation-form" id="reclamationForm">
+
+<div class="reclamation-header">
+<h3>Faire une réclamation</h3>
+<button
+type="button"
+class="reclamation-close"
+id="reclamationClose"
+aria-label="Fermer">
+<i class="fa-solid fa-xmark"></i>
+</button>
+</div>
+
+<!-- NOM DU CONCOURS -->
+<div class="reclamation-field">
+<label for="reclamationConcours">Nom du concours</label>
+<input
+type="text"
+id="reclamationConcours"
+name="concours"
+placeholder="Ex. Grand Concours d'Art"
+required>
+</div>
+
+<!-- DATE D'INSCRIPTION -->
+<div class="reclamation-field">
+<label for="reclamationDate">Date de votre inscription</label>
+<input
+type="date"
+id="reclamationDate"
+name="date"
+required>
+</div>
+
+<!-- TYPE -->
+<div class="reclamation-field">
+<label for="reclamationType">Type de réclamation</label>
+<select
+id="reclamationType"
+name="type"
+required>
+<option value="" selected disabled>Sélectionnez un type</option>
+<option value="reward">Récompense non reçue</option>
+<option value="xp">XP non reçu</option>
+<option value="registration">Inscription non validée</option>
+<option value="other">Autre</option>
+</select>
+</div>
+
+<!-- DISCLAIMER RÉCOMPENSE -->
+<div
+class="reclamation-disclaimer"
+id="rewardDisclaimer">
+<i class="fa-solid fa-circle-info"></i>
+<p>
+Ne remplissez ce champ que si vous avez rempli les critères de victoire
+du concours et que vous n'avez pas été payé dans les délais mentionnés
+par le concours.
+</p>
+</div>
+
+<!-- DISCLAIMER XP -->
+<div
+class="reclamation-disclaimer"
+id="xpDisclaimer">
+<i class="fa-solid fa-circle-info"></i>
+<p>
+Ne remplissez ce champ que lorsque les résultats du concours ont été
+publiés et que vous n'avez pas reçu vos XP.
+</p>
+</div>
+
+<!-- DISCLAIMER INSCRIPTION -->
+<div
+class="reclamation-disclaimer"
+id="registrationDisclaimer">
+<i class="fa-solid fa-circle-info"></i>
+<p>
+Ne remplissez ce champ que si votre inscription n'a pas été validée
+dans un délai d'une semaine.
+</p>
+</div>
+
+<!-- PRÉCISION POUR "AUTRE" -->
+<div
+class="reclamation-field reclamation-other-wrapper"
+id="otherReclamationWrapper">
+<label for="reclamationOther">Type de problème</label>
+<input
+type="text"
+id="reclamationOther"
+name="otherType"
+placeholder="Précisez le problème">
+</div>
+
+<!-- MESSAGE -->
+<div class="reclamation-field">
+<label for="reclamationMessage">Ajouter plus de précisions à votre réclamation</label>
+<textarea
+id="reclamationMessage"
+name="message"
+rows="6"
+placeholder="Expliquez-nous votre problème..."
+required></textarea>
+</div>
+
+<!-- ENVOI -->
+<button
+type="submit"
+class="reclamation-submit">
+<i class="fa-solid fa-paper-plane"></i>
+Envoyer la réclamation
+</button>
+
+</form>
+</div>
+</div>
+</section>
+
+<!-- ==================================================
+FOOTER
+================================================== -->
 
 <div id="footer"></div>
 
 <script src="../assets/js/main.js"></script>
-
+<script src="../assets/js/concours.js"></script>
 </body>
+</html>
