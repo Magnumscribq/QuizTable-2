@@ -1,1198 +1,754 @@
 
-<!DOCTYPE html> 
-
-<html lang="fr"> 
-
-<head> 
-
-<meta charset="UTF-8"> 
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-<title>QuizTable - Communauté Pop Culture</title> 
-
-<link rel="stylesheet" href="style.css"> 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> 
-
-</head> 
-
- 
-
-<body> 
-
- 
-
-<!-- Header --> 
-
-<div id="header"></div> 
-
- 
-
-<!-- Hero --> 
-
-<section class="hero"> 
-
-<div class="hero-slider"> 
-
-<img src="assets/images/hero.jpg" class="hero-slide active" alt="Accueil"> 
-
-<img src="assets/images/hero1.jpg" class="hero-slide" alt="Quiz"> 
-
-<img src="assets/images/hero2.jpg" class="hero-slide" alt="Concours"> 
-
-<img src="assets/images/hero3.jpg" class="hero-slide" alt="Culture"> 
-
-<img src="assets/images/hero4.jpg" class="hero-slide" alt="Illustration"> 
-
-<img src="assets/images/hero5.jpg" class="hero-slide" alt="Bibliothèque"> 
-
-<img src="assets/images/hero6.jpg" class="hero-slide" alt="Musique"> 
-
-<img src="assets/images/hero7.jpg" class="hero-slide" alt="News"> 
-
-<img src="assets/images/hero8.jpg" class="hero-slide" alt="Événements"> 
-
-<img src="assets/images/hero9.jpg" class="hero-slide" alt="Forum"> 
-
-<img src="assets/images/hero10.jpg" class="hero-slide" alt="Chat"> 
-
-</div> 
-
-<div class="hero-content"> 
-
-<div class="hero-text"> 
-
-<div class="hero-title"> 
-
-<h1 id="heroTitle">Bienvenue sur QuizTable</h1> 
-
-</div> 
-
-</div> 
-
-<a href="pages/quiz.html" class="hero-btn" id="heroButton"> 
-
-Commencer l'aventure 
-
-</a> 
-
-<button class="hero-prev">❮</button> 
-
- 
-
-<div class="hero-indicators"></div> 
-
- 
-
-<button class="hero-next">❯</button 
-
- 
-
-</div> 
-
- 
-
-<div class="hero-socials"> 
-
- 
-
-<a href="#" aria-label="Instagram"> 
-
-<i class="fa-brands fa-instagram"></i> 
-
-</a> 
-
- 
-
-<a href="#" aria-label="TikTok"> 
-
-<i class="fa-brands fa-tiktok"></i> 
-
-</a> 
-
- 
-
-<a href="#" aria-label="YouTube"> 
-
-<i class="fa-brands fa-youtube"></i> 
-
-</a> 
-
- 
-
-<a href="#" aria-label="WhatsApp"> 
-
-<i class="fa-brands fa-whatsapp"></i> 
-
-</a> 
-
- 
-
-<a href="#" aria-label="X"> 
-
-<i class="fa-brands fa-x-twitter"></i> 
-
-</a> 
-
- 
-
-</div> 
-
- 
-
- 
-
-</section> 
-
- 
-
-<!-- Contenu principal --> 
-
-<main> 
-
- 
-
-<!-- Classement --> 
-
-<section class="hall-of-fame"> 
-
-<h2>Hall of Fame</h2> 
-
-<p class="hall-subtitle"> 
-
-Les meilleurs joueurs de cette saison 
-
-</p> 
-
- 
-
-<div class="podium"> 
-
-<div class="champion second"> 
-
-<img src="assets/images/avatar2.png" alt="Sarah"> 
-
-</div> 
-
-<div class="champion first"> 
-
-<img src="assets/images/avatar1.png" alt="Alex"> 
-
-</div> 
-
-<div class="champion third"> 
-
-<img src="assets/images/avatar3.png" alt="David"> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="podium-base"> 
-
-<div class="step second-step"> 
-
-<div class="step-content"> 
-
-<div class="step-number">2</div> 
-
-<div class="step-player">Sarah</div> 
-
-<div class="step-xp">13 850 XP</div> 
-
-</div> 
-
-</div> 
-
-<div class="step first-step"> 
-
-<div class="step-content"> 
-
-<div class="step-number">1</div> 
-
-<div class="step-player">Alex</div> 
-
-<div class="step-xp">15 320 XP</div> 
-
-</div> 
-
-</div> 
-
-<div class="step third-step"> 
-
-<div class="step-content"> 
-
-<div class="step-number">3</div> 
-
-<div class="step-player">David</div> 
-
-<div class="step-xp">12 600 XP</div> 
-
-</div> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="top10-btn"> 
-
-<a href="#">Voir le Top 10</a> 
-
-</div> 
-
-</section> 
-
- 
-
-<!-- Top illustrations --> 
-
- 
-
-<section class="top-illustrations"> 
-
-<h2>Top Illustrations</h2> 
-
-<p class="illustrations-subtitle"> 
-
-Les créations les plus appréciées de la communauté 
-
-</p> 
-
- 
-
-<div class="features illustration-slider"> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration1.jpg" alt="Illustration"> 
-
-<h3>Illustration 1 de monsieur le dessinateur</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
- 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration2.jpg" alt="Illustration"> 
-
-<h3>Illustration 2</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration3.jpg" alt="Illustration"> 
-
-<h3>Illustration 3</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration4.jpg" alt="Illustration"> 
-
-<h3>Illustration 4</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration5.jpg" alt="Illustration"> 
-
-<h3>Illustration 5</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration6.jpg" alt="Illustration"> 
-
-<h3>Illustration 6</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration7.jpg" alt="Illustration"> 
-
-<h3>Illustration 7</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration8.jpg" alt="Illustration"> 
-
-<h3>Illustration 8</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration9.jpg" alt="Illustration"> 
-
-<h3>Illustration 9</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="card illustration-card"> 
-
-<img src="assets/images/illustration10.jpg" alt="Illustration"> 
-
-<h3>Illustration 10</h3> 
-
-<p>@Auteur</p> 
-
-<div class="illustration-actions"> 
-
-<button class="like-btn"> 
-
-<i class="fa-regular fa-heart"></i> 
-
-<span>350</span> 
-
-</button> 
-
- 
-
-<button class="comment-btn"> 
-
-<i class="fa-regular fa-comment"></i> 
-
-<span>24</span> 
-
-</button> 
-
-</div> 
-
-</div> 
-
- 
-
-<!-- jusqu'à environ 10 cartes --> 
-
- 
-
-<div class="explore-illustrations"> 
-
-<a href="pages/illustration.html"> 
-
-<button> ➜ </button> 
-
-<p> Explorer illustrations </p> 
-
-</a> 
-
-</div> 
-
- 
-
-</div> 
-
-</section> 
-
- 
-
-<!-- Événements --> 
-
-<section class="events"> 
-
-<h2>À venir</h2> 
-
-<p class="events-subtitle"> Les prochains rendez-vous de la communauté</p> 
-
- 
-
-<div class="events-window"> 
-
-<div class="events-slider"> 
-
- 
-
-<div class="event-card active"> 
-
-<div class="event-info"> 
-
-<h3>LICC 2026</h3> 
-
-<p>📅 17 octobre 2026</p> 
-
-<p>⏳ Dans 77 jours</p> 
-
-<p>📍 Lomé</p> 
-
-<p>🎟 Entrée gratuite</p> 
-
-</div> 
-
-<div class="event-poster"> 
-
-<img src="assets/images/event1.jpg" alt="LICC 2026"> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="event-card next"> 
-
-<div class="event-info"> 
-
-<h3>🎮 Tournoi Gaming</h3> 
-
-<p>📅 24 octobre 2026</p> 
-
-<p>⏳ Dans 84 jours</p> 
-
-<p>📍 Lomé</p> 
-
-<p>🏅 Inscriptions ouvertes</p> 
-
-</div> 
-
-<div class="event-poster"> 
-
-<img src="assets/images/event2.jpg" alt="Tournoi Gaming"> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="event-card previous"> 
-
-<div class="event-info"> 
-
-<h3>🎭 Concours Cosplay</h3> 
-
-<p>📅 31 octobre 2026</p> 
-
-<p>⏳ Dans 91 jours</p> 
-
-<p>📍 Lomé</p> 
-
-<p>👘 Participation libre</p> 
-
-</div> 
-
-<div class="event-poster"> 
-
-<img src="assets/images/event3.jpg" alt="Concours Cosplay"> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="event-card hidden"> 
-
-<div class="event-info"> 
-
-<h3>🎨 Exposition Fan Art</h3> 
-
-<p>📅 14 novembre 2026</p> 
-
-<p>⏳ Dans 105 jours</p> 
-
-<p>📍 Lomé</p> 
-
-<p>🖼️ Accès gratuit</p> 
-
-</div> 
-
-<div class="event-poster"> 
-
-<img src="assets/images/event4.jpg" alt="Exposition Fan Art"> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="event-card hidden"> 
-
-<div class="event-info"> 
-
-<h3>🎤 Soirée Karaoké Anime</h3> 
-
-<p>📅 28 novembre 2026</p> 
-
-<p>⏳ Dans 119 jours</p> 
-
-<p>📍 Lomé</p> 
-
-<p>🎶 Places limitées</p> 
-
-</div> 
-
-<div class="event-poster"> 
-
-<img src="assets/images/event5.jpg" alt="Soirée Karaoké Anime"> 
-
-</div> 
-
-</div> 
-
- 
-
-</div> 
-
-</div> 
-
-</section> 
-
-<!-- La section .events vide en double après celle-ci a été retirée (HTML mort, aucun contenu) --> 
-
- 
-
-<!-- NEWS --> 
-
-<section class="news-section"> 
-
-<div class="news-header"> 
-
-<h2>News</h2> 
-
-<p class="news-subtitle">Les dernières nouvelles</p> 
-
-</div> 
-
- 
-
-<div class="featured-news"> 
-
-<div class="featured-image"> 
-
-<img src="assets/images/news1.jpg" alt="News principale"> 
-
-</div> 
-
-<div class="featured-content"> 
-
-<span class="news-badge">🎌 ANIME</span> 
-
-<h3>One Piece annonce officiellement la sortie d'une deuxieme saison à l'horizon 2026. une deuxieme saison plus de 20 ans apres le debut de la premiere</h3> 
-
-<p> 
-
-Petit résumé de la news principale. 
-
-Deux ou trois lignes maximum pour donner envie  
-
-de lire la suite. verifions si ca se limite bien à trois ligne au maximum.un deux trois test test voyons voir 
-
-</p> 
-
-<span class="news-date"> 
-
-Il y a 2 heures 
-
-</span> 
-
-</div> 
-
-</div> 
-
-</section> 
-
- 
-
-<div class="news-horizontal-list"> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news2.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>One Piece annonce officiellement la sortie d'une deuxieme saison à l'horizon 2026. une deuxieme saison plus de 20 ans apres le debut de la premiere</h4> 
-
-<p>Petit résumé de la news principale. 
-
-Deux ou trois lignes maximum pour donner envie  
-
-de lire la suite. verifions si ca se limite bien à trois ligne au maximum.un deux trois test test voyons voir 
-
-</p> 
-
-<span class="news-date">Il y a 3 h</span> 
-
-</article> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news3.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>Titre de la news</h4> 
-
-<p>Petit résumé de cette actualité.</p> 
-
-<span class="news-date">Hier</span> 
-
-</article> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news4.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>Titre de la news</h4> 
-
-<p>Petit résumé de cette actualité.</p> 
-
-<span class="news-date">Hier</span> 
-
-</article> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news5.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>Titre de la news</h4> 
-
-<p>Petit résumé de cette actualité.</p> 
-
-<span class="news-date">2 jours</span> 
-
-</article> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news6.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>Titre de la news</h4> 
-
-<p>Petit résumé de cette actualité.</p> 
-
-<span class="news-date">Hier</span> 
-
-</article> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news7.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>Titre de la news</h4> 
-
-<p>Petit résumé de cette actualité.</p> 
-
-<span class="news-date">Hier</span> 
-
-</article> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news8.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>Titre de la news</h4> 
-
-<p>Petit résumé de cette actualité.</p> 
-
-<span class="news-date">Hier</span> 
-
-</article> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news9.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>Titre de la news</h4> 
-
-<p>Petit résumé de cette actualité.</p> 
-
-<span class="news-date">Hier</span> 
-
-</article> 
-
- 
-
-<article class="small-news"> 
-
-<div class="small-news-image"> 
-
-<img src="assets/images/news10.jpg" alt="News"> 
-
-</div> 
-
-<span class="news-badge">🎬 FILM</span> 
-
-<h4>Titre de la news</h4> 
-
-<p>Petit résumé de cette actualité.</p> 
-
-<span class="news-date">Hier</span> 
-
-</article> 
-
- 
-
-<div class="explore-news"> 
-
-<a href="pages/news.html"> 
-
-<button>➜</button> 
-
-<p>Explorer les news</p> 
-
-</a> 
-
-</div> 
-
- 
-
-</div> 
-
- 
-
- 
-
-</main> 
-
- 
-
-<!-- ========================== 
-
-FAQ 
-
-========================== --> 
-
-<section class="faq-section"> 
-
- 
-
-<div class="section-title"> 
-
-<h2>Questions fréquentes</h2> 
-
-<p class="faq-subtitle"> 
-
-Retrouvez les réponses aux questions les plus courantes. 
-
-</p> 
-
-</div> 
-
- 
-
-<div class="faq-list"> 
-
- 
-
-<div class="faq-item"> 
-
-<button class="faq-question"> 
-
-<span>Question 1</span> 
-
-<span class="faq-icon">+</span> 
-
-</button> 
-
- 
-
-<div class="faq-answer"> 
-
-<p>Réponse exemple. Ce texte sera remplacé plus tard.</p> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="faq-item"> 
-
-<button class="faq-question"> 
-
-<span>Question 2</span> 
-
-<span class="faq-icon">+</span> 
-
-</button> 
-
- 
-
-<div class="faq-answer"> 
-
-<p>Réponse exemple. Ce texte sera remplacé plus tard.testons pour voir le comportement de cette partie</p> 
-
-</div> 
-
-</div> 
-
- 
-
-<div class="faq-item"> 
-
-<button class="faq-question"> 
-
-<span>Question 3</span> 
-
-<span class="faq-icon">+</span> 
-
-</button> 
-
- 
-
-<div class="faq-answer"> 
-
-<p>Réponse exemple. Ce texte sera remplacé plus tard.</p> 
-
-</div> 
-
-</div> 
-
- 
-
-</div> 
-
- 
-
-<div class="faq-footer"> 
-
-<a href="pages/faq.html" class="faq-btn"> 
-
-Voir toute la FAQ 
-
-</a> 
-
-</div> 
-
- 
-
-</section> 
-
- 
-
-<!-- Footer --> 
-
-<div id="footer"></div> 
-
- 
-
-<!-- Scripts --> 
-
-<script src="assets/js/main.js"></script> 
-
-<script src="script.js"></script> 
-
- 
-
-
-</body> 
-
- 
-
- 
-
-</html> 
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuizTable - Communauté Pop Culture</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- Header -->
+<div id="header"></div>
+
+<!-- Hero -->
+<section class="hero">
+<div class="hero-slider">
+<img src="assets/images/hero.jpg" class="hero-slide active" alt="Accueil">
+<img src="assets/images/hero1.jpg" class="hero-slide" alt="Quiz">
+<img src="assets/images/hero2.jpg" class="hero-slide" alt="Concours">
+<img src="assets/images/hero3.jpg" class="hero-slide" alt="Culture">
+<img src="assets/images/hero4.jpg" class="hero-slide" alt="Créateurs">
+<img src="assets/images/hero5.jpg" class="hero-slide" alt="Illustration">
+<img src="assets/images/hero6.jpg" class="hero-slide" alt="Bibliothèque">
+<img src="assets/images/hero7.jpg" class="hero-slide" alt="Événements">
+<img src="assets/images/hero8.jpg" class="hero-slide" alt="News">
+<img src="assets/images/hero9.jpg" class="hero-slide" alt="Chat">
+<img src="assets/images/hero10.jpg" class="hero-slide" alt="Forum">
+</div>
+<div class="hero-content">
+<div class="hero-text">
+<div class="hero-title">
+<h1 id="heroTitle">Bienvenue sur QuizTable</h1>
+</div>
+</div>
+<a href="pages/guide.html" class="hero-btn" id="heroButton">
+Voir le guide
+</a>
+<button class="hero-prev">❮</button>
+
+<div class="hero-indicators"></div>
+
+<button class="hero-next">❯</button>
+
+</div>
+
+<div class="hero-socials">
+
+<a href="#" aria-label="Instagram">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#" aria-label="TikTok">
+<i class="fa-brands fa-tiktok"></i>
+</a>
+
+<a href="#" aria-label="YouTube">
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+<a href="#" aria-label="WhatsApp">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<a href="#" aria-label="X">
+<i class="fa-brands fa-x-twitter"></i>
+</a>
+
+</div>
+
+</section>
+
+<!-- Contenu principal -->
+<main>
+
+<!-- Classement -->
+<section class="hall-of-fame">
+<h2>Hall of Fame</h2>
+<p class="hall-subtitle">
+Les meilleurs joueurs de cette saison
+</p>
+
+<div class="podium">
+<div class="champion second">
+<img src="assets/images/avatar2.png" alt="Sarah">
+</div>
+<div class="champion first">
+<img src="assets/images/avatar1.png" alt="Alex">
+</div>
+<div class="champion third">
+<img src="assets/images/avatar3.png" alt="David">
+</div>
+</div>
+
+<div class="podium-base">
+<div class="step second-step">
+<div class="step-content">
+<div class="step-number">2</div>
+<div class="step-player">Sarah</div>
+<div class="step-xp">13 850 XP</div>
+</div>
+</div>
+<div class="step first-step">
+<div class="step-content">
+<div class="step-number">1</div>
+<div class="step-player">Alex</div>
+<div class="step-xp">15 320 XP</div>
+</div>
+</div>
+<div class="step third-step">
+<div class="step-content">
+<div class="step-number">3</div>
+<div class="step-player">David</div>
+<div class="step-xp">12 600 XP</div>
+</div>
+</div>
+</div>
+
+<div class="top10-btn">
+<a href="#">Voir le Top 10</a>
+</div>
+</section>
+
+<!-- Nos créateurs -->
+
+<section class="top-creators">
+<h2>Nos créateurs</h2>
+<p class="creators-subtitle">
+Les talents qui font vivre la communauté QuizTable
+</p>
+
+<div class="features illustration-slider">
+
+<div class="card creator-card">
+<div class="creator-avatar">
+<img src="assets/images/creator1.jpg" alt="Créateur">
+</div>
+<div class="creator-followers">1 250 abonnés</div>
+<div class="creator-actions">
+<a href="pages/createurs.html" class="creator-profile-btn">Voir le profil</a>
+<button class="creator-follow-btn">S'abonner</button>
+</div>
+</div>
+
+<div class="card creator-card">
+<div class="creator-avatar">
+<img src="assets/images/creator2.jpg" alt="Créateur">
+</div>
+<div class="creator-followers">980 abonnés</div>
+<div class="creator-actions">
+<a href="pages/createurs.html" class="creator-profile-btn">Voir le profil</a>
+<button class="creator-follow-btn">S'abonner</button>
+</div>
+</div>
+
+<div class="card creator-card">
+<div class="creator-avatar">
+<img src="assets/images/creator3.jpg" alt="Créateur">
+</div>
+<div class="creator-followers">2 340 abonnés</div>
+<div class="creator-actions">
+<a href="pages/createurs.html" class="creator-profile-btn">Voir le profil</a>
+<button class="creator-follow-btn">S'abonner</button>
+</div>
+</div>
+
+<div class="card creator-card">
+<div class="creator-avatar">
+<img src="assets/images/creator4.jpg" alt="Créateur">
+</div>
+<div class="creator-followers">670 abonnés</div>
+<div class="creator-actions">
+<a href="pages/createurs.html" class="creator-profile-btn">Voir le profil</a>
+<button class="creator-follow-btn">S'abonner</button>
+</div>
+</div>
+
+<div class="card creator-card">
+<div class="creator-avatar">
+<img src="assets/images/creator5.jpg" alt="Créateur">
+</div>
+<div class="creator-followers">1 540 abonnés</div>
+<div class="creator-actions">
+<a href="pages/createurs.html" class="creator-profile-btn">Voir le profil</a>
+<button class="creator-follow-btn">S'abonner</button>
+</div>
+</div>
+
+<div class="card creator-card">
+<div class="creator-avatar">
+<img src="assets/images/creator6.jpg" alt="Créateur">
+</div>
+<div class="creator-followers">3 120 abonnés</div>
+<div class="creator-actions">
+<a href="pages/createurs.html" class="creator-profile-btn">Voir le profil</a>
+<button class="creator-follow-btn">S'abonner</button>
+</div>
+</div>
+
+<div class="card creator-card">
+<div class="creator-avatar">
+<img src="assets/images/creator7.jpg" alt="Créateur">
+</div>
+<div class="creator-followers">845 abonnés</div>
+<div class="creator-actions">
+<a href="pages/createurs.html" class="creator-profile-btn">Voir le profil</a>
+<button class="creator-follow-btn">S'abonner</button>
+</div>
+</div>
+
+<div class="card creator-card">
+<div class="creator-avatar">
+<img src="assets/images/creator8.jpg" alt="Créateur">
+</div>
+<div class="creator-followers">1 890 abonnés</div>
+<div class="creator-actions">
+<a href="pages/createurs.html" class="creator-profile-btn">Voir le profil</a>
+<button class="creator-follow-btn">S'abonner</button>
+</div>
+</div>
+
+<div class="explore-illustrations">
+<a href="pages/createurs.html">
+<button> ➜ </button>
+<p> Découvrir plus de créateurs </p>
+</a>
+</div>
+
+</div>
+</section>
+
+<!-- Top illustrations -->
+
+<section class="top-illustrations">
+<h2>Top Illustrations</h2>
+<p class="illustrations-subtitle">
+Les créations les plus appréciées de la communauté
+</p>
+
+<div class="features illustration-slider">
+
+<div class="card illustration-card">
+<img src="assets/images/illustration1.jpg" alt="Illustration">
+<h3>Illustration 1 de monsieur le dessinateur</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration2.jpg" alt="Illustration">
+<h3>Illustration 2</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration3.jpg" alt="Illustration">
+<h3>Illustration 3</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration4.jpg" alt="Illustration">
+<h3>Illustration 4</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration5.jpg" alt="Illustration">
+<h3>Illustration 5</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration6.jpg" alt="Illustration">
+<h3>Illustration 6</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration7.jpg" alt="Illustration">
+<h3>Illustration 7</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration8.jpg" alt="Illustration">
+<h3>Illustration 8</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration9.jpg" alt="Illustration">
+<h3>Illustration 9</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<div class="card illustration-card">
+<img src="assets/images/illustration10.jpg" alt="Illustration">
+<h3>Illustration 10</h3>
+<p>@Auteur</p>
+<div class="illustration-actions">
+<button class="like-btn">
+<i class="fa-regular fa-heart"></i>
+<span>350</span>
+</button>
+
+<button class="comment-btn">
+<i class="fa-regular fa-comment"></i>
+<span>24</span>
+</button>
+</div>
+</div>
+
+<!-- jusqu'à environ 10 cartes -->
+
+<div class="explore-illustrations">
+<a href="pages/illustration.html">
+<button> ➜ </button>
+<p> Explorer illustrations </p>
+</a>
+</div>
+
+</div>
+</section>
+
+<!-- Événements -->
+<section class="events">
+<h2>À venir</h2>
+<p class="events-subtitle"> Les prochains rendez-vous de la communauté</p>
+
+<div class="events-window">
+<div class="events-slider">
+
+<div class="event-card active">
+<div class="event-info">
+<h3>LICC 2026</h3>
+<p>📅 17 octobre 2026</p>
+<p>⏳ Dans 77 jours</p>
+<p>📍 Lomé</p>
+<p>🎟 Entrée gratuite</p>
+</div>
+<div class="event-poster">
+<img src="assets/images/event1.jpg" alt="LICC 2026">
+</div>
+</div>
+
+<div class="event-card next">
+<div class="event-info">
+<h3>🎮 Tournoi Gaming</h3>
+<p>📅 24 octobre 2026</p>
+<p>⏳ Dans 84 jours</p>
+<p>📍 Lomé</p>
+<p>🏅 Inscriptions ouvertes</p>
+</div>
+<div class="event-poster">
+<img src="assets/images/event2.jpg" alt="Tournoi Gaming">
+</div>
+</div>
+
+<div class="event-card previous">
+<div class="event-info">
+<h3>🎭 Concours Cosplay</h3>
+<p>📅 31 octobre 2026</p>
+<p>⏳ Dans 91 jours</p>
+<p>📍 Lomé</p>
+<p>👘 Participation libre</p>
+</div>
+<div class="event-poster">
+<img src="assets/images/event3.jpg" alt="Concours Cosplay">
+</div>
+</div>
+
+<div class="event-card hidden">
+<div class="event-info">
+<h3>🎨 Exposition Fan Art</h3>
+<p>📅 14 novembre 2026</p>
+<p>⏳ Dans 105 jours</p>
+<p>📍 Lomé</p>
+<p>🖼️ Accès gratuit</p>
+</div>
+<div class="event-poster">
+<img src="assets/images/event4.jpg" alt="Exposition Fan Art">
+</div>
+</div>
+
+<div class="event-card hidden">
+<div class="event-info">
+<h3>🎤 Soirée Karaoké Anime</h3>
+<p>📅 28 novembre 2026</p>
+<p>⏳ Dans 119 jours</p>
+<p>📍 Lomé</p>
+<p>🎶 Places limitées</p>
+</div>
+<div class="event-poster">
+<img src="assets/images/event5.jpg" alt="Soirée Karaoké Anime">
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- NEWS -->
+<section class="news-section">
+<div class="news-header">
+<h2>News</h2>
+<p class="news-subtitle">Les dernières nouvelles</p>
+</div>
+
+<div class="featured-news">
+<div class="featured-image">
+<img src="assets/images/news1.jpg" alt="News principale">
+</div>
+<div class="featured-content">
+<span class="news-badge">🎌 ANIME</span>
+<h3>One Piece annonce officiellement la sortie d'une deuxieme saison à l'horizon 2026. une deuxieme saison plus de 20 ans apres le debut de la premiere</h3>
+<p>
+Petit résumé de la news principale.
+Deux ou trois lignes maximum pour donner envie
+de lire la suite. verifions si ca se limite bien à trois ligne au maximum.un deux trois test test voyons voir
+</p>
+<span class="news-date">
+Il y a 2 heures
+</span>
+</div>
+</div>
+</section>
+
+<div class="news-horizontal-list">
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news2.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>One Piece annonce officiellement la sortie d'une deuxieme saison à l'horizon 2026. une deuxieme saison plus de 20 ans apres le debut de la premiere</h4>
+<p>Petit résumé de la news principale.
+Deux ou trois lignes maximum pour donner envie
+de lire la suite. verifions si ca se limite bien à trois ligne au maximum.un deux trois test test voyons voir
+</p>
+<span class="news-date">Il y a 3 h</span>
+</article>
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news3.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>Titre de la news</h4>
+<p>Petit résumé de cette actualité.</p>
+<span class="news-date">Hier</span>
+</article>
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news4.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>Titre de la news</h4>
+<p>Petit résumé de cette actualité.</p>
+<span class="news-date">Hier</span>
+</article>
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news5.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>Titre de la news</h4>
+<p>Petit résumé de cette actualité.</p>
+<span class="news-date">2 jours</span>
+</article>
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news6.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>Titre de la news</h4>
+<p>Petit résumé de cette actualité.</p>
+<span class="news-date">Hier</span>
+</article>
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news7.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>Titre de la news</h4>
+<p>Petit résumé de cette actualité.</p>
+<span class="news-date">Hier</span>
+</article>
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news8.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>Titre de la news</h4>
+<p>Petit résumé de cette actualité.</p>
+<span class="news-date">Hier</span>
+</article>
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news9.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>Titre de la news</h4>
+<p>Petit résumé de cette actualité.</p>
+<span class="news-date">Hier</span>
+</article>
+
+<article class="small-news">
+<div class="small-news-image">
+<img src="assets/images/news10.jpg" alt="News">
+</div>
+<span class="news-badge">🎬 FILM</span>
+<h4>Titre de la news</h4>
+<p>Petit résumé de cette actualité.</p>
+<span class="news-date">Hier</span>
+</article>
+
+<div class="explore-news">
+<a href="pages/news.html">
+<button>➜</button>
+<p>Explorer les news</p>
+</a>
+</div>
+
+</div>
+
+</main>
+
+<!-- ==========================
+FAQ
+========================== -->
+<section class="faq-section">
+
+<div class="section-title">
+<h2>Questions fréquentes</h2>
+<p class="faq-subtitle">
+Retrouvez les réponses aux questions les plus courantes.
+</p>
+</div>
+
+<div class="faq-list">
+
+<div class="faq-item">
+<button class="faq-question">
+<span>Question 1</span>
+<span class="faq-icon">+</span>
+</button>
+
+<div class="faq-answer">
+<p>Réponse exemple. Ce texte sera remplacé plus tard.</p>
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">
+<span>Question 2</span>
+<span class="faq-icon">+</span>
+</button>
+
+<div class="faq-answer">
+<p>Réponse exemple. Ce texte sera remplacé plus tard.testons pour voir le comportement de cette partie</p>
+</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">
+<span>Question 3</span>
+<span class="faq-icon">+</span>
+</button>
+
+<div class="faq-answer">
+<p>Réponse exemple. Ce texte sera remplacé plus tard.</p>
+</div>
+</div>
+
+</div>
+
+<div class="faq-footer">
+<a href="pages/faq.html" class="faq-btn">
+<i class="fa-solid fa-circle-question"></i> Voir toute la FAQ
+</a>
+</div>
+
+</section>
+
+<!-- ==========================
+BOÎTE À SUGGESTIONS
+========================== -->
+<section class="suggestion-section">
+
+<div class="section-title">
+<h2>Boîte à suggestions</h2>
+<p class="suggestion-subtitle">
+Une idée pour améliorer QuizTable ? Nous serions ravis de la découvrir.
+</p>
+</div>
+
+<div class="suggestion-box">
+
+<button class="suggestion-toggle-btn" id="suggestionToggle">
+<i class="fa-solid fa-lightbulb"></i> Faire une suggestion
+</button>
+
+<form class="suggestion-form" id="suggestionForm">
+
+<div class="suggestion-identity">
+<label>
+<input type="radio" name="identity" value="pseudo" checked>
+Pseudo
+</label>
+<label>
+<input type="radio" name="identity" value="anonyme">
+Anonyme
+</label>
+</div>
+
+<div class="suggestion-field">
+<input type="text" id="suggestionPseudo" class="suggestion-input" placeholder="Votre pseudo" required>
+<span class="suggestion-error" id="suggestionPseudoError">Merci de renseigner votre pseudo.</span>
+</div>
+
+<textarea id="suggestionText" class="suggestion-textarea" placeholder="Écrivez votre suggestion ici..." required></textarea>
+
+<button type="submit" class="suggestion-submit-btn">
+<i class="fa-solid fa-paper-plane"></i> Envoyer la suggestion
+</button>
+
+</form>
+
+<div class="suggestion-confirmation" id="suggestionConfirmation">
+<p>Merci pour votre suggestion ! Elle sera étudiée avec attention afin de faire évoluer la communauté QuizTable.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- Footer -->
+<div id="footer"></div>
+
+<!-- Scripts -->
+<script src="assets/js/main.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
