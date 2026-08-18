@@ -23,7 +23,7 @@ allowSecondAttempt: false,
 secondAttemptCoinsCost: 30,
 secondAttemptAdEnabled: true,
 launchAdEnabled: true,
-launchAdRewardCoins: 0,
+launchAdRewardCoins: 25,
 freeSlotsMax: 500,
 unlockSlotCoinsCost: 50,
 xpRequired: 0,
@@ -39,9 +39,9 @@ xpReward: 100,
 question: "Quelle est votre réponse à la question du mois ?",
 winner: "—",
 correctParticipants: [],
-startTime: "2026-08-10T17:02:00Z",
-endTime: "2026-08-13T17:02:30Z",
-resultsTime: "2026-08-14T17:03:00Z",
+startTime: "2026-08-15T17:02:00Z",
+endTime: "2026-08-21T17:02:30Z",
+resultsTime: "2026-08-22T17:03:00Z",
 partners: [
 {
 name: "GeekOtaku",
@@ -67,7 +67,7 @@ category: "manga",
 frequency: "daily",
 type: "daily",
 coinsReward: 0,
-questionsCount: 5,
+questionsCount: 3,
 xpPerQuestion: 20,
 coinsPerQuestion: 5,
 seriesBonusXP: 20,
@@ -94,8 +94,49 @@ question: "Quel est votre manga préféré et pourquoi ?",
 winner: "—",
 correctParticipants: [],
 startTime: "2026-08-10T15:10:00Z",
-endTime: "2026-08-11T00:11:00Z",
-resultsTime: "2026-08-11T00:12:00Z",
+endTime: "2026-08-21T00:11:00Z",
+resultsTime: "2026-08-22T00:12:00Z",
+nextEditionTime: "2026-08-12T15:10:00Z",
+questions: [
+{
+text: "Quel manga a été créé par Eiichiro Oda ?",
+xp: 15,
+coins: 5,
+image: "../assets/images/default-profile.jpg",
+
+options: [
+{ text: "One Piece", correct: true },
+{ text: "Naruto", correct: false },
+{ text: "Bleach", correct: false },
+{ text: "Dragon Ball", correct: false }
+],
+explanation: "One Piece est l'œuvre d'Eiichiro Oda, publiée depuis 1997."
+},
+{
+text: "Dans quel manga trouve-t-on le personnage Light Yagami ?",
+xp: 15,
+coins: 5,
+options: [
+{ text: "Death Note", correct: true },
+{ text: "Attack on Titan", correct: false },
+{ text: "Fullmetal Alchemist", correct: false },
+{ text: "Tokyo Ghoul", correct: false }
+],
+explanation: "Light Yagami est le protagoniste de Death Note."
+},
+{
+text: "Combien de Dragon Balls faut-il réunir pour invoquer Shenron ?",
+xp: 20,
+coins: 10,
+options: [
+{ text: "5", correct: false },
+{ text: "6", correct: false },
+{ text: "7", correct: true },
+{ text: "9", correct: false }
+],
+explanation: "Il faut réunir les 7 Dragon Balls pour invoquer Shenron."
+}
+],
 partners: [
 {
 name: "MangaZone",
@@ -114,7 +155,7 @@ category: "manga",
 frequency: "daily",
 type: "daily",
 coinsReward: 0,
-questionsCount: 5,
+questionsCount: 3,
 xpPerQuestion: 20,
 coinsPerQuestion: 5,
 seriesBonusXP: 20,
@@ -132,7 +173,7 @@ unlockWithXPCoinsCost: 50,
 unlockLowXPCoinsCost: 100,
 sponsorMessageEnabled: true,
 sponsorMessage: "Merci à AnimeVerse, partenaire de cette édition.",
-image: "../assets/images/quiz/question-du-mois.jpg",
+image: "../assets/images/default-profile.jpg",
 members: 76,
 liked: false,
 notifications: false,
@@ -141,8 +182,49 @@ question: "Quel anime vous a le plus marqué ?",
 winner: "—",
 correctParticipants: [],
 startTime: "2026-08-11T00:10:00Z",
-endTime: "2026-08-11T00:11:00Z",
-resultsTime: "2026-08-11T00:12:00Z",
+endTime: "2026-08-21T00:11:00Z",
+resultsTime: "2026-08-22T00:12:00Z",
+nextEditionTime: "2026-08-12T00:10:00Z",
+questions: [
+{
+text: "Quel studio a produit Demon Slayer ?",
+xp: 15,
+coins: 5,
+image: "../assets/images/default-profile.jpg",
+imagePosition: "after",
+options: [
+{ text: "Ufotable", correct: true },
+{ text: "Toei Animation", correct: false },
+{ text: "MAPPA", correct: false },
+{ text: "Bones", correct: false }
+],
+explanation: "Demon Slayer est animé par le studio Ufotable."
+},
+{
+text: "Quel est le nom du protagoniste de My Hero Academia ?",
+xp: 15,
+coins: 5,
+options: [
+{ text: "Izuku Midoriya", correct: true },
+{ text: "Katsuki Bakugo", correct: false },
+{ text: "Shoto Todoroki", correct: false },
+{ text: "Tenya Iida", correct: false }
+],
+explanation: "Izuku Midoriya, alias Deku, est le héros principal de la série."
+},
+{
+text: "Dans quel anime évolue le personnage Levi Ackerman ?",
+xp: 20,
+coins: 10,
+options: [
+{ text: "L'Attaque des Titans", correct: true },
+{ text: "Naruto", correct: false },
+{ text: "One Piece", correct: false },
+{ text: "Jujutsu Kaisen", correct: false }
+],
+explanation: "Levi Ackerman est un personnage emblématique de L'Attaque des Titans."
+}
+],
 partners: [
 {
 name: "AnimeVerse",
@@ -218,7 +300,7 @@ allowSecondAttempt: false,
 secondAttemptCoinsCost: 40,
 secondAttemptAdEnabled: true,
 launchAdEnabled: true,
-launchAdRewardCoins: 0,
+launchAdRewardCoins: 35,
 freeSlotsMax: 500,
 unlockSlotCoinsCost: 50,
 xpRequired: 0,
@@ -265,7 +347,7 @@ allowSecondAttempt: false,
 secondAttemptCoinsCost: 30,
 secondAttemptAdEnabled: true,
 launchAdEnabled: true,
-launchAdRewardCoins: 0,
+launchAdRewardCoins: 25,
 freeSlotsMax: 500,
 unlockSlotCoinsCost: 50,
 xpRequired: 0,
@@ -302,7 +384,7 @@ category: "culture",
 frequency: "special",
 type: "daily",
 coinsReward: 0,
-questionsCount: 10,
+questionsCount: 3,
 xpPerQuestion: 15,
 coinsPerQuestion: 5,
 seriesBonusXP: 30,
@@ -331,6 +413,45 @@ correctParticipants: [],
 startTime: "2026-08-11T00:10:00Z",
 endTime: "2026-08-11T00:11:00Z",
 resultsTime: "2026-08-11T00:12:00Z",
+nextEditionTime: "2026-08-12T00:10:00Z",
+questions: [
+{
+text: "Quel réseau social était à l'origine associé au symbole d'un petit oiseau ?",
+xp: 10,
+coins: 5,
+options: [
+{ text: "Twitter (X)", correct: true },
+{ text: "Instagram", correct: false },
+{ text: "TikTok", correct: false },
+{ text: "Snapchat", correct: false }
+],
+explanation: "Twitter, aujourd'hui renommé X, utilisait un petit oiseau bleu comme symbole."
+},
+{
+text: "Quel film a lancé l'univers cinématographique Marvel en 2008 ?",
+xp: 15,
+coins: 5,
+options: [
+{ text: "Iron Man", correct: true },
+{ text: "Thor", correct: false },
+{ text: "Captain America", correct: false },
+{ text: "Hulk", correct: false }
+],
+explanation: "Iron Man (2008) est le tout premier film du Marvel Cinematic Universe."
+},
+{
+text: "Quelle artiste est surnommée « The Queen of Pop » ?",
+xp: 20,
+coins: 10,
+options: [
+{ text: "Madonna", correct: true },
+{ text: "Beyoncé", correct: false },
+{ text: "Rihanna", correct: false },
+{ text: "Lady Gaga", correct: false }
+],
+explanation: "Madonna porte ce surnom depuis les années 1980."
+}
+],
 partners: [
 {
 name: "PopWave",
@@ -363,6 +484,13 @@ let currentPartnerIndex = 0;
 let partnerInterval = null;
 
 // -----------------------------------------------------
+// PHASE 5 : PUBLICITÉ DE LANCEMENT + 2E RÉPONSE
+// -----------------------------------------------------
+
+const launchAdShownSessions = new Set();
+const secondResponseUsed = new Set();
+
+// -----------------------------------------------------
 // QUIZ COINS (monnaie interne, simulation front-end)
 // -----------------------------------------------------
 /*
@@ -373,6 +501,12 @@ let partnerInterval = null;
 */
 
 let userQuizCoins = 250;
+
+// -----------------------------------------------------
+// XP DE L'UTILISATEUR (simulation front-end)
+// -----------------------------------------------------
+
+let userXP = 0;
 
 // =========================================================
 // ÉLÉMENTS HTML
@@ -629,6 +763,23 @@ valueEl.textContent = userQuizCoins;
 }
 }
 
+function renderUserXPBadge() {
+const valueEl = document.getElementById("quizUserXPValue");
+
+if (valueEl) {
+valueEl.textContent = userXP;
+}
+}
+
+function addUserXP(amount) {
+if (!amount) {
+return;
+}
+
+userXP += amount;
+renderUserXPBadge();
+}
+
 function addQuizCoins(amount) {
 if (!amount) {
 return;
@@ -647,6 +798,193 @@ userQuizCoins -= amount;
 renderCoinBalance();
 
 return true;
+}
+
+// =========================================================
+// INTERFACE PUBLICITÉ (générique)
+// =========================================================
+/*
+* Un seul système réutilisable pour les 3 contextes prévus :
+* - publicité de lancement (mensuel/annuel)
+* - publicité pour une 2e tentative (journalier + mensuel/annuel difficile)
+* - publicité récompensée en Quiz Coins
+*
+* Utilisation depuis n'importe quelle logique de quiz (phases suivantes) :
+*
+* openAdModal({
+*   message: "Regardez cette publicité pour continuer.",
+*   rewardCoins: 0,           // 0 = pas de récompense, juste un passage obligé
+*   durationSeconds: 15,      // durée simulée du visionnage
+*   onComplete: () => { ... }, // appelé une fois la pub "regardée" (et la récompense créditée)
+*   onRefuse: () => { ... }    // appelé si l'utilisateur refuse/ferme
+* });
+*/
+
+const adModal = document.getElementById("quizAdModal");
+const adMessageEl = document.getElementById("quizAdMessage");
+const adRewardRow = document.getElementById("quizAdRewardRow");
+const adRewardValueEl = document.getElementById("quizAdRewardValue");
+const adCountdownEl = document.getElementById("quizAdCountdown");
+const adAcceptBtn = document.getElementById("quizAdAccept");
+const adRefuseBtn = document.getElementById("quizAdRefuse");
+const adCloseBtn = document.getElementById("quizAdClose");
+
+const adState = {
+onComplete: null,
+onRefuse: null,
+rewardCoins: 0,
+duration: 15,
+countdownInterval: null
+};
+
+function openAdModal(options) {
+if (!adModal) {
+return;
+}
+
+adState.onComplete = options.onComplete || null;
+adState.onRefuse = options.onRefuse || null;
+adState.rewardCoins = options.rewardCoins || 0;
+adState.duration = options.durationSeconds || 15;
+
+if (adMessageEl) {
+adMessageEl.textContent =
+options.message || "Regardez cette publicité pour continuer.";
+}
+
+if (adRewardRow) {
+adRewardRow.classList.toggle("hidden", !adState.rewardCoins);
+}
+
+if (adRewardValueEl) {
+adRewardValueEl.textContent = adState.rewardCoins;
+}
+
+if (adCountdownEl) {
+adCountdownEl.textContent = "";
+}
+
+if (adAcceptBtn) {
+adAcceptBtn.disabled = false;
+adAcceptBtn.dataset.state = "idle";
+adAcceptBtn.textContent = "Regarder";
+}
+
+adModal.classList.add("active");
+}
+
+function closeAdModal() {
+if (adModal) {
+adModal.classList.remove("active");
+}
+
+if (adState.countdownInterval) {
+clearInterval(adState.countdownInterval);
+adState.countdownInterval = null;
+}
+}
+
+function startAdCountdown() {
+let remaining = adState.duration;
+
+if (adAcceptBtn) {
+adAcceptBtn.disabled = true;
+adAcceptBtn.dataset.state = "watching";
+adAcceptBtn.textContent = "Lecture en cours…";
+}
+
+if (adCountdownEl) {
+adCountdownEl.textContent = `${remaining}s`;
+}
+
+adState.countdownInterval = setInterval(() => {
+remaining -= 1;
+
+if (adCountdownEl) {
+adCountdownEl.textContent = `${remaining}s`;
+}
+
+if (remaining <= 0) {
+clearInterval(adState.countdownInterval);
+adState.countdownInterval = null;
+
+if (adCountdownEl) {
+adCountdownEl.textContent = "";
+}
+
+if (adAcceptBtn) {
+adAcceptBtn.disabled = false;
+adAcceptBtn.dataset.state = "ready";
+adAcceptBtn.textContent =
+adState.rewardCoins > 0 ? "Récupérer" : "Continuer";
+}
+}
+}, 1000);
+}
+
+function finalizeAd() {
+if (adState.rewardCoins > 0) {
+addQuizCoins(adState.rewardCoins);
+}
+
+const callback = adState.onComplete;
+
+closeAdModal();
+
+if (callback) {
+callback();
+}
+}
+
+if (adAcceptBtn) {
+adAcceptBtn.addEventListener("click", () => {
+if (adAcceptBtn.dataset.state === "idle") {
+startAdCountdown();
+} else if (adAcceptBtn.dataset.state === "ready") {
+finalizeAd();
+}
+});
+}
+
+[adRefuseBtn, adCloseBtn].forEach(button => {
+if (button) {
+button.addEventListener("click", () => {
+const callback = adState.onRefuse;
+
+closeAdModal();
+
+if (callback) {
+callback();
+}
+});
+}
+});
+
+// -----------------------------------------------------
+// BOUTON DE TEST TEMPORAIRE
+// -----------------------------------------------------
+/*
+* À retirer une fois les phases 4/5 branchées : elles
+* appelleront openAdModal() directement depuis la logique
+* de jeu (appui sur "Jouer", mauvaise réponse, etc.).
+*/
+
+const adTestTrigger = document.getElementById("quizAdTestTrigger");
+
+if (adTestTrigger) {
+adTestTrigger.addEventListener("click", () => {
+openAdModal({
+message: "Regardez cette publicité pour obtenir des Quiz Coins.",
+rewardCoins: 30,
+durationSeconds: 8,
+onComplete: () => {
+addNotification("Vous avez récupéré votre récompense publicitaire.", "fa-coins");
+},
+onRefuse: () => {
+console.log("Publicité refusée (test).");
+}
+});
+});
 }
 
 // =========================================================
@@ -936,6 +1274,18 @@ Se désinscrire
 if (playButton) {
 playButton.classList.remove("hidden");
 }
+
+const coinBalance = document.getElementById("quizCoinBalance");
+
+if (coinBalance) {
+coinBalance.classList.remove("hidden");
+}
+
+const xpBadge = document.getElementById("quizUserXPBadge");
+
+if (xpBadge) {
+xpBadge.classList.remove("hidden");
+}
 } else {
 registerButton.classList.remove("registered");
 
@@ -946,6 +1296,18 @@ S'inscrire
 
 if (playButton) {
 playButton.classList.add("hidden");
+}
+
+const coinBalance = document.getElementById("quizCoinBalance");
+
+if (coinBalance) {
+coinBalance.classList.add("hidden");
+}
+
+const xpBadge = document.getElementById("quizUserXPBadge");
+
+if (xpBadge) {
+xpBadge.classList.add("hidden");
 }
 }
 }
@@ -1195,13 +1557,50 @@ if (!registeredQuizzes.has(currentQuiz.id)) {
 return;
 }
 
+// ---------------------------------------------------
+// PUBLICITÉ DE LANCEMENT (mensuel/annuel uniquement,
+// une seule fois par session : début du quiz → résultats)
+// ---------------------------------------------------
+
+const state = getQuizState();
+
+if (
+currentQuiz.type !== "daily" &&
+currentQuiz.launchAdEnabled &&
+state.state === "playing"
+) {
+const sessionKey = `${currentQuiz.id}_${currentQuiz.startTime}`;
+
+if (!launchAdShownSessions.has(sessionKey)) {
+launchAdShownSessions.add(sessionKey);
+
+openAdModal({
+message: "Regardez cette publicité pour obtenir des Quiz Coins.",
+rewardCoins: currentQuiz.launchAdRewardCoins || 0,
+durationSeconds: 10,
+onComplete: () => {
+openQuizGamePanel();
+},
+onRefuse: () => {
+openQuizGamePanel();
+}
+});
+
+return;
+}
+}
+
+openQuizGamePanel();
+});
+}
+
+function openQuizGamePanel() {
 showResultsPanel = false;
 
 showPanel(game);
 setActiveButton(playButton);
 
 updateGameInterface();
-});
 }
 
 // =========================================================
@@ -1218,10 +1617,72 @@ unregisterModal.classList.add("active");
 return;
 }
 
+// ---------------------------------------------------
+// QUOTA D'INSCRIPTIONS GRATUITES ATTEINT
+// ---------------------------------------------------
+/*
+* Prévu dans la logique dès maintenant, même si aucun
+* quiz de démo n'atteint son quota (freeSlotsMax:500
+* pour tous, avec des effectifs bien inférieurs).
+*/
+
+if (
+currentQuiz.freeSlotsMax &&
+currentQuiz.members >= currentQuiz.freeSlotsMax
+) {
+openQuotaModal();
+return;
+}
+
 if (registrationModal) {
 registrationModal.classList.add("active");
 }
 });
+}
+
+function openQuotaModal() {
+const modal = document.getElementById("quizQuotaModal");
+const costEl = document.getElementById("quizQuotaUnlockCost");
+
+if (costEl) {
+costEl.textContent = currentQuiz.unlockSlotCoinsCost || 0;
+}
+
+if (modal) {
+modal.classList.add("active");
+}
+}
+
+function closeQuotaModal() {
+const modal = document.getElementById("quizQuotaModal");
+
+if (modal) {
+modal.classList.remove("active");
+}
+}
+
+const quotaUnlockBtn = document.getElementById("quizQuotaUnlockBtn");
+const quotaCancelBtn = document.getElementById("quizQuotaCancel");
+
+if (quotaUnlockBtn) {
+quotaUnlockBtn.addEventListener("click", () => {
+const cost = currentQuiz.unlockSlotCoinsCost || 0;
+
+if (!spendQuizCoins(cost)) {
+alert("Vous n'avez pas suffisamment de Quiz Coins pour débloquer une inscription.");
+return;
+}
+
+closeQuotaModal();
+
+if (registrationModal) {
+registrationModal.classList.add("active");
+}
+});
+}
+
+if (quotaCancelBtn) {
+quotaCancelBtn.addEventListener("click", closeQuotaModal);
 }
 
 // =========================================================
@@ -1499,7 +1960,6 @@ const now = new Date();
 
 const start = new Date(quiz.startTime);
 const end = new Date(quiz.endTime);
-const results = new Date(quiz.resultsTime);
 
 if (now < start) {
 return { state: "waiting", target: start };
@@ -1508,6 +1968,26 @@ return { state: "waiting", target: start };
 if (now < end) {
 return { state: "playing", target: end };
 }
+
+// -----------------------------------------------------
+// QUIZ JOURNALIER : pas de période de résultats.
+// On repart directement sur "Débute dans" vers la
+// prochaine édition (réutilise l'état "waiting").
+// -----------------------------------------------------
+
+if (quiz.type === "daily") {
+if (quiz.nextEditionTime) {
+const nextEdition = new Date(quiz.nextEditionTime);
+
+if (now < nextEdition) {
+return { state: "waiting", target: nextEdition };
+}
+}
+
+return { state: "finished", target: null };
+}
+
+const results = new Date(quiz.resultsTime);
 
 if (now < results) {
 return { state: "results", target: results };
@@ -1537,9 +2017,12 @@ const state = getQuizState().state;
 
 const waiting = game.querySelector(".quiz-game-waiting");
 const active = game.querySelector(".quiz-game-active");
+const loadingPanel = game.querySelector(".quiz-game-loading");
 const submitted = game.querySelector(".quiz-game-submitted");
 const resultsWaiting = game.querySelector(".quiz-game-results-waiting");
 const results = game.querySelector(".quiz-game-results");
+const dailyPanel = game.querySelector(".quiz-game-daily");
+const dailySummaryPanel = game.querySelector(".quiz-game-daily-summary");
 const question = game.querySelector(".quiz-question");
 const xpValue = game.querySelector(".quiz-xp-value");
 const textarea = game.querySelector(".quiz-answer");
@@ -1564,7 +2047,7 @@ xpValue.textContent = `+${currentQuiz.xpReward} XP`;
 // CACHER LES ÉTATS
 // -----------------------------------------------------
 
-[waiting, active, submitted, resultsWaiting, results].forEach(element => {
+[waiting, active, loadingPanel, submitted, resultsWaiting, results, dailyPanel, dailySummaryPanel].forEach(element => {
 if (element) {
 element.style.display = "none";
 }
@@ -1597,10 +2080,31 @@ return;
 // -----------------------------------------------------
 
 if (state === "playing") {
+
+// -------------------------------------------------
+// QUIZ JOURNALIER : QCM à correction immédiate
+// -------------------------------------------------
+
+if (currentQuiz.type === "daily") {
+if (dailyPanel) {
+dailyPanel.style.display = "block";
+}
+
+startOrResumeDailyQuiz();
+
+return;
+}
+
+// -------------------------------------------------
+// QUIZ MENSUEL/ANNUEL : réponse libre (inchangé)
+// -------------------------------------------------
+
 if (answeredQuizzes.has(currentQuiz.id)) {
 if (submitted) {
 submitted.style.display = "block";
 }
+
+maybeOfferSecondResponse();
 
 return;
 }
@@ -1633,7 +2137,7 @@ return;
 // -----------------------------------------------------
 
 if (state === "finished") {
-if (!showResultsPanel) {
+if (!showResultsPanel || currentQuiz.type === "daily") {
 const sessionEnded = document.createElement("div");
 
 sessionEnded.className = "quiz-session-ended";
@@ -1687,8 +2191,546 @@ winner.textContent = currentQuiz.winner;
 }
 
 // =========================================================
+// QUIZ JOURNALIER — LOGIQUE DU QCM
+// =========================================================
+/*
+* Une seule question à la fois, correction immédiate, une
+* seule tentative supplémentaire possible par question
+* (Quiz Coins OU publicité), bonus si toute la série est
+* réussie (première ou deuxième tentative).
+*/
+
+const DAILY_SUMMARY_EXPIRY_MS = 60 * 60 * 1000; // 1 heure
+
+let dailyState = {
+quizId: null,
+index: 0,
+attempts: 0,
+results: [],
+totalXP: 0,
+totalCoins: 0,
+completed: false,
+summaryShownAt: null
+};
+
+function getCurrentDailyQuestion() {
+if (!currentQuiz.questions) {
+return null;
+}
+
+return currentQuiz.questions[dailyState.index];
+}
+
+function startOrResumeDailyQuiz() {
+if (!currentQuiz.questions || currentQuiz.questions.length === 0) {
+return;
+}
+
+if (dailyState.quizId !== currentQuiz.id) {
+dailyState = {
+quizId: currentQuiz.id,
+index: 0,
+attempts: 0,
+results: [],
+totalXP: 0,
+totalCoins: 0,
+completed: false,
+summaryShownAt: null
+};
+}
+
+// -----------------------------------------------------
+// EXPIRATION DU RÉSUMÉ (environ 1 heure) : on repart
+// sur une session fraîche pour la prochaine tentative.
+// -----------------------------------------------------
+
+if (
+dailyState.completed &&
+dailyState.summaryShownAt &&
+Date.now() - dailyState.summaryShownAt > DAILY_SUMMARY_EXPIRY_MS
+) {
+dailyState = {
+quizId: currentQuiz.id,
+index: 0,
+attempts: 0,
+results: [],
+totalXP: 0,
+totalCoins: 0,
+completed: false,
+summaryShownAt: null
+};
+}
+
+if (dailyState.completed) {
+showDailySummary({ openModal: false });
+return;
+}
+
+if (dailyState.index >= currentQuiz.questions.length) {
+showDailySummary();
+return;
+}
+
+renderDailyQuestion();
+}
+
+function renderDailyQuestion() {
+const question = getCurrentDailyQuestion();
+
+if (!question) {
+return;
+}
+
+dailyState.attempts = 0;
+
+const progressEl = document.getElementById("quizDailyProgress");
+const xpEl = document.getElementById("quizDailyQuestionXP");
+const textEl = document.getElementById("quizDailyQuestionText");
+const optionsEl = document.getElementById("quizDailyOptions");
+const feedbackEl = document.getElementById("quizDailyFeedback");
+const secondChanceEl = document.getElementById("quizDailySecondChance");
+const nextBtn = document.getElementById("quizDailyNextBtn");
+
+if (progressEl) {
+progressEl.textContent =
+`Question ${dailyState.index + 1}/${currentQuiz.questions.length}`;
+}
+
+if (xpEl) {
+xpEl.textContent = `+${question.xp} XP`;
+}
+
+if (textEl) {
+textEl.textContent = question.text;
+}
+
+
+
+// -----------------------------------------------------
+// IMAGE DE L'ÉNONCÉ (facultative)
+// -----------------------------------------------------
+/*
+* question.image : URL de l'image (absente = texte seul).
+* question.imagePosition : "before" (par défaut, l'image
+* précède l'énoncé) ou "after" (l'image accompagne
+* l'énoncé, affichée juste en dessous).
+*/
+
+const imageEl = document.getElementById("quizDailyQuestionImage");
+const questionBoxEl = document.querySelector(
+"#quiz-game-content .quiz-game-daily .quiz-question-box"
+);
+
+if (imageEl) {
+if (question.image) {
+imageEl.src = question.image;
+imageEl.alt = question.text;
+imageEl.classList.remove("hidden");
+
+const isAfter = question.imagePosition === "after";
+
+imageEl.classList.toggle("quiz-question-image-after", isAfter);
+
+if (questionBoxEl && questionBoxEl.parentNode) {
+if (isAfter) {
+questionBoxEl.parentNode.insertBefore(
+imageEl,
+questionBoxEl.nextSibling
+);
+} else {
+questionBoxEl.parentNode.insertBefore(imageEl, questionBoxEl);
+}
+}
+} else {
+imageEl.classList.add("hidden");
+imageEl.removeAttribute("src");
+}
+}
+
+if (feedbackEl) {
+feedbackEl.classList.add("hidden");
+feedbackEl.classList.remove("success", "error");
+}
+
+if (secondChanceEl) {
+secondChanceEl.classList.add("hidden");
+}
+
+if (nextBtn) {
+nextBtn.classList.add("hidden");
+}
+
+if (optionsEl) {
+optionsEl.innerHTML = "";
+
+question.options.forEach((option, index) => {
+const button = document.createElement("button");
+
+button.type = "button";
+button.className = "quiz-daily-option";
+button.dataset.optionIndex = index;
+button.textContent = option.text;
+
+button.addEventListener("click", () => {
+handleDailyOptionClick(index);
+});
+
+optionsEl.appendChild(button);
+});
+}
+}
+
+function handleDailyOptionClick(optionIndex) {
+const question = getCurrentDailyQuestion();
+
+if (!question) {
+return;
+}
+
+const optionsEl = document.getElementById("quizDailyOptions");
+const buttons = optionsEl
+? Array.from(optionsEl.querySelectorAll(".quiz-daily-option"))
+: [];
+
+buttons.forEach(button => {
+button.disabled = true;
+});
+
+dailyState.attempts += 1;
+
+const selectedOption = question.options[optionIndex];
+
+if (selectedOption.correct) {
+if (buttons[optionIndex]) {
+buttons[optionIndex].classList.add("correct");
+}
+
+markDailyQuestionSuccess(question);
+
+return;
+}
+
+if (buttons[optionIndex]) {
+buttons[optionIndex].classList.add("incorrect");
+}
+
+if (dailyState.attempts === 1) {
+showDailySecondChance();
+return;
+}
+
+markDailyQuestionFailure(question);
+}
+
+function markDailyQuestionSuccess(question) {
+dailyState.results[dailyState.index] = true;
+dailyState.totalXP += question.xp;
+dailyState.totalCoins += question.coins;
+
+addUserXP(question.xp);
+addQuizCoins(question.coins);
+
+showDailyFeedback("success", `Bonne réponse ! +${question.xp} XP`);
+proceedAfterDailyAnswer();
+}
+
+function markDailyQuestionFailure(question) {
+dailyState.results[dailyState.index] = false;
+
+showDailyFeedback(
+"error",
+question.explanation || "Mauvaise réponse."
+);
+proceedAfterDailyAnswer();
+}
+
+function showDailyFeedback(type, text) {
+const feedbackEl = document.getElementById("quizDailyFeedback");
+const feedbackText = document.getElementById("quizDailyFeedbackText");
+
+if (feedbackText) {
+feedbackText.textContent = text;
+}
+
+if (feedbackEl) {
+feedbackEl.classList.remove("hidden", "success", "error");
+feedbackEl.classList.add(type);
+}
+}
+
+function proceedAfterDailyAnswer() {
+const isLastQuestion =
+dailyState.index >= currentQuiz.questions.length - 1;
+
+// -----------------------------------------------------
+// DERNIÈRE QUESTION : le résumé s'affiche automatiquement,
+// après un court délai pour laisser le temps de lire le
+// retour (bonne/mauvaise réponse).
+// -----------------------------------------------------
+
+if (isLastQuestion) {
+setTimeout(() => {
+dailyState.index += 1;
+showDailySummary();
+}, 1800);
+
+return;
+}
+
+showDailyNextButton();
+}
+
+function showDailyNextButton() {
+const nextBtn = document.getElementById("quizDailyNextBtn");
+
+if (!nextBtn) {
+return;
+}
+
+nextBtn.classList.remove("hidden");
+nextBtn.innerHTML = `Question suivante <i class="fa-solid fa-arrow-right"></i>`;
+}
+
+function showDailySecondChance() {
+const secondChanceEl = document.getElementById("quizDailySecondChance");
+const costEl = document.getElementById("quizDailySecondCost");
+
+if (costEl) {
+costEl.textContent = currentQuiz.secondAttemptCoinsCost || 0;
+}
+
+if (secondChanceEl) {
+secondChanceEl.classList.remove("hidden");
+}
+}
+
+function retryDailyQuestion() {
+const secondChanceEl = document.getElementById("quizDailySecondChance");
+const optionsEl = document.getElementById("quizDailyOptions");
+
+if (secondChanceEl) {
+secondChanceEl.classList.add("hidden");
+}
+
+if (optionsEl) {
+optionsEl.querySelectorAll(".quiz-daily-option").forEach(button => {
+button.disabled = false;
+button.classList.remove("correct", "incorrect");
+});
+}
+}
+
+const dailyCoinsBtn = document.getElementById("quizDailyCoinsBtn");
+const dailyAdBtn = document.getElementById("quizDailyAdBtn");
+const dailyNextBtnEl = document.getElementById("quizDailyNextBtn");
+
+if (dailyCoinsBtn) {
+dailyCoinsBtn.addEventListener("click", () => {
+const cost = currentQuiz.secondAttemptCoinsCost || 0;
+
+if (!spendQuizCoins(cost)) {
+alert("Vous n'avez pas suffisamment de Quiz Coins pour cette option.");
+return;
+}
+
+retryDailyQuestion();
+});
+}
+
+if (dailyAdBtn) {
+dailyAdBtn.addEventListener("click", () => {
+openAdModal({
+message: "Regardez cette publicité pour obtenir une deuxième tentative.",
+rewardCoins: 0,
+durationSeconds: 8,
+onComplete: () => {
+retryDailyQuestion();
+}
+});
+});
+}
+
+const dailySkipBtn = document.getElementById("quizDailySkipBtn");
+
+if (dailySkipBtn) {
+dailySkipBtn.addEventListener("click", () => {
+const question = getCurrentDailyQuestion();
+
+if (!question) {
+return;
+}
+
+const secondChanceEl = document.getElementById("quizDailySecondChance");
+
+if (secondChanceEl) {
+secondChanceEl.classList.add("hidden");
+}
+
+markDailyQuestionFailure(question);
+});
+}
+
+if (dailyNextBtnEl) {
+dailyNextBtnEl.addEventListener("click", () => {
+dailyState.index += 1;
+renderDailyQuestion();
+});
+}
+
+function showDailySummary(options) {
+const openModal = !options || options.openModal !== false;
+
+const dailyPanel = game ? game.querySelector(".quiz-game-daily") : null;
+const summaryPanel = game
+? game.querySelector(".quiz-game-daily-summary")
+: null;
+
+if (dailyPanel) {
+dailyPanel.style.display = "none";
+}
+
+// -----------------------------------------------------
+// CALCUL ET CRÉDIT DES RÉCOMPENSES — UNE SEULE FOIS
+// -----------------------------------------------------
+
+if (!dailyState.completed) {
+const total = currentQuiz.questions.length;
+const correctCount = dailyState.results.filter(Boolean).length;
+const allCorrect = correctCount === total;
+
+let bonusXP = 0;
+let bonusCoins = 0;
+
+if (allCorrect) {
+bonusXP = currentQuiz.seriesBonusXP || 0;
+bonusCoins = currentQuiz.seriesBonusCoins || 0;
+
+if (bonusXP) {
+addUserXP(bonusXP);
+}
+
+if (bonusCoins) {
+addQuizCoins(bonusCoins);
+}
+}
+
+dailyState.correctCount = correctCount;
+dailyState.total = total;
+dailyState.bonusXP = bonusXP;
+dailyState.bonusCoins = bonusCoins;
+dailyState.completed = true;
+dailyState.summaryShownAt = Date.now();
+
+addNotification(
+`Série terminée pour "${currentQuiz.title}" : ${correctCount}/${total} bonnes réponses.`,
+"flag-checkered"
+);
+}
+
+// -----------------------------------------------------
+// AFFICHAGE (toujours rejoué, jamais recrédité)
+// -----------------------------------------------------
+
+const finalXP = dailyState.totalXP + dailyState.bonusXP;
+const finalCoins = dailyState.totalCoins + dailyState.bonusCoins;
+const hasBonus =
+dailyState.correctCount === dailyState.total &&
+(dailyState.bonusXP || dailyState.bonusCoins);
+
+const summaryText = document.getElementById("quizDailySummaryText");
+const totalXPEl = document.getElementById("quizDailyTotalXP");
+const totalCoinsEl = document.getElementById("quizDailyTotalCoins");
+const bonusRow = document.getElementById("quizDailyBonusRow");
+const bonusText = document.getElementById("quizDailyBonusText");
+
+if (summaryText) {
+summaryText.textContent =
+`Vous avez répondu correctement à ${dailyState.correctCount}/${dailyState.total} questions.`;
+}
+
+if (totalXPEl) {
+totalXPEl.textContent = `+${finalXP} XP`;
+}
+
+if (totalCoinsEl) {
+totalCoinsEl.textContent = finalCoins;
+}
+
+if (bonusRow) {
+bonusRow.classList.toggle("hidden", !hasBonus);
+}
+
+if (bonusText) {
+bonusText.innerHTML = `+${dailyState.bonusXP} XP ${formatCoins(dailyState.bonusCoins)}`;
+}
+
+if (summaryPanel) {
+summaryPanel.style.display = "block";
+}
+
+// -----------------------------------------------------
+// FENÊTRE MODALE (affichage automatique)
+// -----------------------------------------------------
+
+if (openModal) {
+const modalTotalXP = document.getElementById("quizDailyModalTotalXP");
+const modalTotalCoins = document.getElementById("quizDailyModalTotalCoins");
+const modalBonusRow = document.getElementById("quizDailyModalBonusRow");
+const modalBonusText = document.getElementById("quizDailyModalBonusText");
+const modal = document.getElementById("quizDailySummaryModal");
+
+if (modalTotalXP) {
+modalTotalXP.textContent = `+${finalXP} XP`;
+}
+
+if (modalTotalCoins) {
+modalTotalCoins.textContent = finalCoins;
+}
+
+if (modalBonusRow) {
+modalBonusRow.classList.toggle("hidden", !hasBonus);
+}
+
+if (modalBonusText) {
+modalBonusText.innerHTML = `+${dailyState.bonusXP} XP ${formatCoins(dailyState.bonusCoins)}`;
+}
+
+if (modal) {
+modal.classList.add("active");
+}
+}
+}
+
+// -----------------------------------------------------
+// FERMETURE DE LA MODALE DE RÉSUMÉ
+// -----------------------------------------------------
+/*
+* Ferme uniquement la fenêtre : le résumé reste affiché
+* sur la page, à la place de l'énoncé de la question.
+*/
+
+const dailySummaryModalCloseBtn = document.getElementById(
+"quizDailySummaryModalClose"
+);
+
+if (dailySummaryModalCloseBtn) {
+dailySummaryModalCloseBtn.addEventListener("click", () => {
+const modal = document.getElementById("quizDailySummaryModal");
+
+if (modal) {
+modal.classList.remove("active");
+}
+});
+}
+
+// =========================================================
 // ENVOYER UNE RÉPONSE
 // =========================================================
+/*
+* La réponse passe désormais par un état "Chargement..."
+* avant que "Réponse envoyée" ne s'affiche, pour simuler
+* l'envoi réel de la réponse.
+*/
 
 if (sendButton) {
 sendButton.addEventListener("click", () => {
@@ -1715,6 +2757,22 @@ textarea.focus();
 return;
 }
 
+const activePanel = game ? game.querySelector(".quiz-game-active") : null;
+const loadingPanel = game ? game.querySelector(".quiz-game-loading") : null;
+
+if (activePanel) {
+activePanel.style.display = "none";
+}
+
+if (loadingPanel) {
+loadingPanel.style.display = "flex";
+}
+
+sendButton.disabled = true;
+
+setTimeout(() => {
+sendButton.disabled = false;
+
 answeredQuizzes.add(currentQuiz.id);
 
 textarea.value = "";
@@ -1723,6 +2781,149 @@ updateGameInterface();
 
 addNotification(
 `Votre réponse au "${currentQuiz.title}" a bien été envoyée. La vérification sera effectuée après la fin du quiz.`,
+"check"
+);
+}, 1500);
+});
+}
+
+// =========================================================
+// DEUXIÈME RÉPONSE (quiz mensuels/annuels « difficiles »)
+// =========================================================
+/*
+* Proposée uniquement après l'envoi de la première réponse,
+* et seulement si currentQuiz.difficulty === "hard" et
+* currentQuiz.allowSecondAttempt === true. Une seule
+* deuxième réponse possible, via Quiz Coins ou publicité.
+*/
+
+function maybeOfferSecondResponse() {
+const block = document.getElementById("quizSecondResponse");
+const offer = document.getElementById("quizSecondResponseOffer");
+const form = document.getElementById("quizSecondResponseForm");
+const done = document.getElementById("quizSecondResponseDone");
+const costEl = document.getElementById("quizSecondResponseCost");
+
+if (!block) {
+return;
+}
+
+const eligible =
+currentQuiz.type !== "daily" &&
+currentQuiz.difficulty === "hard" &&
+currentQuiz.allowSecondAttempt === true;
+
+if (!eligible) {
+block.classList.add("hidden");
+return;
+}
+
+block.classList.remove("hidden");
+
+if (secondResponseUsed.has(currentQuiz.id)) {
+if (offer) {
+offer.classList.add("hidden");
+}
+
+if (form) {
+form.classList.add("hidden");
+}
+
+if (done) {
+done.classList.remove("hidden");
+}
+
+return;
+}
+
+if (done) {
+done.classList.add("hidden");
+}
+
+if (form) {
+form.classList.add("hidden");
+}
+
+if (offer) {
+offer.classList.remove("hidden");
+}
+
+if (costEl) {
+costEl.textContent = currentQuiz.secondAttemptCoinsCost || 0;
+}
+}
+
+function grantSecondResponse() {
+const offer = document.getElementById("quizSecondResponseOffer");
+const form = document.getElementById("quizSecondResponseForm");
+
+if (offer) {
+offer.classList.add("hidden");
+}
+
+if (form) {
+form.classList.remove("hidden");
+}
+}
+
+const secondResponseCoinsBtn = document.getElementById("quizSecondResponseCoinsBtn");
+const secondResponseAdBtn = document.getElementById("quizSecondResponseAdBtn");
+const secondResponseSendBtn = document.getElementById("quizSecondResponseSendBtn");
+
+if (secondResponseCoinsBtn) {
+secondResponseCoinsBtn.addEventListener("click", () => {
+const cost = currentQuiz.secondAttemptCoinsCost || 0;
+
+if (!spendQuizCoins(cost)) {
+alert("Vous n'avez pas suffisamment de Quiz Coins pour cette option.");
+return;
+}
+
+grantSecondResponse();
+});
+}
+
+if (secondResponseAdBtn) {
+secondResponseAdBtn.addEventListener("click", () => {
+openAdModal({
+message: "Regardez cette publicité pour proposer une deuxième réponse.",
+rewardCoins: 0,
+durationSeconds: 8,
+onComplete: () => {
+grantSecondResponse();
+}
+});
+});
+}
+
+if (secondResponseSendBtn) {
+secondResponseSendBtn.addEventListener("click", () => {
+const textarea = document.getElementById("quizSecondResponseTextarea");
+const answer = textarea ? textarea.value.trim() : "";
+
+if (!answer) {
+if (textarea) {
+textarea.focus();
+}
+
+return;
+}
+
+secondResponseUsed.add(currentQuiz.id);
+
+const form = document.getElementById("quizSecondResponseForm");
+const done = document.getElementById("quizSecondResponseDone");
+
+if (form) {
+form.classList.add("hidden");
+}
+
+if (done) {
+done.classList.remove("hidden");
+}
+
+addNotification(
+`Votre deuxième réponse au "${currentQuiz.title}" a bien été envoyée.`,
 "check"
 );
 });
@@ -1838,11 +3039,13 @@ return;
 }
 
 // -----------------------------------------------------
-// RÉSULTATS DISPONIBLES
+// RÉSULTATS DISPONIBLES (mensuel/annuel) OU QUIZ
+// TERMINÉ SANS PROCHAINE ÉDITION CONFIGURÉE (journalier)
 // -----------------------------------------------------
 
 if (state === "finished") {
-countStatus.textContent = "Résultats disponibles";
+countStatus.textContent =
+currentQuiz.type === "daily" ? "Quiz terminé" : "Résultats disponibles";
 }
 }
 
@@ -2044,7 +3247,28 @@ renderNotifications();
 updateQuizInterface();
 updatePlayButton();
 renderCoinBalance();
+renderUserXPBadge();
 
 startQuizCountdown();
 
 });
+
+// -----------------------------------------------------
+// AGRANDIR L'IMAGE DE L'ÉNONCÉ AU CLIC
+// -----------------------------------------------------
+
+const dailyQuestionImageEl = document.getElementById("quizDailyQuestionImage");
+
+if (dailyQuestionImageEl) {
+const backdrop = document.createElement("div");
+backdrop.className = "quiz-question-image-backdrop";
+document.body.appendChild(backdrop);
+
+function toggleImageZoom() {
+dailyQuestionImageEl.classList.toggle("zoomed");
+backdrop.classList.toggle("active");
+}
+
+dailyQuestionImageEl.addEventListener("click", toggleImageZoom);
+backdrop.addEventListener("click", toggleImageZoom);
+}

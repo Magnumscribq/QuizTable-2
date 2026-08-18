@@ -1,34 +1,495 @@
-<!DOCTYPE html> 
-
-<html lang="fr"> 
-
-<head> 
-
-<meta charset="UTF-8"> 
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-<title>QuizTable - Communauté Pop Culture</title> 
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil — QuizTable</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="../css/profil.css">
 <link rel="stylesheet" href="../style.css">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"> 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> 
-
-</head> 
-
- 
+</head>
 <body>
 
 <div id="header"></div>
 
-<main style="margin-top:1200px; padding:50px; background:red; color:white;">
-    Bonjour
+<!-- =====================================================
+BARRE SUPÉRIEURE — PROPRIÉTAIRE UNIQUEMENT
+====================================================== -->
+<header class="profile-topbar" id="profileTopbar">
+
+<div class="profile-topbar-left">
+
+<!-- XP -->
+<div class="profile-top-stat">
+<span class="profile-icon icon-star" aria-hidden="true"><i class="fa-solid fa-star"></i></span>
+<span class="profile-top-label">XP</span>
+<strong id="profileXP">0</strong>
+<button class="profile-top-plus" id="xpPlusButton" type="button" aria-label="Actions XP">
+<i class="fa-solid fa-plus"></i>
+</button>
+</div>
+
+<!-- QUIZ POINTS -->
+<div class="profile-top-stat">
+<span class="profile-icon icon-coins" aria-hidden="true"><i class="fa-solid fa-coins"></i></span>
+<strong id="profileQuizPoints">0</strong>
+<button class="profile-top-plus" id="quizPointsPlusButton" type="button" aria-label="Actions Quiz Points">
+<i class="fa-solid fa-plus"></i>
+</button>
+</div>
+
+<!-- CODE DE PARRAINAGE -->
+<div class="profile-referral">
+<span class="profile-top-label">Parrainage</span>
+<strong id="profileReferralCode">QT000000</strong>
+<button class="profile-referral-copy" id="copyReferralButton" type="button">Copier</button>
+</div>
+
+</div>
+
+<div class="profile-topbar-right">
+
+<button class="profile-top-icon" id="settingsButton" type="button" aria-label="Paramètres">
+<span class="profile-icon icon-settings" aria-hidden="true"><i class="fa-solid fa-gear"></i></span>
+</button>
+
+<button class="profile-top-icon notification-button" id="notificationButton" type="button" aria-label="Notifications">
+<span class="profile-icon icon-bell" aria-hidden="true"><i class="fa-solid fa-bell"></i></span>
+<span class="notification-badge" id="notificationBadge" hidden>0</span>
+</button>
+
+</div>
+
+</header>
+
+<!-- =====================================================
+PAGE
+====================================================== -->
+<main class="profile-page">
+
+<!-- =================================================
+BANDEAU DE COUVERTURE + IDENTITÉ
+================================================== -->
+<section class="profile-cover">
+
+<div class="profile-cover-band" id="profileCoverBand">
+
+<!-- MODIFIER LA BANNIÈRE — PROPRIÉTAIRE UNIQUEMENT -->
+<button class="cover-edit-button" id="coverEditButton" type="button" aria-label="Modifier la photo de bannière" hidden>
+<i class="fa-solid fa-camera"></i>
+</button>
+<input type="file" id="coverPhotoInput" accept="image/*" hidden>
+
+</div>
+
+<div class="profile-cover-content">
+
+<!-- PHOTO -->
+<div class="profile-photo-wrapper">
+
+<button class="profile-photo-button" id="profilePhotoButton" type="button">
+<img id="profilePhoto" class="profile-photo" src="../assets/images/default-profile.jpg" alt="Photo de profil">
+</button>
+
+</div>
+
+<!-- IDENTITÉ -->
+<div class="profile-identity">
+<h1 class="profile-username" id="profileUsername">Pseudo</h1>
+<p class="profile-real-name" id="profileRealName">Prénom Nom</p>
+<p class="profile-bio" id="profileBio">Bio...</p>
+
+<div class="profile-social-stats">
+<button class="profile-social-stat" type="button">
+<strong id="friendsCount">0</strong>
+<span>amis</span>
+</button>
+<button class="profile-social-stat" type="button">
+<strong id="followingCount">0</strong>
+<span>abonnements</span>
+</button>
+</div>
+</div>
+
+<!-- ACTIONS -->
+<div class="profile-cover-actions">
+
+<!-- VISITEUR UNIQUEMENT -->
+<div class="profile-visitor-actions" id="visitorActions" hidden>
+<button class="profile-action-button" id="messageButton" type="button">Écrire</button>
+<button class="profile-action-button" id="addFriendButton" type="button">Inviter un ami</button>
+</div>
+
+<!-- PROPRIÉTAIRE UNIQUEMENT — informations principales du profil -->
+<button class="profile-edit-public-button" id="editPublicProfileButton" type="button" hidden>
+Modifier le profil
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =================================================
+XP / RANG MONDIAL — CENTRÉ, ENTRE LE PANNEAU SUPÉRIEUR
+ET LES BADGES
+================================================== -->
+<section class="profile-xp-rank">
+
+<div class="xp-rank-item">
+<i class="fa-solid fa-star"></i>
+<strong id="profileHeaderXP">0</strong>
+<span>XP</span>
+</div>
+
+<div class="xp-rank-divider"></div>
+
+<div class="xp-rank-item">
+<i class="fa-solid fa-ranking-star"></i>
+<strong id="profileWorldRank">#0</strong>
+<span>Rang mondial</span>
+</div>
+
+</section>
+
+<!-- =================================================
+CONTENU : SIDEBAR (BADGES) + COLONNE PRINCIPALE (LIFE)
+================================================== -->
+<div class="profile-columns">
+
+<!-- =============================================
+SIDEBAR — BADGES
+============================================== -->
+<aside class="profile-sidebar">
+
+<section class="profile-card profile-badges-section">
+<h2>Badges</h2>
+
+<div class="profile-badges-list" id="profileBadges"></div>
+
+<p class="profile-empty-message" id="badgesEmptyMessage" hidden>
+Cet utilisateur n'a aucun badge pour le moment.
+</p>
+</section>
+
+</aside>
+
+<!-- =============================================
+COLONNE PRINCIPALE — LIFE
+============================================== -->
+<div class="profile-main">
+
+<section class="profile-card profile-life-section" id="profileLifeSection">
+
+<div class="profile-section-title">
+<h2>Life</h2>
+
+<!-- PROPRIÉTAIRE UNIQUEMENT -->
+<button class="complete-profile-button" id="completeLifeButton" type="button" hidden>
+<span>Compléter la Life</span>
+<strong>+100 XP</strong>
+</button>
+
+<button class="profile-edit-public-button" id="editLifeButton" type="button" hidden>
+Modifier la Life
+</button>
+</div>
+
+<!-- INFORMATIONS LIFE -->
+<div class="profile-life-information" id="profileLifeInformation"></div>
+
+<!-- MESSAGE : PROFIL LIFE NON RENSEIGNÉ -->
+<p class="profile-empty-message" id="lifeEmptyMessage" hidden>
+Cet utilisateur n'a pas encore rempli sa life.
+</p>
+
+<!-- À PROPOS -->
+<div class="profile-about" id="profileAbout" hidden>
+<h3>À propos de vous</h3>
+<p id="profileAboutText"></p>
+</div>
+
+<!-- INTERACTIONS (uniquement si le Life est renseigné) -->
+<div class="profile-life-actions" id="profileLifeActions" hidden>
+<button class="profile-life-action" id="lifeLikeButton" type="button" aria-label="J'aime">
+<span class="profile-icon icon-heart" aria-hidden="true"><i class="fa-solid fa-heart"></i></span>
+<strong id="lifeLikeCount">0</strong>
+</button>
+
+<button class="profile-life-action" id="lifeCommentButton" type="button" aria-label="Commentaires">
+<span class="profile-icon icon-comment" aria-hidden="true"><i class="fa-solid fa-comment"></i></span>
+<strong id="lifeCommentCount">0</strong>
+</button>
+</div>
+
+</section>
+
+</div>
+
+</div>
+
 </main>
+
+<!-- =====================================================
+BOUTON FLOTTANT — PROPRIÉTAIRE UNIQUEMENT
+====================================================== -->
+<button class="profile-floating-action" id="profileFloatingAction" type="button" aria-label="Ouvrir les actions">
+<i class="fa-solid fa-plus"></i>
+</button>
+
+<!-- =====================================================
+PANNEAU D'ACTIONS
+====================================================== -->
+<aside class="profile-action-panel" id="profileActionPanel" hidden>
+<div class="profile-panel-header">
+<h2>Actions</h2>
+<button class="profile-panel-close" id="profileActionPanelClose" type="button">×</button>
+</div>
+
+<div class="profile-action-list">
+<button class="profile-panel-action" id="addIllustratorButton" type="button">Ajouter un profil illustrateur</button>
+<button class="profile-panel-action" id="addWriterButton" type="button">Ajouter un profil écrivain</button>
+<button class="profile-panel-action" id="addCreatorButton" type="button">Ajouter un profil créateur</button>
+<button class="profile-panel-action" id="createGuildButton" type="button">Créer une guilde</button>
+</div>
+</aside>
+
+<!-- =====================================================
+FORMULAIRE "MODIFIER LE PROFIL" (INFORMATIONS PRINCIPALES)
+====================================================== -->
+<section class="profile-form-overlay" id="profileEditOverlay" hidden>
+<div class="profile-form-panel">
+
+<div class="profile-panel-header">
+<h2>Modifier le profil</h2>
+<button class="profile-panel-close" id="profileEditClose" type="button">×</button>
+</div>
+
+<p class="profile-form-introduction">
+Ces informations sont modifiables librement, à tout moment.
+</p>
+
+<form id="profileEditForm">
+
+<div class="profile-form-grid">
+
+<div class="profile-form-field">
+<label for="profileUsernameField">Pseudonyme</label>
+<input id="profileUsernameField" type="text" disabled>
+<span class="profile-form-hint">Le pseudonyme est définitif et ne peut pas être modifié.</span>
+</div>
+
+<div class="profile-form-field">
+<label for="profileFirstNameField">Prénom</label>
+<input id="profileFirstNameField" name="firstName" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="profileLastNameField">Nom</label>
+<input id="profileLastNameField" name="lastName" type="text">
+</div>
+
+</div>
+
+<div class="profile-form-field">
+<label for="profileBioField">Bio</label>
+<textarea id="profileBioField" name="bio" rows="3" placeholder="Une courte présentation..."></textarea>
+</div>
+
+<p class="profile-form-message" id="profileEditMessage" hidden></p>
+
+<button class="profile-submit-button" type="submit">Enregistrer</button>
+</form>
+
+</div>
+</section>
+
+<!-- =====================================================
+FORMULAIRE LIFE
+====================================================== -->
+<section class="profile-form-overlay" id="profileFormOverlay" hidden>
+<div class="profile-form-panel">
+
+<div class="profile-panel-header">
+<h2 id="profileFormTitle">Compléter la Life</h2>
+<button class="profile-panel-close" id="profileFormClose" type="button">×</button>
+</div>
+
+<p class="profile-form-introduction">
+Ces informations servent à vous présenter auprès de la communauté et permettent
+également de vous proposer des utilisateurs partageant des passions ou centres
+d'intérêt similaires.
+</p>
+
+<form id="profileLifeForm">
+
+<div class="profile-form-grid">
+
+<div class="profile-form-field">
+<label for="lifeHobby">Loisir</label>
+<input id="lifeHobby" name="hobby" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeProfession">Profession</label>
+<input id="lifeProfession" name="profession" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeNationality">Nationalité</label>
+<input id="lifeNationality" name="nationality" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeFilm">Film préféré</label>
+<input id="lifeFilm" name="film" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeGame">Jeu vidéo préféré</label>
+<input id="lifeGame" name="game" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeBook">Livre préféré</label>
+<input id="lifeBook" name="book" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeMusic">Musique ou chanteur préféré</label>
+<input id="lifeMusic" name="music" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeAnime">Animé préféré</label>
+<input id="lifeAnime" name="anime" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeManga">Manga préféré</label>
+<input id="lifeManga" name="manga" type="text">
+</div>
+
+<div class="profile-form-field">
+<label for="lifeSport">Sport préféré</label>
+<input id="lifeSport" name="sport" type="text">
+</div>
+
+</div>
+
+<!-- QUESTIONS PERSONNALISÉES -->
+<div class="custom-questions-section">
+<div class="custom-question-header">
+<h3>Questions personnalisées</h3>
+<button id="addCustomQuestionButton" type="button">Ajouter une question</button>
+</div>
+
+<div id="customQuestionsList" class="custom-questions-list"></div>
+</div>
+
+<!-- À PROPOS -->
+<div class="profile-form-field">
+<label for="lifeAbout">À propos de vous</label>
+<textarea id="lifeAbout" name="about" rows="8" placeholder="Présentez-vous plus librement..."></textarea>
+</div>
+
+<p class="profile-form-message" id="profileFormMessage" hidden></p>
+
+<button class="profile-submit-button" type="submit">Valider les informations</button>
+</form>
+
+</div>
+</section>
+
+<!-- =====================================================
+NOTIFICATIONS
+====================================================== -->
+<aside class="profile-notification-panel" id="profileNotificationPanel" hidden>
+<div class="profile-panel-header">
+<h2>Notifications</h2>
+<button class="profile-panel-close" id="notificationPanelClose" type="button">×</button>
+</div>
+
+<div class="notification-actions">
+<button id="deleteAllNotifications" type="button">Tout supprimer</button>
+</div>
+
+<div class="profile-notification-list" id="profileNotificationList"></div>
+</aside>
+
+<!-- =====================================================
+PARAMÈTRES
+====================================================== -->
+<aside class="profile-settings-panel" id="profileSettingsPanel" hidden>
+<div class="profile-panel-header">
+<h2>Paramètres</h2>
+<button class="profile-panel-close" id="settingsPanelClose" type="button">×</button>
+</div>
+</aside>
+
+<!-- =====================================================
+PHOTO
+====================================================== -->
+<div class="profile-photo-modal" id="profilePhotoModal" hidden>
+<div class="profile-photo-modal-content">
+<button class="profile-modal-close" id="profilePhotoModalClose" type="button">×</button>
+<img id="profilePhotoLarge" class="profile-photo-large" src="" alt="Photo de profil">
+
+<!-- PROPRIÉTAIRE UNIQUEMENT -->
+<button class="profile-photo-edit-button" id="profilePhotoEditButton" type="button" hidden>
+Modifier la photo de profil
+</button>
+<input type="file" id="profilePhotoInput" accept="image/*" hidden>
+</div>
+</div>
+
+<!-- =====================================================
+SESSION COMMENTAIRES — LIFE
+====================================================== -->
+<aside class="profile-comments-panel" id="profileCommentsPanel" hidden>
+<div class="profile-panel-header">
+<h2>Commentaires</h2>
+<button class="profile-panel-close" id="profileCommentsClose" type="button">×</button>
+</div>
+
+<div class="profile-comments-list" id="profileCommentsList"></div>
+
+<div class="profile-comment-reply-hint" id="profileCommentReplyHint" hidden>
+<span id="profileCommentReplyText"></span>
+<button type="button" id="profileCommentReplyCancel" aria-label="Annuler la réponse">×</button>
+</div>
+
+<form class="profile-comments-form" id="profileCommentsForm">
+<input
+id="profileCommentInput"
+type="text"
+maxlength="240"
+placeholder="Écrire un commentaire..."
+autocomplete="off">
+<button type="submit" aria-label="Envoyer">
+<i class="fa-solid fa-paper-plane"></i>
+</button>
+</form>
+</aside>
+
+<!-- =====================================================
+BADGE DÉBLOQUÉ
+====================================================== -->
+<div class="badge-unlock-overlay" id="badgeUnlockOverlay" hidden>
+<div class="badge-unlock-card">
+<button class="badge-unlock-close" id="badgeUnlockClose" type="button" aria-label="Fermer">×</button>
+<div class="badge-unlock-image-wrapper">
+<img id="badgeUnlockImage" src="" alt="Badge débloqué">
+</div>
+<p class="badge-unlock-message" id="badgeUnlockMessage">Vous avez débloqué un nouveau badge !</p>
+</div>
+</div>
 
 <div id="footer"></div>
 
+<script src="../assets/js/profil.js"></script>
 <script src="../assets/js/main.js"></script>
 
 </body>
+</html>

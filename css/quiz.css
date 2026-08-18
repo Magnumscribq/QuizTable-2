@@ -291,7 +291,7 @@ height:11px;
 border-radius:50%;
 background:#e53935;
 box-shadow:0 2px 6px rgba(0,0,0,.2);
-z-index:10;
+z-index:2;
 }
 
 /* =====================================
@@ -863,12 +863,11 @@ display:flex;
 align-items:center;
 gap:6px;
 height:40px;
-padding:0 14px;
-border-radius:50px;
-background:#111;
-color:white;
+padding:0;
+background:transparent;
+color:#111;
 font-family:"Bricolage Grotesque",sans-serif;
-font-size:13px;
+font-size:14px;
 font-weight:700;
 white-space:nowrap;
 }
@@ -876,6 +875,10 @@ white-space:nowrap;
 .quiz-coin-balance i{
 color:#ffc93c;
 font-size:13px;
+}
+
+.quiz-coin-balance.hidden{
+display:none;
 }
 
 /* Badge réutilisable [icône] valeur — utilisé partout où
@@ -1043,10 +1046,32 @@ font-size:13px;
 BOUTON JOUER (au-dessus du nombre d'inscrits)
 ===================================== */
 
-.quiz-play-row{
+.quiz-rewards-row{
 display:flex;
+align-items:center;
 justify-content:flex-start;
+gap:16px;
 margin:0 0 12px;
+}
+
+.quiz-xp-badge{
+display:flex;
+align-items:center;
+gap:6px;
+color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+font-weight:700;
+white-space:nowrap;
+}
+
+.quiz-xp-badge i{
+color:#ffb300;
+font-size:13px;
+}
+
+.quiz-xp-badge.hidden{
+display:none;
 }
 
 /* =====================================
@@ -1268,6 +1293,372 @@ transform:translateY(-2px);
 }
 
 /* =====================================
+QUIZ JOURNALIER — QCM
+===================================== */
+
+.quiz-game-daily{
+display:none;
+text-align:left;
+}
+
+.quiz-daily-progress{
+display:block;
+margin-bottom:10px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:700;
+color:#777;
+}
+
+.quiz-question-image{
+display:block;
+width:100px;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:16px;
+margin-bottom:16px;
+cursor:zoom-in;
+transition:.2s ease;
+}
+
+.quiz-question-image.zoomed{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:600;
+width:90vw;
+max-width:500px;
+height:90vw;
+max-height:500px;
+
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 20px 60px rgba(0,0,0,.5);
+cursor:zoom-out;
+}
+
+.quiz-question-image-backdrop{
+display:none;
+position:fixed;
+inset:0;
+z-index:599;
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(6px);
+-webkit-backdrop-filter:blur(6px);
+}
+
+.quiz-question-image-backdrop.active{
+display:block;
+}
+
+.quiz-question-image.hidden{
+display:none;
+}
+
+.quiz-question-image.quiz-question-image-after{
+margin-top:16px;
+margin-bottom:16px;
+}
+
+.quiz-daily-options{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-bottom:16px;
+}
+
+.quiz-daily-option{
+display:flex;
+align-items:center;
+gap:10px;
+width:100%;
+padding:14px 16px;
+border:1px solid rgba(0,0,0,.12);
+border-radius:16px;
+background:#f8f8f8;
+color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:14px;
+text-align:left;
+cursor:pointer;
+transition:.2s ease;
+box-sizing:border-box;
+}
+
+.quiz-daily-option:hover:not(:disabled){
+border-color:#111;
+background:#f0f0f0;
+}
+
+.quiz-daily-option:disabled{
+cursor:default;
+}
+
+.quiz-daily-option.correct{
+border-color:#2e9e44;
+background:rgba(46,158,68,.1);
+color:#1e6e2e;
+font-weight:600;
+}
+
+.quiz-daily-option.incorrect{
+border-color:#e53935;
+background:rgba(229,57,53,.08);
+color:#b71c1c;
+font-weight:600;
+}
+
+.quiz-daily-feedback{
+margin-bottom:16px;
+padding:12px 14px;
+border-radius:14px;
+font-size:13px;
+line-height:1.5;
+}
+
+.quiz-daily-feedback.hidden{
+display:none;
+}
+
+.quiz-daily-feedback.success{
+background:rgba(46,158,68,.1);
+border:1px solid rgba(46,158,68,.25);
+color:#1e6e2e;
+}
+
+.quiz-daily-feedback.error{
+background:rgba(229,57,53,.08);
+border:1px solid rgba(229,57,53,.2);
+color:#b71c1c;
+}
+
+.quiz-daily-second-chance{
+margin-bottom:16px;
+padding:14px 16px;
+border-radius:16px;
+background:#f5f5f5;
+}
+
+.quiz-daily-second-chance.hidden{
+display:none;
+}
+
+.quiz-daily-second-chance p{
+margin:0 0 12px;
+font-size:13px;
+color:#333;
+}
+
+.quiz-daily-second-actions{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.quiz-daily-coins-btn,
+.quiz-daily-ad-btn{
+display:flex;
+align-items:center;
+gap:8px;
+padding:10px 16px;
+border:none;
+border-radius:50px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+font-weight:600;
+cursor:pointer;
+transition:.2s ease;
+}
+
+.quiz-daily-coins-btn{
+background:#111;
+color:white;
+}
+
+.quiz-daily-coins-btn .quiz-coin-value{
+color:white;
+}
+
+.quiz-daily-ad-btn{
+background:rgba(0,0,0,.08);
+color:#111;
+}
+
+.quiz-daily-coins-btn:hover,
+.quiz-daily-ad-btn:hover{
+transform:translateY(-2px);
+}
+
+.quiz-daily-skip-btn{
+display:block;
+margin-top:12px;
+padding:0;
+border:none;
+background:transparent;
+color:#777;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:12.5px;
+font-weight:600;
+cursor:pointer;
+text-decoration:underline;
+}
+
+.quiz-daily-skip-btn:hover{
+color:#111;
+}
+
+.quiz-daily-next-btn{
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:16px;
+padding:12px 22px;
+border:none;
+border-radius:50px;
+background:#111;
+color:white;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+font-size:14px;
+cursor:pointer;
+}
+
+.quiz-daily-next-btn.hidden{
+display:none;
+}
+
+.quiz-daily-next-btn:hover{
+transform:translateY(-2px);
+}
+
+/* =====================================
+QUIZ JOURNALIER — RÉSUMÉ DE SÉRIE
+===================================== */
+
+.quiz-game-daily-summary{
+display:none;
+text-align:left;
+}
+
+.quiz-daily-summary-rewards{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:8px;
+margin-top:8px;
+}
+
+.quiz-daily-summary-rewards .quiz-coin-value{
+color:#111;
+font-size:15px;
+}
+
+.quiz-daily-bonus{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:15px;
+padding:12px 14px;
+border-radius:14px;
+background:rgba(245,183,0,.1);
+border:1px solid rgba(245,183,0,.25);
+color:#8a6400;
+font-size:13px;
+}
+
+.quiz-daily-bonus.hidden{
+display:none;
+}
+
+.quiz-daily-bonus i{
+color:#f5b700;
+}
+
+/* =====================================
+RÉSUMÉ DE SÉRIE — FENÊTRE MODALE
+===================================== */
+
+.quiz-daily-summary-modal{
+position:fixed;
+inset:0;
+z-index:500;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+}
+
+.quiz-daily-summary-modal.active{
+display:flex;
+}
+
+.quiz-daily-summary-modal-box{
+position:relative;
+width:90%;
+max-width:420px;
+padding:30px;
+border-radius:25px;
+background:#181818;
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 20px 50px rgba(0,0,0,.4);
+color:white;
+box-sizing:border-box;
+text-align:left;
+}
+
+.quiz-daily-summary-modal-box h3{
+margin:0 0 15px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:22px;
+color:white;
+}
+
+.quiz-daily-summary-modal-box .quiz-submitted-icon{
+background:white;
+color:#111;
+}
+
+.quiz-daily-summary-modal-box .quiz-daily-summary-rewards{
+color:white;
+}
+
+.quiz-daily-summary-modal-box .quiz-xp-result{
+color:rgba(255,255,255,.85);
+}
+
+.quiz-daily-summary-modal-box .quiz-xp-result strong{
+color:white;
+}
+
+.quiz-daily-summary-modal-box .quiz-coin-value{
+color:white;
+}
+
+.quiz-daily-summary-modal-close{
+position:absolute;
+top:14px;
+right:14px;
+width:32px;
+height:32px;
+border:none;
+border-radius:50%;
+background:rgba(255,255,255,.12);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+transition:.2s ease;
+}
+
+.quiz-daily-summary-modal-close:hover{
+background:rgba(255,255,255,.22);
+}
+
+/* =====================================
 RÉPONSE ENVOYÉE
 ===================================== */
 
@@ -1307,6 +1698,84 @@ color:#e4a900;
 
 .quiz-submitted-xp strong{
 color:#111;
+}
+
+/* =====================================
+ENVOI EN COURS
+===================================== */
+
+.quiz-game-loading{
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:14px;
+padding:60px 0;
+text-align:center;
+}
+
+.quiz-loading-spinner{
+font-size:30px;
+color:#111;
+}
+
+.quiz-game-loading p{
+margin:0;
+color:#777;
+font-size:14px;
+}
+
+/* =====================================
+DEUXIÈME RÉPONSE (quiz difficiles)
+===================================== */
+
+.quiz-second-response{
+margin-top:20px;
+padding:16px;
+border-radius:16px;
+background:#f5f5f5;
+}
+
+.quiz-second-response.hidden{
+display:none;
+}
+
+.quiz-second-response-offer p{
+margin:0 0 12px !important;
+font-size:13px;
+color:#333 !important;
+}
+
+.quiz-second-response-form{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.quiz-second-response-form.hidden{
+display:none;
+}
+
+.quiz-second-response-form .quiz-answer{
+min-height:90px;
+}
+
+.quiz-second-response-done{
+display:flex;
+align-items:center;
+gap:8px;
+margin:0 !important;
+color:#1e6e2e !important;
+font-size:13px;
+font-weight:600;
+}
+
+.quiz-second-response-done.hidden{
+display:none;
+}
+
+.quiz-second-response-done i{
+color:#2e9e44;
 }
 
 /* =====================================
@@ -1540,6 +2009,214 @@ color:white;
 .unregister-yes{
 background:white;
 color:#111;
+}
+
+.quiz-quota-unlock-btn{
+display:flex;
+align-items:center;
+gap:8px;
+margin-top:16px;
+padding:11px 18px;
+border:none;
+border-radius:50px;
+background:white;
+color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+font-size:14px;
+cursor:pointer;
+transition:.2s ease;
+}
+
+.quiz-quota-unlock-btn:hover{
+transform:translateY(-2px);
+}
+
+/* =====================================
+INTERFACE PUBLICITÉ (générique)
+===================================== */
+
+.quiz-ad-modal{
+position:fixed;
+inset:0;
+z-index:500;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+}
+
+.quiz-ad-modal.active{
+display:flex;
+}
+
+.quiz-ad-box{
+position:relative;
+width:90%;
+max-width:420px;
+padding:24px;
+border-radius:25px;
+background:#181818;
+border:1px solid rgba(255,255,255,.15);
+box-shadow:0 20px 50px rgba(0,0,0,.4);
+color:white;
+box-sizing:border-box;
+}
+
+.quiz-ad-close{
+position:absolute;
+top:14px;
+right:14px;
+z-index:2;
+width:32px;
+height:32px;
+border:none;
+border-radius:50%;
+background:rgba(255,255,255,.12);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+transition:.2s ease;
+}
+
+.quiz-ad-close:hover{
+background:rgba(255,255,255,.22);
+}
+
+/* -------- zone dédiée à la publicité -------- */
+
+.quiz-ad-content{
+width:100%;
+aspect-ratio:16/9;
+border-radius:16px;
+overflow:hidden;
+background:#0d0d0d;
+margin-bottom:18px;
+}
+
+.quiz-ad-placeholder{
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:8px;
+color:rgba(255,255,255,.35);
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:13px;
+}
+
+.quiz-ad-placeholder i{
+font-size:26px;
+}
+
+/* -------- message + récompense -------- */
+
+.quiz-ad-info{
+margin-bottom:20px;
+}
+
+.quiz-ad-message{
+margin:0 0 10px;
+color:rgba(255,255,255,.85);
+line-height:1.5;
+font-size:14px;
+}
+
+.quiz-ad-reward{
+display:flex;
+align-items:center;
+gap:10px;
+padding:10px 14px;
+border-radius:14px;
+background:rgba(245,183,0,.1);
+border:1px solid rgba(245,183,0,.25);
+}
+
+.quiz-ad-reward.hidden{
+display:none;
+}
+
+.quiz-ad-reward-label{
+font-size:12px;
+color:rgba(255,255,255,.6);
+}
+
+.quiz-ad-reward .quiz-coin-value{
+color:white;
+}
+
+.quiz-ad-countdown{
+margin-left:auto;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:700;
+font-size:13px;
+color:#ffc93c;
+}
+
+/* -------- actions -------- */
+
+.quiz-ad-actions{
+display:flex;
+justify-content:flex-end;
+gap:10px;
+}
+
+.quiz-ad-refuse,
+.quiz-ad-accept{
+padding:10px 18px;
+border:none;
+border-radius:50px;
+font-family:"Bricolage Grotesque",sans-serif;
+font-weight:600;
+font-size:13px;
+cursor:pointer;
+transition:.2s ease;
+}
+
+.quiz-ad-refuse{
+background:rgba(255,255,255,.12);
+color:white;
+}
+
+.quiz-ad-refuse:hover{
+background:rgba(255,255,255,.2);
+}
+
+.quiz-ad-accept{
+background:white;
+color:#111;
+}
+
+.quiz-ad-accept:hover:not(:disabled){
+transform:translateY(-2px);
+}
+
+.quiz-ad-accept:disabled{
+opacity:.5;
+cursor:not-allowed;
+}
+
+/* -------- bouton de test temporaire -------- */
+
+.quiz-ad-test-trigger{
+position:fixed;
+left:16px;
+bottom:16px;
+z-index:60;
+padding:8px 14px;
+border:1px dashed rgba(0,0,0,.3);
+border-radius:50px;
+background:rgba(255,255,255,.85);
+color:#111;
+font-family:"Bricolage Grotesque",sans-serif;
+font-size:12px;
+cursor:pointer;
 }
 
 /* =====================================
@@ -2002,6 +2679,26 @@ top:120px;
 left:5%;
 right:5%;
 width:auto;
+}
+
+.quiz-rewards-row{
+gap:10px;
+}
+
+.quiz-xp-badge{
+font-size:12px;
+}
+
+.quiz-xp-badge i{
+font-size:11px;
+}
+
+.quiz-coin-balance{
+font-size:12px;
+}
+
+.quiz-coin-balance i{
+font-size:11px;
 }
 
 

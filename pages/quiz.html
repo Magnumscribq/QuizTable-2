@@ -208,8 +208,22 @@ S'inscrire
 </button>
 </div>
 
-<!-- RÈGLEMENT + HISTORIQUE -->
+<!-- JOUER + RÈGLEMENT + HISTORIQUE -->
 <div class="quiz-link">
+
+<!-- BOUTON JOUER -->
+<button
+class="quiz-play-btn hidden">
+<span class="play-shape play-shape-1"></span>
+<span class="play-shape play-shape-2"></span>
+<span class="play-shape play-shape-3"></span>
+<span class="play-shape play-shape-4"></span>
+
+<span class="play-button-content">
+<i class="fa-solid fa-play"></i>
+<span>Jouer</span>
+</span>
+</button>
 
 <!-- RÈGLEMENT -->
 <button class="quiz-rules">
@@ -224,18 +238,8 @@ Historique
 </button>
 </div>
 
-<!-- SOLDE + NOTIFICATION + LIKE -->
+<!-- NOTIFICATION + LIKE -->
 <div class="quiz-ajust">
-
-<!-- SOLDE QUIZ COINS -->
-<div
-class="quiz-coin-balance"
-id="quizCoinBalance"
-title="Vos Quiz Coins"
-aria-label="Vos Quiz Coins">
-<i class="fa-solid fa-coins"></i>
-<span id="quizCoinBalanceValue">0</span>
-</div>
 
 <!-- NOTIFICATION -->
 <div class="quiz-notification-wrapper">
@@ -308,20 +312,116 @@ FENÊTRE DE DÉSINSCRIPTION
 </div>
 </div>
 
-<!-- BOUTON JOUER (au-dessus du nombre d'inscrits, visible seulement après inscription) -->
-<div class="quiz-play-row">
-<button
-class="quiz-play-btn hidden">
-<span class="play-shape play-shape-1"></span>
-<span class="play-shape play-shape-2"></span>
-<span class="play-shape play-shape-3"></span>
-<span class="play-shape play-shape-4"></span>
+<!-- ==================================================
+QUOTA D'INSCRIPTIONS GRATUITES ATTEINT
+================================================== -->
 
-<span class="play-button-content">
-<i class="fa-solid fa-play"></i>
-<span>Jouer</span>
+<div class="quiz-unregister-modal" id="quizQuotaModal">
+<div class="quiz-unregister-box">
+<h3>Quota atteint</h3>
+<p>
+Le nombre maximum d'inscriptions gratuites pour ce quiz est atteint.
+Vous pouvez débloquer une inscription :
+</p>
+
+<button type="button" class="quiz-quota-unlock-btn" id="quizQuotaUnlockBtn">
+Débloquer
+<span class="quiz-coin-value">
+<i class="fa-solid fa-coins quiz-coin-icon"></i>
+<span id="quizQuotaUnlockCost">0</span>
 </span>
 </button>
+
+<div class="unregister-actions">
+<button class="unregister-no" id="quizQuotaCancel">Fermer</button>
+</div>
+</div>
+</div>
+
+<!-- ==================================================
+INTERFACE PUBLICITÉ (générique, réutilisée par plusieurs contextes :
+pub de lancement, pub pour 2e tentative, pub récompensée en Quiz Coins)
+================================================== -->
+
+<div class="quiz-ad-modal" id="quizAdModal">
+<div class="quiz-ad-box">
+
+<button
+type="button"
+class="quiz-ad-close"
+id="quizAdClose"
+aria-label="Fermer la publicité">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+<!-- ZONE DÉDIÉE À LA PUBLICITÉ ELLE-MÊME
+(régie publicitaire à intégrer ici ultérieurement) -->
+<div class="quiz-ad-content" id="quizAdContent">
+<div class="quiz-ad-placeholder">
+<i class="fa-solid fa-photo-film"></i>
+<span>Emplacement publicitaire</span>
+</div>
+</div>
+
+<div class="quiz-ad-info">
+<p class="quiz-ad-message" id="quizAdMessage">
+Regardez cette publicité pour continuer.
+</p>
+
+<div class="quiz-ad-reward hidden" id="quizAdRewardRow">
+<span class="quiz-ad-reward-label">Récompense</span>
+<span class="quiz-coin-value">
+<i class="fa-solid fa-coins quiz-coin-icon"></i>
+<span id="quizAdRewardValue">0</span>
+</span>
+<span class="quiz-ad-countdown" id="quizAdCountdown"></span>
+</div>
+</div>
+
+<div class="quiz-ad-actions">
+<button type="button" class="quiz-ad-refuse" id="quizAdRefuse">
+Refuser
+</button>
+<button type="button" class="quiz-ad-accept" id="quizAdAccept" data-state="idle">
+Regarder
+</button>
+</div>
+
+</div>
+</div>
+
+<!-- ==================================================
+BOUTON DE TEST TEMPORAIRE — à retirer une fois les phases 4/5
+branchées (elles déclencheront la pub automatiquement)
+================================================== -->
+
+<button
+type="button"
+class="quiz-ad-test-trigger"
+id="quizAdTestTrigger">
+🧪 Tester la pub (temporaire)
+</button>
+
+<!-- RÉCOMPENSES : XP puis Quiz Coins (au-dessus du nombre d'inscrits, visibles seulement après inscription) -->
+<div class="quiz-rewards-row">
+
+<!-- XP -->
+<span
+class="quiz-xp-badge hidden"
+id="quizUserXPBadge">
+<i class="fa-solid fa-star"></i>
+<span id="quizUserXPValue">0</span> XP
+</span>
+
+<!-- SOLDE QUIZ COINS -->
+<div
+class="quiz-coin-balance hidden"
+id="quizCoinBalance"
+title="Vos Quiz Coins"
+aria-label="Vos Quiz Coins">
+<i class="fa-solid fa-coins"></i>
+<span id="quizCoinBalanceValue">0</span>
+</div>
 </div>
 
 <!-- MEMBRES (juste au-dessus du contenu du quiz) -->
@@ -411,6 +511,14 @@ Envoyer ma réponse
 <button class="back-description">Revenir à la description</button>
 </div>
 
+<!-- ENVOI EN COURS -->
+<div class="quiz-game-loading">
+<div class="quiz-loading-spinner">
+<i class="fa-solid fa-circle-notch fa-spin"></i>
+</div>
+<p>Chargement...</p>
+</div>
+
 <!-- RÉPONSE ENVOYÉE -->
 <div class="quiz-game-submitted">
 <div class="quiz-submitted-icon">
@@ -427,7 +535,187 @@ après la fin du quiz.
 <strong>+100 XP</strong>
 <span>si votre réponse est correcte.</span>
 </p>
+
+<!-- DEUXIÈME RÉPONSE (quiz difficiles uniquement) -->
+<div class="quiz-second-response hidden" id="quizSecondResponse">
+
+<div class="quiz-second-response-offer" id="quizSecondResponseOffer">
+<p>Vous pouvez augmenter vos chances en proposant une seconde réponse.</p>
+<div class="quiz-daily-second-actions">
+<button type="button" class="quiz-daily-coins-btn" id="quizSecondResponseCoinsBtn">
+Utiliser
+<span class="quiz-coin-value">
+<i class="fa-solid fa-coins quiz-coin-icon"></i>
+<span id="quizSecondResponseCost">0</span>
+</span>
+</button>
+<button type="button" class="quiz-daily-ad-btn" id="quizSecondResponseAdBtn">
+<i class="fa-solid fa-play"></i>
+Regarder une publicité
+</button>
+</div>
+</div>
+
+<div class="quiz-second-response-form hidden" id="quizSecondResponseForm">
+<label class="quiz-answer-label">Votre deuxième réponse</label>
+<textarea
+class="quiz-answer"
+id="quizSecondResponseTextarea"
+placeholder="Écrivez votre deuxième réponse..."></textarea>
+<button type="button" class="quiz-send-btn" id="quizSecondResponseSendBtn">
+<i class="fa-solid fa-paper-plane"></i>
+Envoyer ma deuxième réponse
+</button>
+</div>
+
+<p class="quiz-second-response-done hidden" id="quizSecondResponseDone">
+<i class="fa-solid fa-circle-check"></i>
+Deuxième réponse envoyée.
+</p>
+
+</div>
+
 <button class="back-description">Revenir à la description</button>
+</div>
+
+<!-- ==================================================
+QUIZ JOURNALIER — QUESTION (QCM, correction immédiate)
+================================================== -->
+
+<div class="quiz-game-daily">
+
+<div class="quiz-game-header">
+<span class="quiz-xp-reward">
+<i class="fa-solid fa-star"></i>
+<span id="quizDailyQuestionXP">+0 XP</span>
+</span>
+</div>
+
+<span class="quiz-daily-progress" id="quizDailyProgress">Question 1/1</span>
+
+<!-- IMAGE DE L'ÉNONCÉ (facultative, position configurable par question) -->
+<img
+class="quiz-question-image hidden"
+id="quizDailyQuestionImage"
+alt="">
+
+<!-- ÉNONCÉ -->
+<div class="quiz-question-box">
+<span class="quiz-question-label">Énoncé</span>
+<p class="quiz-question" id="quizDailyQuestionText"></p>
+</div>
+
+<!-- PROPOSITIONS -->
+<div class="quiz-daily-options" id="quizDailyOptions">
+<!-- boutons de réponse injectés en JS -->
+</div>
+
+<!-- RETOUR IMMÉDIAT -->
+<div class="quiz-daily-feedback hidden" id="quizDailyFeedback">
+<p id="quizDailyFeedbackText"></p>
+</div>
+
+<!-- OPTION DE 2E TENTATIVE -->
+<div class="quiz-daily-second-chance hidden" id="quizDailySecondChance">
+<p>Mauvaise réponse. Vous pouvez tenter une seconde fois :</p>
+<div class="quiz-daily-second-actions">
+<button type="button" class="quiz-daily-coins-btn" id="quizDailyCoinsBtn">
+Utiliser
+<span class="quiz-coin-value">
+<i class="fa-solid fa-coins quiz-coin-icon"></i>
+<span id="quizDailySecondCost">0</span>
+</span>
+</button>
+<button type="button" class="quiz-daily-ad-btn" id="quizDailyAdBtn">
+<i class="fa-solid fa-play"></i>
+Regarder une publicité
+</button>
+</div>
+<button type="button" class="quiz-daily-skip-btn" id="quizDailySkipBtn">
+Passer à la question suivante
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+</div>
+
+<button type="button" class="quiz-daily-next-btn hidden" id="quizDailyNextBtn">
+Question suivante
+<i class="fa-solid fa-arrow-right"></i>
+</button>
+
+<button class="back-description">Revenir à la description</button>
+
+</div>
+
+<!-- ==================================================
+QUIZ JOURNALIER — RÉSUMÉ DE FIN DE SÉRIE
+================================================== -->
+
+<div class="quiz-game-daily-summary">
+<div class="quiz-submitted-icon">
+<i class="fa-solid fa-flag-checkered"></i>
+</div>
+<h3>Série terminée !</h3>
+<p id="quizDailySummaryText">Vous avez répondu correctement à 0/0 questions.</p>
+
+<div class="quiz-winner-box">
+<span>Récompenses obtenues</span>
+<div class="quiz-daily-summary-rewards">
+<span class="quiz-xp-result">
+<i class="fa-solid fa-star"></i>
+<strong id="quizDailyTotalXP">+0 XP</strong>
+</span>
+<span class="quiz-coin-value">
+<i class="fa-solid fa-coins quiz-coin-icon"></i>
+<span id="quizDailyTotalCoins">0</span>
+</span>
+</div>
+</div>
+
+<div class="quiz-daily-bonus hidden" id="quizDailyBonusRow">
+<i class="fa-solid fa-trophy"></i>
+<span>Bonus de série : <strong id="quizDailyBonusText"></strong></span>
+</div>
+
+<button class="back-description">Revenir à la description</button>
+</div>
+
+<!-- ==================================================
+RÉSUMÉ DE SÉRIE — FENÊTRE MODALE (affichage automatique)
+================================================== -->
+
+<div class="quiz-daily-summary-modal" id="quizDailySummaryModal">
+<div class="quiz-daily-summary-modal-box">
+
+<button
+type="button"
+class="quiz-daily-summary-modal-close"
+id="quizDailySummaryModalClose"
+aria-label="Fermer">
+<i class="fa-solid fa-xmark"></i>
+</button>
+
+<div class="quiz-submitted-icon">
+<i class="fa-solid fa-flag-checkered"></i>
+</div>
+<h3>Série terminée !</h3>
+
+<div class="quiz-daily-summary-rewards">
+<span class="quiz-xp-result">
+<i class="fa-solid fa-star"></i>
+<strong id="quizDailyModalTotalXP">+0 XP</strong>
+</span>
+<span class="quiz-coin-value">
+<i class="fa-solid fa-coins quiz-coin-icon"></i>
+<span id="quizDailyModalTotalCoins">0</span>
+</span>
+</div>
+
+<div class="quiz-daily-bonus hidden" id="quizDailyModalBonusRow">
+<i class="fa-solid fa-trophy"></i>
+<span>Bonus de série : <strong id="quizDailyModalBonusText"></strong></span>
+</div>
+
+</div>
 </div>
 
 <!-- RÉSULTATS EN ATTENTE -->
